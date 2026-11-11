@@ -4,733 +4,518 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TalkBuddy - Tìm đúng người, luyện đúng cách</title>
+<title>TalkBuddy – Tìm bạn đồng hành luyện nói</title>
+<meta name="description" content="TalkBuddy kết nối bạn luyện nói ngoại ngữ phù hợp về trình độ, mục tiêu và thời gian.">
 <style>
 :root{
-  --green:#8dbb9a;--green-dark:#477b5b;--green-light:#e8f3e9;
-  --mint:#f3f8f1;--cream:#fbfaf4;--text:#34483a;--muted:#829184;
-  --white:#fff;--border:#e2eae0;--pink:#f4dede;--yellow:#f5edce;
-  --shadow:0 8px 28px rgba(69,105,76,.09);
+  --green:#8dbb9d;--green-dark:#477b5c;--green-light:#eaf4ec;
+  --mint:#f3f8f2;--cream:#fffefa;--ink:#26352c;--muted:#718076;
+  --line:#e2eae2;--white:#fff;--red:#c65b5b;--yellow:#f4e8bf;
+  --shadow:0 8px 28px rgba(50,85,60,.08);--radius:18px;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--mint);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+body{margin:0;background:var(--mint);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-a{color:inherit}
-.topbar{height:72px;background:rgba(255,255,255,.96);display:flex;align-items:center;
-justify-content:space-between;padding:0 5%;border-bottom:1px solid var(--border);
-position:sticky;top:0;z-index:20}
-.brand{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:800;color:var(--green-dark)}
-.brand-mark{width:39px;height:39px}
-.top-actions{display:flex;align-items:center;gap:12px}
-.menu-button{width:44px;height:42px;border:1px solid var(--border);border-radius:12px;
-background:white;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px}
-.menu-button span{width:20px;height:2px;background:var(--green-dark);border-radius:4px}
-.menu-panel{display:none;position:absolute;right:5%;top:62px;background:white;padding:10px;
-border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);width:230px}
-.menu-panel.open{display:block}
-.menu-panel button{display:block;width:100%;text-align:left;border:0;background:white;
-padding:12px;border-radius:9px;color:var(--text)}
-.menu-panel button:hover{background:var(--green-light)}
-.container{max-width:1180px;margin:auto;padding:28px 22px 70px}
-.hero{background:linear-gradient(120deg,#e4f1e4,#f8f7ed);border:1px solid #dceadd;
-border-radius:25px;padding:38px;display:grid;grid-template-columns:1.3fr .7fr;
-align-items:center;gap:20px;overflow:hidden}
-.hero h1{font-size:clamp(30px,4vw,48px);line-height:1.15;margin:0 0 14px;color:#426f50}
-.hero p{font-size:16px;line-height:1.7;color:#657b69;max-width:600px}
-.hero-art{width:100%;max-width:300px;justify-self:center}
-.btn{border:0;border-radius:12px;padding:12px 18px;background:var(--green-dark);
-color:white;font-weight:700;transition:.2s}
-.btn:hover{filter:brightness(.95);transform:translateY(-1px)}
-.btn.secondary{background:var(--green-light);color:var(--green-dark)}
-.btn.outline{background:white;color:var(--green-dark);border:1px solid var(--green)}
-.btn.danger{background:#b85e5e}
-.btn.small{padding:8px 12px;font-size:13px}
-.section{margin-top:30px}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
-h2{font-size:23px;margin:0;color:#456d50}
-h3{margin:0 0 8px;font-size:17px}
-p{line-height:1.55}
-.muted{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:white;border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
-.stat{font-size:28px;font-weight:800;color:var(--green-dark);margin-top:8px}
-.tag{display:inline-block;background:var(--green-light);color:var(--green-dark);
-padding:5px 9px;border-radius:20px;font-size:12px;margin:3px 3px 3px 0}
-.tag.pink{background:#f8e8e8;color:#9a6262}
-.tag.yellow{background:#f8f0d8;color:#8b7842}
-.profile-row{display:flex;gap:13px;align-items:center}
-.avatar{width:58px;height:58px;border-radius:18px;background:#e8f2e6;flex-shrink:0;overflow:hidden}
-.avatar svg{width:100%;height:100%}
-.profile-card{display:flex;flex-direction:column;gap:12px}
-.profile-card .profile-row{align-items:center}
-.progress{height:8px;background:#edf1e9;border-radius:20px;overflow:hidden}
-.progress span{display:block;height:100%;background:var(--green);border-radius:20px}
-.field{margin:12px 0}
-.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#59715e}
-.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);
-border-radius:10px;padding:12px;background:#fff;color:var(--text);outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green)}
-.field textarea{min-height:90px;resize:vertical}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.page{display:none}
-.page.active{display:block}
-.notice{background:#fff8e7;border:1px solid #efe2b9;padding:13px 15px;border-radius:12px;
-font-size:13px;line-height:1.5;margin:15px 0}
-.success{background:#edf7ee;border:1px solid #d5e8d6;color:#426f50}
-.chat-layout{display:grid;grid-template-columns:310px 1fr;gap:16px;min-height:520px}
-.chat-list{max-height:580px;overflow:auto}
-.chat-person{display:flex;gap:11px;align-items:center;padding:12px;border-radius:12px;
-cursor:pointer;border-bottom:1px solid #f0f2ed}
-.chat-person:hover,.chat-person.selected{background:var(--green-light)}
-.chat-window{display:flex;flex-direction:column;min-height:500px}
-.chat-messages{flex:1;overflow:auto;max-height:420px;padding:12px;background:#f8faf6;border-radius:12px}
-.message{max-width:78%;padding:10px 13px;border-radius:14px;margin:9px 0;
-background:white;border:1px solid var(--border);font-size:14px;line-height:1.5}
-.message.mine{margin-left:auto;background:#e3f0e4;border-color:#d5e6d6}
-.message small{display:block;color:#8a998c;font-size:10px;margin-top:5px}
-.chat-compose{display:flex;gap:8px;margin-top:12px}
-.chat-compose input{flex:1;min-width:0;border:1px solid var(--border);border-radius:12px;padding:12px}
-.table-wrap{overflow:auto}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{text-align:left;padding:12px;border-bottom:1px solid var(--border);white-space:nowrap}
-th{color:#65806a;background:#f7faf5}
-.price{font-size:29px;font-weight:800;color:var(--green-dark);margin:12px 0}
-.price-card{position:relative}
-.price-card.featured{border:2px solid var(--green)}
-.price-card ul{padding-left:18px;line-height:1.9;font-size:14px}
-.badge{position:absolute;right:15px;top:15px;background:#e6f2e7;color:#477b5b;
-font-size:11px;padding:6px 9px;border-radius:20px}
-.auth-wrap{max-width:460px;margin:35px auto}
-.auth-wrap .card{padding:28px}
-.footer{text-align:center;color:#879588;font-size:12px;padding:25px}
+a{color:inherit;text-decoration:none}
 .hidden{display:none!important}
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
-background:#355f42;color:white;padding:13px 20px;border-radius:12px;z-index:100;
-box-shadow:var(--shadow);display:none;max-width:90%;text-align:center}
-.admin-label{font-size:11px;background:#f7edcf;color:#816d35;padding:5px 8px;border-radius:20px}
-.empty{text-align:center;padding:35px;color:var(--muted)}
+.topbar{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:25px;color:var(--green-dark)}
+.brand img{width:43px;height:43px;object-fit:cover;border-radius:13px}
+.menu-wrap{position:relative}
+.menu-button{width:48px;height:44px;border:1px solid var(--line);background:white;border-radius:12px;display:grid;place-content:center;gap:5px}
+.menu-button span{width:22px;height:2px;background:var(--green-dark);display:block;border-radius:5px}
+.menu-panel{position:absolute;right:0;top:54px;width:230px;padding:10px;background:white;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
+.menu-panel button{display:block;width:100%;text-align:left;padding:12px;border:0;background:white;border-radius:9px;color:var(--ink)}
+.menu-panel button:hover{background:var(--green-light)}
+.top-actions{display:flex;align-items:center;gap:10px}
+.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;background:var(--green);color:white}
+.btn:hover{filter:brightness(.96)}
+.btn-outline{background:white;border:1px solid var(--line);color:var(--green-dark)}
+.btn-soft{background:var(--green-light);color:var(--green-dark)}
+.btn-danger{background:#fff0f0;color:var(--red)}
+.small{font-size:12px}.muted{color:var(--muted)}.green{color:var(--green-dark)}
+main{max-width:1160px;margin:0 auto;padding:28px 20px 70px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:35px;align-items:center;padding:55px 0 65px}
+.eyebrow{display:inline-block;padding:8px 13px;border-radius:30px;background:var(--green-light);color:var(--green-dark);font-weight:700;font-size:13px}
+h1{font-size:clamp(38px,5vw,62px);line-height:1.08;letter-spacing:-2px;margin:20px 0}
+h2{font-size:29px;margin:0 0 12px}
+h3{margin:0 0 8px}
+.hero p{font-size:18px;line-height:1.75;color:#68766c}
+.hero-img{width:100%;height:390px;object-fit:cover;border-radius:28px;box-shadow:var(--shadow)}
+.section{margin:35px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:21px;box-shadow:var(--shadow)}
+.card p{line-height:1.6;color:var(--muted)}
+.feature-img{width:100%;height:160px;object-fit:cover;border-radius:13px;margin-bottom:13px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.stat strong{font-size:27px;display:block;color:var(--green-dark)}
+.stat span{font-size:13px;color:var(--muted)}
+.pill{display:inline-block;padding:5px 9px;border-radius:20px;background:var(--green-light);color:var(--green-dark);font-size:12px;margin:3px}
+.page{display:none}.page.active{display:block}
+.form-card{max-width:650px;margin:35px auto;background:white;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{margin:12px 0}
+.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:#fcfefc;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green)}
+.full{grid-column:1/-1}
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:white;padding:10px 15px;border-radius:10px;color:var(--muted)}
+.tabs button.active{background:var(--green-light);color:var(--green-dark);border-color:#c7dfce}
+.user-row{display:flex;gap:13px;align-items:center}
+.avatar{width:55px;height:55px;border-radius:50%;object-fit:cover;background:var(--green-light)}
+.profile-card{display:flex;justify-content:space-between;gap:15px;align-items:center}
+.match-score{font-weight:800;color:var(--green-dark);background:var(--green-light);padding:10px;border-radius:12px;white-space:nowrap}
+.chat-layout{display:grid;grid-template-columns:300px 1fr;gap:15px;min-height:520px}
+.chat-list{background:white;border:1px solid var(--line);border-radius:16px;padding:10px}
+.chat-person{display:flex;gap:10px;align-items:center;padding:12px;border-radius:12px;cursor:pointer}
+.chat-person.active,.chat-person:hover{background:var(--green-light)}
+.chat-window{background:white;border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;min-height:520px}
+.chat-head{padding:15px;border-bottom:1px solid var(--line)}
+.messages{padding:18px;flex:1;overflow:auto;max-height:400px}
+.bubble{max-width:75%;padding:11px 14px;border-radius:15px;margin:9px 0;background:#f0f4f0;line-height:1.5}
+.bubble.mine{margin-left:auto;background:#dcefe1}
+.chat-compose{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat-compose input{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:12px}
+.price{font-size:28px;font-weight:800;color:var(--green-dark);margin:15px 0}
+.price-card{position:relative}
+.price-card.best{border:2px solid var(--green)}
+footer{background:#e9f2e9;padding:30px 6%;color:var(--muted);line-height:1.7}
+.notice{padding:13px 15px;background:#fff8e8;border:1px solid #f1e3bd;border-radius:12px;color:#79653b;font-size:13px;line-height:1.6;margin:15px 0}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:13px;border-bottom:1px solid var(--line);font-size:13px;white-space:nowrap}
+th{background:var(--green-light);color:var(--green-dark)}
+.admin-nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.admin-nav button{padding:10px 13px;border:1px solid var(--line);border-radius:10px;background:white}
+.admin-nav button.active{background:var(--green);color:white}
+.toast{position:fixed;bottom:20px;right:20px;background:#294d37;color:white;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);z-index:99}
 @media(max-width:800px){
- .hero{grid-template-columns:1fr;padding:27px}.hero-art{max-width:210px}
- .grid{grid-template-columns:1fr 1fr}.chat-layout{grid-template-columns:1fr}
- .chat-list{max-height:230px}.two-col{grid-template-columns:1fr}
+ .hero{grid-template-columns:1fr;padding:30px 0}.hero-img{height:270px}
+ .grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}
+ .chat-layout{grid-template-columns:1fr}.chat-list{max-height:210px;overflow:auto}
 }
 @media(max-width:540px){
- .container{padding:18px 13px 50px}.topbar{padding:0 14px}
- .grid{grid-template-columns:1fr}.hero h1{font-size:32px}
- .brand{font-size:20px}.hero{padding:22px}
- .section-head{align-items:flex-start;flex-direction:column}
+ .topbar{padding:0 15px}.brand{font-size:21px}.top-actions .btn{padding:10px;font-size:12px}
+ main{padding:20px 14px 50px}.grid{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}.full{grid-column:auto}
+ .hero p{font-size:16px}.hero-img{height:230px}
+ .section-head{align-items:start;flex-direction:column}
 }
 </style>
 </head>
 <body>
-
 <header class="topbar">
-  <div class="brand">
-    <svg class="brand-mark" viewBox="0 0 60 60" aria-label="TalkBuddy">
-      <path d="M10 12Q10 7 16 7H44Q50 7 50 13V34Q50 40 44 40H30L18 51V40H16Q10 40 10 34Z" fill="#8dbb9a"/>
-      <circle cx="22" cy="24" r="3" fill="#fff"/>
-      <circle cx="30" cy="24" r="3" fill="#fff"/>
-      <circle cx="38" cy="24" r="3" fill="#fff"/>
-    </svg>
+  <a class="brand" href="#" onclick="showPage('home')">
+    <img src="https://i.pravatar.cc/100?img=12" alt="TalkBuddy">
     TalkBuddy
-  </div>
+  </a>
   <div class="top-actions">
-    <span id="topUser" class="muted">Chào bạn!</span>
-    <button class="menu-button" id="menuButton" aria-label="Mở thanh điều hướng">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="menu-panel" id="menuPanel">
-      <button onclick="showPage('home')">Trang chủ</button>
-      <button onclick="showPage('matching')">Tìm bạn luyện nói</button>
-      <button onclick="showPage('profile')">Hồ sơ của tôi</button>
-      <button onclick="showPage('inbox')">Hộp thư</button>
-      <button onclick="showPage('notifications')">Thông báo</button>
-      <button onclick="showPage('wallet')">Xu và Premium</button>
-      <button onclick="showPage('tutors')">Gia sư</button>
-      <button onclick="showPage('support')">Chăm sóc khách hàng</button>
-      <button onclick="showPage('admin')">Quản trị</button>
-      <button onclick="logout()">Đăng xuất</button>
-    </nav>
+    <button class="btn btn-outline" id="accountButton" onclick="showPage('login')">Đăng nhập</button>
+    <button class="btn" onclick="showPage('register')">Đăng ký</button>
+    <div class="menu-wrap">
+      <button class="menu-button" aria-label="Mở menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <div class="menu-panel hidden" id="menuPanel">
+        <button onclick="showPage('home');toggleMenu()">Trang chủ</button>
+        <button onclick="showPage('how');toggleMenu()">Cách hoạt động</button>
+        <button onclick="showPage('matches');toggleMenu()">Tìm bạn luyện nói</button>
+        <button onclick="showPage('inbox');toggleMenu()">Tin nhắn</button>
+        <button onclick="showPage('pricing');toggleMenu()">Gói dịch vụ</button>
+        <button onclick="showPage('profile');toggleMenu()">Hồ sơ của tôi</button>
+        <button onclick="showPage('support');toggleMenu()">Chăm sóc khách hàng</button>
+        <button onclick="showPage('adminLogin');toggleMenu()">Quản trị viên</button>
+        <button onclick="logout();toggleMenu()">Đăng xuất</button>
+      </div>
+    </div>
   </div>
 </header>
 
-<main class="container">
-
-<section id="home" class="page active">
+<main>
+<section class="page active" id="page-home">
   <div class="hero">
     <div>
-      <span class="tag">Cộng đồng luyện nói ngoại ngữ</span>
-      <h1>Tìm đúng người,<br>luyện đúng cách.</h1>
-      <p>TalkBuddy giúp bạn kết nối với người luyện nói phù hợp về ngôn ngữ, trình độ,
-      mục tiêu và thời gian. Cùng nhau thực hành để tự tin giao tiếp hơn mỗi ngày.</p>
-      <button class="btn" onclick="showPage('matching')">Tìm bạn luyện nói</button>
-      <button class="btn secondary" onclick="showPage('profile')">Hoàn thiện hồ sơ</button>
+      <span class="eyebrow">KẾT NỐI · LUYỆN NÓI · TIẾN BỘ TỰ NHIÊN</span>
+      <h1>Tìm bạn đồng hành lý tưởng để luyện nói ngoại ngữ.</h1>
+      <p>Bạn muốn tăng phản xạ Tiếng Anh, Tiếng Trung, Tiếng Nhật, Hàn hay Pháp? Chia sẻ khu vực và mục tiêu, TalkBuddy sẽ giúp bạn tìm người luyện tập phù hợp.</p>
+      <button class="btn" onclick="showPage('register')">Bắt đầu tìm bạn</button>
+      <button class="btn btn-outline" onclick="showPage('how')">Khám phá cách hoạt động</button>
+      <p class="small muted">Dành cho người học từ 18 tuổi trở lên.</p>
     </div>
-    <svg class="hero-art" viewBox="0 0 320 250" role="img" aria-label="Minh họa hai người luyện nói">
-      <ellipse cx="160" cy="222" rx="130" ry="15" fill="#d9e8d9"/>
-      <rect x="54" y="145" width="210" height="15" rx="7" fill="#b4d2b8"/>
-      <path d="M89 145V205M232 145V205" stroke="#8cae91" stroke-width="9" stroke-linecap="round"/>
-      <circle cx="105" cy="80" r="35" fill="#f2c7a8"/>
-      <path d="M71 78Q72 34 109 39Q142 43 140 80Q122 58 103 59Q88 60 71 78" fill="#526c55"/>
-      <path d="M76 119Q104 101 132 119L145 145H65Z" fill="#8dbb9a"/>
-      <circle cx="215" cy="82" r="34" fill="#e8b995"/>
-      <path d="M181 77Q183 36 219 40Q248 43 250 77Q229 58 208 59Q194 61 181 77" fill="#5b5145"/>
-      <path d="M186 120Q216 103 244 120L255 145H174Z" fill="#d6b9d4"/>
-      <path d="M115 88Q125 95 132 88" fill="none" stroke="#875f50" stroke-width="2" stroke-linecap="round"/>
-      <path d="M225 89Q235 96 242 89" fill="none" stroke="#875f50" stroke-width="2" stroke-linecap="round"/>
-      <path d="M125 21Q125 8 139 8H183Q196 8 196 21V39Q196 51 183 51H161L148 62V51H139Q125 51 125 39Z" fill="#fff" stroke="#c9ddc9" stroke-width="2"/>
-      <path d="M145 29H177" stroke="#8dbb9a" stroke-width="4" stroke-linecap="round"/>
-      <path d="M150 37H169" stroke="#8dbb9a" stroke-width="4" stroke-linecap="round"/>
-    </svg>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1100&q=85&fm=png" alt="Hai người học ngoại ngữ trò chuyện cùng nhau">
   </div>
-
   <div class="section">
-    <div class="section-head"><h2>TalkBuddy giúp bạn làm gì?</h2></div>
+    <div class="section-head"><div><h2>Luyện nói theo cách gần gũi hơn</h2><p class="muted">Không chỉ học thêm kiến thức, hãy bắt đầu sử dụng ngôn ngữ.</p></div></div>
     <div class="grid">
-      <div class="card">
-        <h3>Kết nối phù hợp</h3>
-        <p class="muted">Tìm người có cùng ngôn ngữ, mục tiêu và thời gian luyện tập.</p>
-      </div>
-      <div class="card">
-        <h3>Luyện tập thực tế</h3>
-        <p class="muted">Thực hành giao tiếp 1-1, tăng phản xạ và sự tự tin khi sử dụng ngoại ngữ.</p>
-      </div>
-      <div class="card">
-        <h3>Chủ đề đa dạng</h3>
-        <p class="muted">Gợi ý chủ đề để hai người có thể bắt đầu cuộc trò chuyện dễ dàng.</p>
-      </div>
+      <article class="card"><img class="feature-img" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=80&fm=png" alt="Nhóm sinh viên học tập"><h3>Tìm người phù hợp</h3><p>Kết nối 1-1 theo ngôn ngữ, trình độ, mục tiêu và lịch rảnh.</p></article>
+      <article class="card"><img class="feature-img" src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=700&q=80&fm=png" alt="Người học cùng nhau"><h3>Gặp gỡ trực tiếp</h3><p>Chủ động hẹn luyện tập tại quán cà phê, thư viện hoặc địa điểm công cộng.</p></article>
+      <article class="card"><img class="feature-img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=700&q=80&fm=png" alt="Sổ tay học ngoại ngữ"><h3>Tăng phản xạ</h3><p>Có chủ đề gợi ý để cuộc trò chuyện tự nhiên và duy trì thói quen.</p></article>
     </div>
   </div>
   <div class="section">
-    <div class="section-head"><h2>Tài khoản mẫu đang hoạt động</h2><span class="muted">Dữ liệu demo</span></div>
-    <div class="grid" id="homeUsers"></div>
-  </div>
-</section>
-
-<section id="auth" class="page">
-  <div class="auth-wrap">
-    <div class="card">
-      <h2 id="authTitle">Đăng nhập TalkBuddy</h2>
-      <p class="muted">Đây là bản thử nghiệm giao diện, sử dụng tài khoản mẫu.</p>
-      <div class="field">
-        <label>Chọn tài khoản demo</label>
-        <select id="accountSelect"></select>
-      </div>
-      <div class="field">
-        <label>Mật khẩu demo</label>
-        <input id="loginPassword" type="password" placeholder="Nhập mật khẩu demo">
-      </div>
-      <button class="btn" style="width:100%" onclick="login()">Đăng nhập</button>
-      <div class="notice">Mật khẩu demo: <b>123456</b>. Tài khoản quản trị: chọn Admin TalkBuddy.</div>
-      <button class="btn secondary" style="width:100%" onclick="showPage('home')">Quay về trang chủ</button>
+    <div class="section-head"><div><h2>TalkBuddy trong bản demo</h2><p class="muted">Các số liệu minh họa được tạo từ dữ liệu mẫu.</p></div></div>
+    <div class="stats">
+      <div class="card stat"><strong id="homeUsers">10</strong><span>Tài khoản mẫu</span></div>
+      <div class="card stat"><strong>6</strong><span>Ngôn ngữ luyện tập</span></div>
+      <div class="card stat"><strong>1–1</strong><span>Kết nối cá nhân</span></div>
+      <div class="card stat"><strong>100%</strong><span>Dữ liệu demo</span></div>
     </div>
   </div>
 </section>
 
-<section id="matching" class="page">
-  <div class="section-head">
-    <div><h2>Tìm bạn luyện nói</h2><p class="muted">Gợi ý dựa trên mức độ tương thích của hồ sơ.</p></div>
-    <button class="btn secondary" onclick="showPage('profile')">Cập nhật tiêu chí</button>
-  </div>
-  <div class="card">
-    <div class="two-col">
-      <div class="field"><label>Ngôn ngữ muốn luyện</label>
-        <select id="filterLanguage" onchange="renderMatches()">
-          <option value="Tất cả">Tất cả ngôn ngữ</option><option>Tiếng Anh</option>
-          <option>Tiếng Nhật</option><option>Tiếng Hàn</option><option>Tiếng Pháp</option>
-          <option>Tiếng Trung</option>
-        </select>
-      </div>
-      <div class="field"><label>Khu vực</label>
-        <select id="filterCity" onchange="renderMatches()">
-          <option value="Tất cả">Tất cả khu vực</option>
-          <option>Quận 1</option><option>Quận 3</option><option>Bình Thạnh</option>
-          <option>Thủ Đức</option><option>Phú Nhuận</option>
-        </select>
-      </div>
+<section class="page" id="page-how">
+  <div class="section"><span class="eyebrow">CÁCH HOẠT ĐỘNG</span><h2 style="margin-top:15px">Bắt đầu chỉ với 4 bước</h2>
+    <div class="grid">
+      <div class="card"><h3>01. Tạo tài khoản</h3><p>Đăng ký, xác nhận đủ 18 tuổi và hoàn thiện hồ sơ cá nhân.</p></div>
+      <div class="card"><h3>02. Chọn tiêu chí</h3><p>Chọn ngoại ngữ, trình độ, mục tiêu, khu vực và thời gian luyện tập.</p></div>
+      <div class="card"><h3>03. Xem gợi ý</h3><p>Hệ thống demo tính điểm tương thích dựa trên các tiêu chí đã chọn.</p></div>
+      <div class="card"><h3>04. Kết nối và luyện nói</h3><p>Gửi lời mời, chờ đối phương đồng ý rồi bắt đầu trò chuyện.</p></div>
     </div>
   </div>
-  <div class="grid section" id="matchResults"></div>
+  <div class="notice">Bản thử nghiệm đang mô phỏng quy trình kết nối. Khi triển khai thật, người dùng cần đồng ý kết nối trước khi mở cuộc trò chuyện riêng.</div>
 </section>
 
-<section id="profile" class="page">
-  <div class="section-head"><div><h2>Hồ sơ cá nhân</h2><p class="muted">Thông tin giúp TalkBuddy tìm người luyện tập phù hợp.</p></div></div>
-  <div class="card">
-    <div class="two-col">
-      <div class="field"><label>Họ và tên</label><input id="profileName"></div>
-      <div class="field"><label>Tuổi</label><input id="profileAge" type="number" min="18" max="99"></div>
-      <div class="field"><label>Ngôn ngữ muốn luyện</label>
-        <select id="profileLanguage"><option>Tiếng Anh</option><option>Tiếng Nhật</option>
-        <option>Tiếng Hàn</option><option>Tiếng Pháp</option><option>Tiếng Trung</option></select>
+<section class="page" id="page-register">
+  <div class="form-card">
+    <h2>Tạo tài khoản TalkBuddy</h2><p class="muted">Tạo hồ sơ để tìm người luyện nói phù hợp.</p>
+    <form id="registerForm">
+      <div class="field"><label>Họ và tên</label><input name="name" required placeholder="Nguyễn Văn A"></div>
+      <div class="form-grid">
+        <div class="field"><label>Số điện thoại</label><input name="phone" required placeholder="09xxxxxxxx" pattern="[0-9+ ]{9,15}"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="ban@email.com"></div>
       </div>
-      <div class="field"><label>Trình độ</label>
-        <select id="profileLevel"><option>Mới bắt đầu</option><option>Sơ cấp</option>
-        <option>Trung cấp</option><option>Khá</option><option>Nâng cao</option></select>
+      <div class="field"><label>Mật khẩu demo</label><input name="password" type="password" minlength="6" required placeholder="Tối thiểu 6 ký tự"></div>
+      <div class="form-grid">
+        <div class="field"><label>Ngôn ngữ muốn luyện</label><select name="language"><option>Tiếng Anh</option><option>Tiếng Nhật</option><option>Tiếng Hàn</option><option>Tiếng Trung</option><option>Tiếng Pháp</option></select></div>
+        <div class="field"><label>Trình độ</label><select name="level"><option>Cơ bản</option><option>Trung cấp</option><option>Nâng cao</option></select></div>
       </div>
-      <div class="field"><label>Mục tiêu</label>
-        <select id="profileGoal"><option>Giao tiếp hằng ngày</option><option>Luyện thi IELTS</option>
-        <option>Du học và công việc</option><option>Luyện phản xạ</option><option>Trao đổi văn hóa</option></select>
-      </div>
-      <div class="field"><label>Khu vực</label>
-        <select id="profileCity"><option>Quận 1</option><option>Quận 3</option>
-        <option>Bình Thạnh</option><option>Thủ Đức</option><option>Phú Nhuận</option></select>
-      </div>
-      <div class="field"><label>Thời gian có thể luyện tập</label>
-        <select id="profileTime"><option>Buổi sáng</option><option>Buổi chiều</option>
-        <option>Buổi tối</option><option>Cuối tuần</option><option>Linh hoạt</option></select>
-      </div>
-      <div class="field"><label>Sở thích</label><input id="profileInterests" placeholder="Du lịch, phim ảnh, âm nhạc..."></div>
-    </div>
-    <div class="field"><label>Giới thiệu bản thân</label><textarea id="profileBio"></textarea></div>
-    <div class="notice">TalkBuddy hướng đến người dùng từ 18 tuổi trở lên. Không chia sẻ số điện thoại hoặc địa chỉ nhà công khai trên hồ sơ.</div>
-    <button class="btn" onclick="saveProfile()">Lưu hồ sơ</button>
+      <div class="field"><label>Khu vực</label><input name="location" placeholder="Quận 1, TP.HCM"></div>
+      <div class="field"><label><input type="checkbox" name="adult" required style="width:auto"> Tôi xác nhận đã đủ 18 tuổi.</label></div>
+      <div class="field"><label><input type="checkbox" name="consent" required style="width:auto"> Tôi đồng ý với Điều khoản và Chính sách quyền riêng tư của bản demo.</label></div>
+      <button class="btn" style="width:100%">Tạo tài khoản</button>
+    </form>
+    <p class="muted small">Đã có tài khoản? <a class="green" href="#" onclick="showPage('login')">Đăng nhập</a></p>
   </div>
 </section>
 
-<section id="inbox" class="page">
-  <div class="section-head"><div><h2>Hộp thư</h2><p class="muted">Trao đổi với bạn luyện nói và đội ngũ hỗ trợ.</p></div></div>
+<section class="page" id="page-login">
+  <div class="form-card">
+    <h2>Chào mừng trở lại!</h2><p class="muted">Đăng nhập vào tài khoản TalkBuddy demo.</p>
+    <form id="loginForm">
+      <div class="field"><label>Email hoặc số điện thoại</label><input name="identity" required placeholder="Email hoặc số điện thoại"></div>
+      <div class="field"><label>Mật khẩu</label><input name="password" type="password" required placeholder="Mật khẩu"></div>
+      <button class="btn" style="width:100%">Đăng nhập</button>
+    </form>
+    <p class="muted small">Chưa có tài khoản? <a class="green" href="#" onclick="showPage('register')">Đăng ký ngay</a></p>
+    <div class="notice">Đây là đăng nhập mô phỏng bằng dữ liệu trình duyệt, chưa gửi OTP SMS thật.</div>
+  </div>
+</section>
+
+<section class="page" id="page-profile">
+  <div class="section-head"><div><h2>Hồ sơ của tôi</h2><p class="muted">Cập nhật thông tin để tìm bạn phù hợp hơn.</p></div></div>
+  <div class="form-card" style="max-width:850px;margin:0">
+    <form id="profileForm">
+      <div class="form-grid">
+        <div class="field"><label>Họ tên</label><input name="name" id="pName"></div>
+        <div class="field"><label>Số điện thoại</label><input name="phone" id="pPhone"></div>
+        <div class="field"><label>Ngôn ngữ</label><select name="language" id="pLanguage"><option>Tiếng Anh</option><option>Tiếng Nhật</option><option>Tiếng Hàn</option><option>Tiếng Trung</option><option>Tiếng Pháp</option></select></div>
+        <div class="field"><label>Trình độ</label><select name="level" id="pLevel"><option>Cơ bản</option><option>Trung cấp</option><option>Nâng cao</option></select></div>
+        <div class="field"><label>Mục tiêu</label><select name="goal" id="pGoal"><option>Giao tiếp hằng ngày</option><option>Công việc & phỏng vấn</option><option>Du học & học thuật</option><option>Luyện thi chứng chỉ</option></select></div>
+        <div class="field"><label>Khu vực</label><input name="location" id="pLocation"></div>
+        <div class="field"><label>Thời gian rảnh</label><input name="availability" id="pAvailability" placeholder="Ví dụ: Tối thứ 3, 5"></div>
+        <div class="field"><label>Sở thích</label><input name="interests" id="pInterests" placeholder="Du lịch, phim ảnh, âm nhạc"></div>
+      </div>
+      <button class="btn">Lưu hồ sơ</button>
+    </form>
+  </div>
+</section>
+
+<section class="page" id="page-matches">
+  <div class="section-head"><div><h2>Gợi ý bạn luyện nói</h2><p class="muted">Điểm tương thích demo dựa trên tiêu chí hồ sơ.</p></div><button class="btn btn-soft" onclick="renderMatches()">Làm mới gợi ý</button></div>
+  <div class="notice">Điểm tương thích là kết quả mô phỏng, không phải cam kết rằng người dùng đã sẵn sàng gặp mặt. Hãy gửi lời mời trước khi chat.</div>
+  <div class="grid" id="matchGrid"></div>
+</section>
+
+<section class="page" id="page-inbox">
+  <div class="section-head"><div><h2>Hộp thư</h2><p class="muted">Trò chuyện với bạn luyện nói và bộ phận hỗ trợ.</p></div></div>
   <div class="chat-layout">
-    <div class="card chat-list" id="chatList"></div>
-    <div class="card chat-window">
-      <div id="chatHeading"><h3>Chọn một cuộc trò chuyện</h3></div>
-      <div class="chat-messages" id="chatMessages"><div class="empty">Chọn một người trong danh sách để bắt đầu trò chuyện.</div></div>
-      <div class="chat-compose">
-        <input id="chatInput" placeholder="Nhập tin nhắn..." onkeydown="if(event.key==='Enter')sendMessage()">
-        <button class="btn" onclick="sendMessage()">Gửi</button>
-      </div>
+    <div class="chat-list" id="chatList"></div>
+    <div class="chat-window">
+      <div class="chat-head" id="chatHead">Chọn một cuộc trò chuyện</div>
+      <div class="messages" id="messages"></div>
+      <form class="chat-compose" id="chatForm"><input id="chatInput" placeholder="Nhập tin nhắn..." autocomplete="off"><button class="btn">Gửi</button></form>
     </div>
   </div>
 </section>
 
-<section id="notifications" class="page">
-  <div class="section-head"><h2>Thông báo</h2><button class="btn secondary small" onclick="markAllRead()">Đánh dấu đã đọc</button></div>
-  <div class="card" id="notificationList"></div>
+<section class="page" id="page-pricing">
+  <div class="section-head"><div><h2>Gói dịch vụ TalkBuddy</h2><p class="muted">Chọn cách luyện tập phù hợp với nhu cầu của bạn.</p></div></div>
+  <div class="grid">
+    <div class="card price-card"><h3>Xu cơ bản</h3><div class="price">20.000đ</div><p>20 Xu trong tài khoản.</p><p>Dành cho người muốn trải nghiệm các tiện ích tính phí theo lượt.</p><button class="btn btn-outline" onclick="buyDemo('Gói Xu cơ bản',20000,20)">Chọn gói</button></div>
+    <div class="card price-card"><h3>Xu tiết kiệm</h3><div class="price">50.000đ</div><p>60 Xu – tặng thêm 10 Xu.</p><p>Dành cho người thường xuyên sử dụng tính năng tương tác đặc biệt.</p><button class="btn btn-outline" onclick="buyDemo('Gói Xu tiết kiệm',50000,60)">Chọn gói</button></div>
+    <div class="card price-card best"><span class="pill">Gói đề xuất</span><h3>Premium tháng</h3><div class="price">69.000đ<span class="small">/tháng</span></div><p>70 Xu mỗi tháng, không quảng cáo, ưu tiên Fast Matching.</p><p>Giảm 50% phí hoa hồng khi đặt gia sư chuyên sâu.</p><button class="btn" onclick="buyPremium()">Đăng ký Premium</button></div>
+  </div>
+  <div class="card section"><h3>Dịch vụ gia sư chuyên sâu</h3><p>TalkBuddy định hướng kết nối người học với gia sư 1-1. Nền tảng thu hoa hồng dự kiến từ 15–20% trên mỗi buổi học thành công. Tỷ lệ cụ thể cần được cấu hình và xác nhận trong hệ thống quản trị.</p></div>
+  <div class="notice">Thanh toán ở bản demo chỉ tạo giao dịch thử nghiệm, không thu tiền thật và không xác nhận thanh toán thành công.</div>
+  <div class="card"><h3>Lịch sử giao dịch demo</h3><div id="transactions"></div></div>
 </section>
 
-<section id="wallet" class="page">
-  <div class="section-head"><div><h2>Xu và Premium</h2><p class="muted">Mở rộng trải nghiệm luyện nói với các tiện ích nâng cao.</p></div></div>
-  <div class="card">
-    <p class="muted">Số dư ví Xu</p><div class="stat"><span id="coinBalance">0</span> Xu</div>
-    <p class="muted">Giao dịch trong bản demo chỉ cập nhật số dư giả lập trên trình duyệt.</p>
-  </div>
-  <div class="grid section">
-    <div class="card">
-      <h3>Gói Cơ bản</h3><div class="price">20.000đ</div><p>20 Xu</p>
-      <p class="muted">Dùng cho lượt ghép nối nhanh hoặc mở khóa chủ đề nâng cao.</p>
-      <button class="btn" onclick="buyCoins(20,20000)">Chọn gói</button>
-    </div>
-    <div class="card">
-      <h3>Gói Tiết kiệm</h3><div class="price">50.000đ</div><p>60 Xu</p>
-      <p class="muted">Tặng thêm Xu để sử dụng các tính năng tương tác đặc biệt.</p>
-      <button class="btn" onclick="buyCoins(60,50000)">Chọn gói</button>
-    </div>
-    <div class="card price-card featured">
-      <span class="badge">Gói đề xuất</span>
-      <h3>Premium</h3><div class="price">69.000đ<span style="font-size:13px">/tháng</span></div>
-      <p>70 Xu tặng mỗi tháng</p>
-      <ul><li>Không quảng cáo</li><li>Ưu tiên ghép nối nhanh</li>
-      <li>Ưu tiên tìm partner nước ngoài</li><li>Giảm 50% phí hoa hồng gia sư</li></ul>
-      <button class="btn" onclick="buyPremium()">Đăng ký Premium</button>
-    </div>
-  </div>
-  <div class="section card">
-    <h3>Lịch sử giao dịch demo</h3>
-    <div class="table-wrap"><table><thead><tr><th>Thời gian</th><th>Nội dung</th><th>Giá trị</th><th>Trạng thái</th></tr></thead>
-    <tbody id="transactionRows"></tbody></table></div>
-  </div>
-  <div class="notice">Giá và quyền lợi trên được lấy từ phần thiết kế gói trong tài liệu Khởi nghiệp. Đây là mô phỏng thanh toán, chưa kết nối ngân hàng hoặc cổng thanh toán.</div>
-</section>
-
-<section id="tutors" class="page">
-  <div class="section-head"><div><h2>Kết nối gia sư</h2><p class="muted">Dành cho người học có nhu cầu luyện thi hoặc học chuyên sâu.</p></div></div>
-  <div class="grid" id="tutorList"></div>
-  <div class="notice">Mức hoa hồng nền tảng dự kiến: 15–20% mỗi buổi học thành công. Thành viên Premium được trợ giá 50% phí hoa hồng theo đề xuất trong tài liệu.</div>
-</section>
-
-<section id="support" class="page">
-  <div class="section-head"><div><h2>Chăm sóc khách hàng</h2><p class="muted">Gửi câu hỏi hoặc yêu cầu hỗ trợ đến đội ngũ TalkBuddy.</p></div></div>
-  <div class="card">
-    <div class="field"><label>Chủ đề</label><select id="supportTopic">
-      <option>Hỗ trợ tài khoản</option><option>Vấn đề ghép đôi</option>
-      <option>Thanh toán và Xu</option><option>Báo cáo an toàn</option><option>Góp ý sản phẩm</option>
-    </select></div>
-    <div class="field"><label>Nội dung cần hỗ trợ</label><textarea id="supportMessage" placeholder="Mô tả vấn đề của bạn..."></textarea></div>
-    <button class="btn" onclick="sendSupport()">Gửi yêu cầu</button>
-  </div>
-  <div class="section card"><h3>Yêu cầu đã gửi</h3><div id="supportHistory"></div></div>
-</section>
-
-<section id="admin" class="page">
-  <div class="section-head">
-    <div><h2>Admin Dashboard</h2><p class="muted">Khu vực quản trị mô phỏng dành cho tài khoản Admin.</p></div>
-    <span class="admin-label">ADMIN DEMO</span>
-  </div>
-  <div id="adminLocked" class="card">
-    <h3>Khu vực dành riêng cho quản trị viên</h3>
-    <p class="muted">Vui lòng đăng nhập bằng tài khoản Admin TalkBuddy để xem dashboard.</p>
-    <button class="btn" onclick="showPage('auth')">Đăng nhập Admin</button>
-  </div>
-  <div id="adminContent" class="hidden">
-    <div class="grid">
-      <div class="card"><div class="muted">Tài khoản mẫu</div><div class="stat" id="adminUsers">0</div></div>
-      <div class="card"><div class="muted">Yêu cầu hỗ trợ</div><div class="stat" id="adminTickets">0</div></div>
-      <div class="card"><div class="muted">Báo cáo người dùng</div><div class="stat" id="adminReports">0</div></div>
-    </div>
-    <div class="section card">
-      <h3>Quản lý tài khoản</h3>
-      <div class="table-wrap"><table><thead><tr><th>Tài khoản</th><th>Vai trò</th><th>Ngôn ngữ</th><th>Khu vực</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
-      <tbody id="adminUserRows"></tbody></table></div>
-    </div>
-    <div class="section card">
-      <h3>Quản lý báo cáo</h3><div id="adminReportRows"></div>
-    </div>
-    <div class="section card">
-      <h3>Yêu cầu chăm sóc khách hàng</h3><div id="adminTicketRows"></div>
-    </div>
-    <div class="section card">
-      <h3>Cấu hình giá hiển thị</h3>
-      <p class="muted">Điều chỉnh giá hiển thị trong bản demo. Không thay đổi giao dịch thật.</p>
-      <div class="two-col">
-        <div class="field"><label>Giá Premium (VNĐ/tháng)</label><input type="number" id="adminPremiumPrice"></div>
-        <div class="field"><label>Hoa hồng gia sư (%)</label><input type="number" min="15" max="20" id="adminCommission"></div>
-      </div>
-      <button class="btn" onclick="saveAdminSettings()">Lưu cấu hình</button>
-    </div>
+<section class="page" id="page-support">
+  <div class="form-card">
+    <h2>Trung tâm hỗ trợ TalkBuddy</h2><p class="muted">Gửi câu hỏi hoặc yêu cầu hỗ trợ đến đội ngũ chăm sóc khách hàng.</p>
+    <form id="supportForm">
+      <div class="field"><label>Chủ đề</label><select name="topic"><option>Hỗ trợ tài khoản</option><option>Vấn đề kết nối</option><option>Thanh toán và Xu</option><option>Báo cáo người dùng</option><option>Góp ý sản phẩm</option></select></div>
+      <div class="field"><label>Nội dung</label><textarea name="message" rows="5" required placeholder="Bạn cần TalkBuddy hỗ trợ điều gì?"></textarea></div>
+      <button class="btn">Gửi yêu cầu</button>
+    </form>
+    <p class="small muted">Yêu cầu sẽ được lưu trong dữ liệu demo để quản trị viên xem.</p>
   </div>
 </section>
 
+<section class="page" id="page-report">
+  <div class="form-card">
+    <h2>Báo cáo người dùng</h2><p class="muted">TalkBuddy hướng đến môi trường luyện tập an toàn và tôn trọng.</p>
+    <form id="reportForm">
+      <div class="field"><label>Tài khoản cần báo cáo</label><input name="target" required placeholder="Tên hoặc email tài khoản"></div>
+      <div class="field"><label>Lý do</label><select name="reason"><option>Spam hoặc quảng cáo</option><option>Quấy rối hoặc xúc phạm</option><option>Thông tin giả mạo</option><option>Hành vi không an toàn</option><option>Lý do khác</option></select></div>
+      <div class="field"><label>Mô tả</label><textarea name="detail" rows="4" placeholder="Mô tả sự việc..."></textarea></div>
+      <button class="btn">Gửi báo cáo</button>
+    </form>
+  </div>
+</section>
+
+<section class="page" id="page-adminLogin">
+  <div class="form-card">
+    <h2>Khu vực quản trị</h2><p class="muted">Đăng nhập bằng tài khoản đã được cấp quyền quản trị trên bản demo.</p>
+    <form id="adminLoginForm">
+      <div class="field"><label>Email quản trị</label><input name="email" type="email" required placeholder="admin@talkbuddy.vn"></div>
+      <div class="field"><label>Mật khẩu tài khoản</label><input name="password" type="password" required></div>
+      <button class="btn" style="width:100%">Vào trang quản trị</button>
+    </form>
+    <div class="notice">Lần đầu thiết lập admin: xem hướng dẫn bên dưới mã nguồn. Không sử dụng cơ chế phân quyền trình duyệt này cho website thật.</div>
+  </div>
+</section>
+
+<section class="page" id="page-admin">
+  <div class="section-head"><div><span class="eyebrow">TALK BUDDY ADMIN</span><h2 style="margin-top:12px">Bảng điều khiển quản trị</h2><p class="muted">Quản lý tài khoản, ghép đôi, báo cáo, hỗ trợ và giá dịch vụ.</p></div><button class="btn btn-outline" onclick="adminLogout()">Thoát quản trị</button></div>
+  <div class="stats" id="adminStats"></div>
+  <div class="admin-nav">
+    <button class="active" onclick="adminTab('users',this)">Người dùng</button>
+    <button onclick="adminTab('reports',this)">Báo cáo</button>
+    <button onclick="adminTab('support',this)">Hỗ trợ</button>
+    <button onclick="adminTab('prices',this)">Giá & dịch vụ</button>
+    <button onclick="adminTab('matches',this)">Ghép đôi</button>
+  </div>
+  <div id="adminContent"></div>
+</section>
 </main>
 
-<footer class="footer">TalkBuddy – Tìm đúng người, luyện đúng cách, tự tin giao tiếp.<br>
-Bản thử nghiệm giao diện và dữ liệu mẫu, chưa phải hệ thống vận hành chính thức.</footer>
-<div class="toast" id="toast"></div>
+<footer>
+  <strong>TalkBuddy</strong><br>
+  Kết nối người học ngoại ngữ với bạn luyện tập phù hợp – cùng nhau cải thiện phản xạ và sự tự tin.<br>
+  <span class="small">© 2026 TalkBuddy Demo. Dữ liệu mẫu phục vụ kiểm thử giao diện.</span>
+</footer>
+<div id="toast" class="toast hidden"></div>
 
 <script>
-const STORAGE_KEY="talkbuddy_demo_v1";
-const defaultUsers=[
- {id:"u1",name:"Minh Anh",age:21,role:"user",language:"Tiếng Anh",level:"Trung cấp",goal:"Giao tiếp hằng ngày",city:"Quận 1",time:"Buổi tối",interests:"Du lịch, phim ảnh",bio:"Mình muốn luyện nói tự nhiên và tự tin hơn.",coins:25},
- {id:"u2",name:"Hoàng Nam",age:23,role:"user",language:"Tiếng Anh",level:"Khá",goal:"Luyện phản xạ",city:"Bình Thạnh",time:"Cuối tuần",interests:"Công nghệ, thể thao",bio:"Thích trò chuyện về công nghệ và cuộc sống.",coins:20},
- {id:"u3",name:"Thu Hà",age:20,role:"user",language:"Tiếng Nhật",level:"Sơ cấp",goal:"Trao đổi văn hóa",city:"Thủ Đức",time:"Buổi chiều",interests:"Anime, văn hóa Nhật",bio:"Mình đang học tiếng Nhật và muốn luyện giao tiếp.",coins:10},
- {id:"u4",name:"Gia Huy",age:24,role:"user",language:"Tiếng Hàn",level:"Trung cấp",goal:"Giao tiếp hằng ngày",city:"Quận 3",time:"Buổi tối",interests:"Ẩm thực, phim ảnh",bio:"Muốn tìm bạn cùng luyện tiếng Hàn.",coins:35},
- {id:"u5",name:"Ngọc Linh",age:22,role:"user",language:"Tiếng Anh",level:"Sơ cấp",goal:"Du học và công việc",city:"Phú Nhuận",time:"Buổi sáng",interests:"Đọc sách, du lịch",bio:"Mình muốn cải thiện khả năng nói tiếng Anh.",coins:20},
- {id:"u6",name:"Daniel",age:25,role:"user",language:"Tiếng Anh",level:"Nâng cao",goal:"Trao đổi văn hóa",city:"Quận 1",time:"Cuối tuần",interests:"Văn hóa, du lịch",bio:"Mình thích giao lưu và chia sẻ văn hóa.",coins:50},
- {id:"u7",name:"Yến Nhi",age:19,role:"user",language:"Tiếng Trung",level:"Mới bắt đầu",goal:"Giao tiếp hằng ngày",city:"Thủ Đức",time:"Buổi chiều",interests:"Âm nhạc, đồ ăn",bio:"Mình muốn luyện những câu giao tiếp cơ bản.",coins:15},
- {id:"u8",name:"Quốc Bảo",age:26,role:"user",language:"Tiếng Pháp",level:"Trung cấp",goal:"Luyện phản xạ",city:"Quận 3",time:"Buổi tối",interests:"Nhiếp ảnh, nghệ thuật",bio:"Tìm bạn luyện nói tiếng Pháp mỗi tuần.",coins:40},
- {id:"u9",name:"Mai Phương",age:22,role:"user",language:"Tiếng Anh",level:"Khá",goal:"Luyện thi IELTS",city:"Bình Thạnh",time:"Buổi sáng",interests:"Giáo dục, sách",bio:"Mình đang chuẩn bị cho kỳ thi IELTS.",coins:30},
- {id:"u10",name:"TalkBuddy Support",age:28,role:"staff",language:"Tiếng Anh",level:"Nâng cao",goal:"Hỗ trợ khách hàng",city:"Quận 1",time:"Linh hoạt",interests:"Hỗ trợ cộng đồng",bio:"Đội ngũ chăm sóc khách hàng TalkBuddy.",coins:0},
- {id:"admin",name:"Admin TalkBuddy",age:30,role:"admin",language:"Tiếng Anh",level:"Nâng cao",goal:"Quản trị hệ thống",city:"Quận 1",time:"Linh hoạt",interests:"Quản trị",bio:"Tài khoản quản trị bản demo.",coins:999}
+/* ==========================================================
+   TALKBUDDY DEMO – SINGLE FILE
+   Dữ liệu mẫu lưu trên trình duyệt bằng localStorage.
+   Không dùng cho vận hành thật nếu chưa có backend bảo mật.
+========================================================== */
+const DBKEY='talkbuddy_demo_v1';
+const ADMINKEY='talkbuddy_demo_admin_email';
+let db, currentUser=null, activeChat=null, adminSection='users';
+
+const seedUsers=[
+ {id:1,name:'Minh Anh',email:'minhanh.demo@mail.com',phone:'0901000001',password:'123456',language:'Tiếng Anh',level:'Trung cấp',goal:'Học tập / IELTS',location:'Cầu Giấy, Hà Nội',availability:'Tối thứ 7, Chủ nhật',interests:'Phim ảnh, du lịch',role:'user',premium:false,coins:10,avatar:1},
+ {id:2,name:'Hoàng Long',email:'long.demo@mail.com',phone:'0901000002',password:'123456',language:'Tiếng Anh',level:'Trung cấp',goal:'Học tập / IELTS',location:'Cầu Giấy, Hà Nội',availability:'Cuối tuần',interests:'Công nghệ, phim ảnh',role:'user',premium:true,coins:70,avatar:3},
+ {id:3,name:'Lan Hương',email:'huong.demo@mail.com',phone:'0901000003',password:'123456',language:'Tiếng Anh',level:'Nâng cao',goal:'Công việc & phỏng vấn',location:'Quận 1, TP.HCM',availability:'Tối thứ 3 và thứ 5',interests:'Công việc, phim ảnh',role:'user',premium:false,coins:20,avatar:5},
+ {id:4,name:'Thảo Vy',email:'vy.demo@mail.com',phone:'0901000004',password:'123456',language:'Tiếng Anh',level:'Nâng cao',goal:'Công việc & phỏng vấn',location:'Quận 3, TP.HCM',availability:'Tối thứ 3 và thứ 5',interests:'Du lịch, công việc',role:'user',premium:false,coins:15,avatar:8},
+ {id:5,name:'Tuấn Kiệt',email:'kiet.demo@mail.com',phone:'0901000005',password:'123456',language:'Tiếng Nhật',level:'Cơ bản',goal:'Giao tiếp hằng ngày',location:'Đống Đa, Hà Nội',availability:'Chiều Chủ nhật',interests:'Anime, du lịch',role:'user',premium:false,coins:5,avatar:11},
+ {id:6,name:'Hải Yến',email:'yen.demo@mail.com',phone:'0901000006',password:'123456',language:'Tiếng Nhật',level:'Cơ bản',goal:'Giao tiếp hằng ngày',location:'Ba Đình, Hà Nội',availability:'Cuối tuần',interests:'Anime, âm nhạc',role:'user',premium:false,coins:12,avatar:12},
+ {id:7,name:'Bảo Nam',email:'nam.demo@mail.com',phone:'0901000007',password:'123456',language:'Tiếng Trung',level:'Trung cấp',goal:'Luyện phản xạ',location:'Quận 5, TP.HCM',availability:'Sáng Chủ nhật',interests:'Ẩm thực, phim ảnh',role:'user',premium:true,coins:70,avatar:14},
+ {id:8,name:'Khánh Linh',email:'linh.demo@mail.com',phone:'0901000008',password:'123456',language:'Tiếng Trung',level:'Trung cấp',goal:'Luyện phản xạ',location:'Quận 10, TP.HCM',availability:'Cuối tuần',interests:'Ẩm thực, du lịch',role:'user',premium:false,coins:8,avatar:16},
+ {id:9,name:'Sophie',email:'sophie.demo@mail.com',phone:'0901000009',password:'123456',language:'Tiếng Anh',level:'Nâng cao',goal:'Trao đổi ngôn ngữ',location:'Thảo Điền, TP.HCM',availability:'Tối thứ 6',interests:'Du lịch, văn hóa',role:'user',premium:true,coins:70,avatar:20},
+ {id:10,name:'Daniel',email:'daniel.demo@mail.com',phone:'0901000010',password:'123456',language:'Tiếng Anh',level:'Nâng cao',goal:'Trao đổi ngôn ngữ',location:'Bình Thạnh, TP.HCM',availability:'Cuối tuần',interests:'Công nghệ, thể thao',role:'user',premium:false,coins:25,avatar:22}
 ];
-const defaultState={
- users:defaultUsers,current:null,conversations:[
-  {id:"c1",members:["u1","u2"],messages:[
-   {from:"u1",text:"Chào Nam, bạn thường luyện tiếng Anh vào thời gian nào?",time:"09:10"},
-   {from:"u2",text:"Mình thường rảnh cuối tuần. Còn bạn thì sao?",time:"09:12"}]},
-  {id:"c2",members:["u1","u10"],messages:[
-   {from:"u10",text:"Xin chào! TalkBuddy có thể hỗ trợ bạn vấn đề gì?",time:"10:00"},
-   {from:"u1",text:"Mình muốn tìm hiểu cách kết nối với bạn luyện nói.",time:"10:05"},
-   {from:"u10",text:"Bạn hãy hoàn thiện hồ sơ và chọn mục Tìm bạn luyện nói nhé.",time:"10:07"}]},
-  {id:"c3",members:["u3","u4"],messages:[
-   {from:"u3",text:"Bạn có muốn luyện nói vào cuối tuần không?",time:"14:00"}]}
- ],
- notifications:[
-  {id:1,text:"Chào mừng bạn đến với TalkBuddy! Hãy hoàn thiện hồ sơ để tìm bạn luyện nói.",read:false},
-  {id:2,text:"Đội ngũ hỗ trợ TalkBuddy luôn sẵn sàng giải đáp thắc mắc của bạn.",read:false}
- ],
- reports:[],tickets:[],transactions:[],connections:[],premiumPrice:69000,commission:15
-};
-let state=loadState(),activeChat=null;
-function loadState(){
- try{const saved=localStorage.getItem(STORAGE_KEY);if(saved)return JSON.parse(saved)}catch(e){}
- return structuredClone(defaultState);
+const seedChats=[
+ {id:'c1',name:'Nhóm hỗ trợ TalkBuddy',type:'support',avatar:25,memberId:0,messages:[
+  {from:'support',text:'Xin chào! TalkBuddy có thể hỗ trợ bạn điều gì?',time:'09:00'},
+  {from:'me',text:'Mình muốn tìm bạn luyện tiếng Anh.',time:'09:02'},
+  {from:'support',text:'Bạn hãy hoàn thiện hồ sơ và chọn mục Tìm bạn luyện nói nhé!',time:'09:03'}]},
+ {id:'c2',name:'Minh Anh',type:'user',avatar:1,memberId:1,messages:[
+  {from:'other',text:'Chào bạn, mình cũng đang muốn luyện IELTS Speaking.',time:'10:15'},
+  {from:'me',text:'Hay quá, bạn thường rảnh vào cuối tuần không?',time:'10:17'}]},
+ {id:'c3',name:'Hoàng Long',type:'user',avatar:3,memberId:2,messages:[
+  {from:'other',text:'Hi! Mình muốn luyện nói về chủ đề công nghệ.',time:'11:20'},
+  {from:'me',text:'Mình cũng thích chủ đề đó!',time:'11:25'}]},
+ {id:'c4',name:'Lan Hương',type:'user',avatar:5,memberId:3,messages:[
+  {from:'other',text:'Bạn có muốn luyện phỏng vấn bằng tiếng Anh không?',time:'14:05'}]},
+ {id:'c5',name:'Thảo Vy',type:'user',avatar:8,memberId:4,messages:[
+  {from:'other',text:'Mình thường luyện vào tối thứ 5. Còn bạn?',time:'16:30'}]}
+];
+function loadDB(){
+ try{db=JSON.parse(localStorage.getItem(DBKEY));}catch(e){db=null}
+ if(!db){
+  db={users:seedUsers,chats:seedChats,reports:[
+   {target:'Tài khoản demo 04',reason:'Spam hoặc quảng cáo',detail:'Báo cáo mẫu để minh họa dashboard.',status:'Mới'}
+  ],tickets:[
+   {topic:'Hỗ trợ tài khoản',message:'Mình chưa biết cách cập nhật hồ sơ.',status:'Đang xử lý',user:'Minh Anh'}
+  ],transactions:[],connections:[],prices:{basic:20000,value:50000,premium:69000,commission:15}};
+  saveDB();
+ }
 }
-function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
-function current(){return state.users.find(u=>u.id===state.current)}
-function getUser(id){return state.users.find(u=>u.id===id)}
-function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function toast(msg){
- const el=document.getElementById("toast");el.textContent=msg;el.style.display="block";
- clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display="none",2800);
+function saveDB(){localStorage.setItem(DBKEY,JSON.stringify(db))}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2600)}
+function toggleMenu(){document.getElementById('menuPanel').classList.toggle('hidden')}
+function showPage(name){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const page=document.getElementById('page-'+name);if(page)page.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(name==='profile')fillProfile();
+ if(name==='matches')renderMatches();
+ if(name==='inbox')renderChats();
+ if(name==='pricing')renderTransactions();
+ if(name==='admin')renderAdmin();
 }
-function avatar(name){
- const palettes=[["#e5c3a8","#6d8062","#8dbb9a"],["#e6c5b7","#765b4f","#d5b5cf"],["#f0d2a8","#5e6f8a","#9fc8c0"]];
- const n=(name||"A").charCodeAt(0)%palettes.length,p=palettes[n];
- return `<svg viewBox="0 0 80 80" role="img" aria-label="Ảnh đại diện minh họa">
- <rect width="80" height="80" rx="18" fill="${p[2]}"/>
- <circle cx="40" cy="34" r="18" fill="${p[0]}"/>
- <path d="M22 34Q20 10 42 11Q61 12 59 35Q49 23 39 24Q30 24 22 34" fill="${p[1]}"/>
- <path d="M12 80Q14 53 40 53Q66 53 68 80" fill="${p[1]}"/>
- <circle cx="34" cy="36" r="1.7" fill="#594d46"/><circle cx="47" cy="36" r="1.7" fill="#594d46"/>
- <path d="M35 44Q40 48 45 44" fill="none" stroke="#986b5d" stroke-width="1.6" stroke-linecap="round"/>
- </svg>`;
-}
-function userCard(u){
- return `<div class="card profile-card"><div class="profile-row"><div class="avatar">${avatar(u.name)}</div>
- <div><h3>${escapeHTML(u.name)}</h3><span class="muted">${u.age} tuổi · ${escapeHTML(u.city)}</span></div></div>
- <div><span class="tag">${escapeHTML(u.language)}</span><span class="tag">${escapeHTML(u.level)}</span></div>
- <p class="muted">${escapeHTML(u.bio)}</p></div>`;
-}
-function init(){
- document.getElementById("menuButton").onclick=()=>document.getElementById("menuPanel").classList.toggle("open");
- document.addEventListener("click",e=>{
-  if(!e.target.closest(".top-actions"))document.getElementById("menuPanel").classList.remove("open");
- });
- renderAccountOptions();renderHomeUsers();renderMatches();renderTutors();
- if(state.current&&getUser(state.current))setLoggedInUI();else showPage("home");
-}
-function renderAccountOptions(){
- const sel=document.getElementById("accountSelect");
- sel.innerHTML=state.users.map(u=>`<option value="${u.id}">${escapeHTML(u.name)} (${u.role})</option>`).join("");
-}
-function showPage(id){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- const page=document.getElementById(id);if(page)page.classList.add("active");
- document.getElementById("menuPanel").classList.remove("open");
- if(id==="auth")renderAccountOptions();
- if(id==="profile")loadProfile();
- if(id==="inbox")renderInbox();
- if(id==="notifications")renderNotifications();
- if(id==="wallet")renderWallet();
- if(id==="support")renderSupport();
- if(id==="admin")renderAdmin();
- if(id==="matching")renderMatches();
-}
-function login(){
- const id=document.getElementById("accountSelect").value;
- const pass=document.getElementById("loginPassword").value;
- if(pass!=="123456"){toast("Mật khẩu demo chưa đúng. Hãy nhập 123456.");return}
- state.current=id;saveState();setLoggedInUI();showPage("home");toast("Đăng nhập demo thành công!");
-}
-function setLoggedInUI(){
+function current(){return currentUser?db.users.find(u=>u.id===currentUser.id):null}
+function setSession(user){currentUser={id:user.id};document.getElementById('accountButton').textContent=user.name;document.getElementById('accountButton').onclick=()=>showPage('profile')}
+function logout(){currentUser=null;document.getElementById('accountButton').textContent='Đăng nhập';document.getElementById('accountButton').onclick=()=>showPage('login');showPage('home');toast('Bạn đã đăng xuất.')}
+function fillProfile(){
  const u=current();if(!u)return;
- document.getElementById("topUser").textContent="Xin chào, "+u.name;
- document.getElementById("topUser").classList.remove("muted");
+ ['Name','Phone','Language','Level','Location','Availability','Interests'].forEach(k=>{
+  const el=document.getElementById('p'+k);if(el)el.value=u[k.toLowerCase()]||'';
+ });
+ document.getElementById('pGoal').value=u.goal||'Giao tiếp hằng ngày';
 }
-function logout(){state.current=null;saveState();document.getElementById("topUser").textContent="Chào bạn!";showPage("home");toast("Bạn đã đăng xuất.")}
-function requireLogin(){if(!current()){showPage("auth");toast("Vui lòng đăng nhập trước.");return false}return true}
-function renderHomeUsers(){
- document.getElementById("homeUsers").innerHTML=state.users.filter(u=>u.role==="user").slice(0,3).map(userCard).join("");
+document.getElementById('registerForm').addEventListener('submit',e=>{
+ e.preventDefault();const f=new FormData(e.target);
+ if(db.users.some(u=>u.email===f.get('email')||u.phone===f.get('phone'))){toast('Email hoặc số điện thoại đã tồn tại.');return}
+ const u={id:Date.now(),name:f.get('name'),phone:f.get('phone'),email:f.get('email'),password:f.get('password'),language:f.get('language'),level:f.get('level'),goal:'Giao tiếp hằng ngày',location:f.get('location'),availability:'Chưa cập nhật',interests:'Chưa cập nhật',role:'user',premium:false,coins:0,avatar:24};
+ db.users.push(u);saveDB();setSession(u);e.target.reset();toast('Tạo tài khoản demo thành công!');showPage('profile');
+});
+document.getElementById('loginForm').addEventListener('submit',e=>{
+ e.preventDefault();const f=new FormData(e.target),identity=f.get('identity').trim();
+ const u=db.users.find(x=>(x.email===identity||x.phone===identity)&&x.password===f.get('password'));
+ if(!u){toast('Thông tin đăng nhập chưa đúng.');return}
+ setSession(u);toast('Đăng nhập thành công!');showPage('profile');
+});
+document.getElementById('profileForm').addEventListener('submit',e=>{
+ e.preventDefault();const u=current();if(!u){toast('Bạn cần đăng nhập trước.');showPage('login');return}
+ const f=new FormData(e.target);['name','phone','language','level','location','availability','interests','goal'].forEach(k=>{if(f.has(k))u[k]=f.get(k)});
+ saveDB();toast('Đã cập nhật hồ sơ!');
+});
+function score(a,b){
+ let s=0;
+ if(a.language===b.language)s+=25;
+ if(a.level===b.level)s+=15;else s+=7;
+ if(a.goal===b.goal)s+=20;
+ const ai=(a.interests||'').toLowerCase().split(/[ ,]+/),bi=(b.interests||'').toLowerCase().split(/[ ,]+/);
+ if(ai.some(x=>x&&bi.includes(x)))s+=15;
+ if((a.location||'').split(',').pop()===(b.location||'').split(',').pop())s+=12;
+ if(a.availability===b.availability)s+=10;
+ s+=3;return Math.min(100,s);
 }
 function renderMatches(){
- const lang=document.getElementById("filterLanguage")?.value||"Tất cả";
- const city=document.getElementById("filterCity")?.value||"Tất cả";
- const me=current();
- let list=state.users.filter(u=>u.role==="user"&&u.id!==state.current);
- if(lang!=="Tất cả")list=list.filter(u=>u.language===lang);
- if(city!=="Tất cả")list=list.filter(u=>u.city===city);
- list=list.map(u=>{
-  let score=55;
-  if(me){if(u.language===me.language)score+=15;if(u.goal===me.goal)score+=10;
-   if(u.city===me.city)score+=8;if(u.time===me.time)score+=7}
-  return {...u,score:Math.min(score,98)};
- }).sort((a,b)=>b.score-a.score);
- document.getElementById("matchResults").innerHTML=list.length?list.map(u=>`
- <div class="card profile-card">
-  <div class="profile-row"><div class="avatar">${avatar(u.name)}</div><div><h3>${escapeHTML(u.name)}</h3>
-  <span class="muted">${u.age} tuổi · ${escapeHTML(u.city)}</span></div></div>
-  <div><span class="tag">${escapeHTML(u.language)}</span><span class="tag">${escapeHTML(u.level)}</span></div>
-  <p class="muted">${escapeHTML(u.bio)}</p>
-  <div class="muted">Mức độ tương thích demo: <b>${u.score}%</b></div>
-  <div class="progress"><span style="width:${u.score}%"></span></div>
-  <button class="btn" onclick="sendInvite('${u.id}')">Gửi lời mời kết nối</button>
-  <button class="btn outline small" onclick="reportUser('${u.id}')">Báo cáo người dùng</button>
- </div>`).join(""):`<div class="card empty">Chưa có hồ sơ phù hợp với bộ lọc này.</div>`;
+ const me=current()||{id:0,language:'Tiếng Anh',level:'Trung cấp',goal:'Giao tiếp hằng ngày',location:'Quận 1, TP.HCM',availability:'Cuối tuần',interests:'du lịch phim ảnh'};
+ const list=db.users.filter(u=>u.id!==me.id&&u.role!=='admin').map(u=>({...u,score:score(me,u)})).sort((a,b)=>b.score-a.score);
+ document.getElementById('matchGrid').innerHTML=list.map(u=>`
+ <article class="card">
+ <div class="profile-card"><div class="user-row"><img class="avatar" src="https://i.pravatar.cc/120?img=${u.avatar}" alt="Ảnh đại diện ${u.name}"><div><h3>${safe(u.name)}</h3><span class="small muted">${safe(u.location||'Chưa cập nhật')}</span></div></div><div class="match-score">${u.score}%</div></div>
+ <p><span class="pill">${safe(u.language)}</span><span class="pill">${safe(u.level)}</span></p>
+ <p><b>Mục tiêu:</b> ${safe(u.goal||'Chưa cập nhật')}<br><b>Thời gian:</b> ${safe(u.availability||'Chưa cập nhật')}<br><b>Sở thích:</b> ${safe(u.interests||'Chưa cập nhật')}</p>
+ <button class="btn btn-soft" onclick="sendInvite(${u.id})">Gửi lời mời kết nối</button>
+ <button class="btn btn-outline" onclick="reportUser('${safe(u.name)}')">Báo cáo</button>
+ </article>`).join('');
 }
 function sendInvite(id){
- if(!requireLogin())return;
- if(id===state.current)return;
- if(state.connections.some(c=>c.from===state.current&&c.to===id)){toast("Bạn đã gửi lời mời cho tài khoản này.");return}
- state.connections.push({from:state.current,to:id,status:"pending"});
- state.notifications.unshift({id:Date.now(),text:"Bạn đã gửi lời mời kết nối đến "+getUser(id).name,read:false});
- saveState();toast("Đã gửi lời mời kết nối demo.");
+ if(!current()){toast('Đăng nhập để gửi lời mời.');showPage('login');return}
+ const target=db.users.find(u=>u.id===id);if(!target)return;
+ if(!db.connections.some(c=>c.from===current().id&&c.to===id)){
+  db.connections.push({from:current().id,to:id,status:'Chờ phản hồi'});saveDB();
+ }
+ toast('Đã gửi lời mời demo đến '+target.name+'.');
 }
-function loadProfile(){
- if(!requireLogin())return;
- const u=current();if(!u)return;
- document.getElementById("profileName").value=u.name;
- document.getElementById("profileAge").value=u.age;
- document.getElementById("profileLanguage").value=u.language;
- document.getElementById("profileLevel").value=u.level;
- document.getElementById("profileGoal").value=u.goal;
- document.getElementById("profileCity").value=u.city;
- document.getElementById("profileTime").value=u.time;
- document.getElementById("profileInterests").value=u.interests||"";
- document.getElementById("profileBio").value=u.bio||"";
+function reportUser(name){showPage('report');document.querySelector('#reportForm [name=target]').value=name}
+function renderChats(){
+ const list=db.chats.filter(c=>c.type==='support'||(current()&&c.memberId!==current().id));
+ document.getElementById('chatList').innerHTML=list.map(c=>`<div class="chat-person ${activeChat===c.id?'active':''}" onclick="openChat('${c.id}')"><img class="avatar" src="https://i.pravatar.cc/100?img=${c.avatar}" alt=""><div><b>${safe(c.name)}</b><div class="small muted">${c.type==='support'?'Chăm sóc khách hàng':'Tin nhắn demo'}</div></div></div>`).join('');
+ if(!activeChat&&list.length)activeChat=list[0].id;
+ if(activeChat)openChat(activeChat,false);
 }
-function saveProfile(){
- if(!requireLogin())return;
- const age=Number(document.getElementById("profileAge").value);
- if(age<18||age>99){toast("TalkBuddy yêu cầu người dùng từ 18 tuổi trở lên.");return}
- const u=current();
- u.name=document.getElementById("profileName").value.trim()||u.name;
- u.age=age;u.language=document.getElementById("profileLanguage").value;
- u.level=document.getElementById("profileLevel").value;
- u.goal=document.getElementById("profileGoal").value;
- u.city=document.getElementById("profileCity").value;
- u.time=document.getElementById("profileTime").value;
- u.interests=document.getElementById("profileInterests").value;
- u.bio=document.getElementById("profileBio").value;
- saveState();setLoggedInUI();renderMatches();renderHomeUsers();toast("Đã lưu hồ sơ demo.");
+function openChat(id,refresh=true){
+ activeChat=id;const c=db.chats.find(x=>x.id===id);if(!c)return;
+ document.getElementById('chatHead').innerHTML='<b>'+safe(c.name)+'</b><div class="small muted">'+(c.type==='support'?'Bộ phận hỗ trợ TalkBuddy':'Bạn luyện nói · Chat demo')+'</div>';
+ document.getElementById('messages').innerHTML=c.messages.map(m=>`<div class="bubble ${m.from==='me'?'mine':''}">${safe(m.text)}<div class="small muted">${safe(m.time)}</div></div>`).join('');
+ document.getElementById('messages').scrollTop=99999;
+ if(refresh)renderChats();
 }
-function conversationWith(id){
- if(!requireLogin())return null;
- let c=state.conversations.find(x=>x.members.includes(state.current)&&x.members.includes(id));
- if(!c){c={id:"c"+Date.now(),members:[state.current,id],messages:[]};state.conversations.push(c);saveState()}
- return c;
-}
-function renderInbox(){
- if(!requireLogin())return;
- const me=current();
- const chats=state.conversations.filter(c=>c.members.includes(me.id));
- document.getElementById("chatList").innerHTML=chats.map(c=>{
-  const other=getUser(c.members.find(id=>id!==me.id));if(!other)return "";
-  const last=c.messages[c.messages.length-1];
-  return `<div class="chat-person ${activeChat===c.id?"selected":""}" onclick="openChat('${c.id}')">
-   <div class="avatar" style="width:45px;height:45px">${avatar(other.name)}</div>
-   <div><b>${escapeHTML(other.name)}</b><div class="muted">${escapeHTML(last?.text||"Bắt đầu trò chuyện")}</div></div>
-  </div>`;
- }).join("")||`<div class="empty">Chưa có cuộc trò chuyện.</div>`;
- if(activeChat&&chats.some(c=>c.id===activeChat))openChat(activeChat);
- else if(chats.length)openChat(chats[0].id);
-}
-function openChat(id){
- activeChat=id;
- const c=state.conversations.find(x=>x.id===id);if(!c)return;
- const other=getUser(c.members.find(x=>x!==state.current));
- document.getElementById("chatHeading").innerHTML=`<h3>${escapeHTML(other?.name||"Hội thoại")}</h3><span class="muted">Cuộc trò chuyện demo</span>`;
- document.getElementById("chatMessages").innerHTML=c.messages.map(m=>`
- <div class="message ${m.from===state.current?"mine":""}">${escapeHTML(m.text)}<small>${escapeHTML(getUser(m.from)?.name||"Người dùng")} · ${m.time}</small></div>`).join("")||`<div class="empty">Hãy gửi lời chào đầu tiên.</div>`;
- document.getElementById("chatMessages").scrollTop=999999;
- document.querySelectorAll(".chat-person").forEach(x=>x.classList.remove("selected"));
- renderInboxListSelection();
-}
-function renderInboxListSelection(){
- const list=document.getElementById("chatList");
- const c=state.conversations.find(x=>x.id===activeChat);
- if(!c)return;
- const other=getUser(c.members.find(x=>x!==state.current));
- list.querySelectorAll(".chat-person").forEach(el=>{if(el.textContent.includes(other?.name||""))el.classList.add("selected")});
-}
-function sendMessage(){
- if(!requireLogin())return;
- const input=document.getElementById("chatInput"),text=input.value.trim();
- if(!text){toast("Bạn chưa nhập nội dung.");return}
- if(!activeChat){toast("Hãy chọn một cuộc trò chuyện.");return}
- const c=state.conversations.find(x=>x.id===activeChat);
- c.messages.push({from:state.current,text,time:new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"})});
- input.value="";saveState();openChat(activeChat);
-}
-function reportUser(id){
- if(!requireLogin())return;
- const reason=prompt("Nhập lý do báo cáo (ví dụ: spam, quấy rối, thông tin giả):");
- if(!reason)return;
- state.reports.unshift({id:Date.now(),from:state.current,to:id,reason,status:"Mới"});
- state.notifications.unshift({id:Date.now()+1,text:"Báo cáo của bạn đã được gửi đến đội ngũ kiểm duyệt.",read:false});
- saveState();toast("Đã gửi báo cáo. Cảm ơn bạn đã giúp cộng đồng an toàn hơn.");
-}
-function renderNotifications(){
- const el=document.getElementById("notificationList");
- el.innerHTML=state.notifications.map(n=>`<div style="padding:13px;border-bottom:1px solid var(--border);${n.read?"opacity:.6":""}">
- ${escapeHTML(n.text)} ${n.read?"":"<span class='tag'>Mới</span>"}</div>`).join("")||`<div class="empty">Chưa có thông báo.</div>`;
-}
-function markAllRead(){state.notifications.forEach(n=>n.read=true);saveState();renderNotifications();toast("Đã đánh dấu đã đọc.");}
-function renderWallet(){
- if(!requireLogin())return;
- document.getElementById("coinBalance").textContent=current().coins;
- document.getElementById("transactionRows").innerHTML=state.transactions.filter(t=>t.user===state.current).map(t=>
- `<tr><td>${escapeHTML(t.time)}</td><td>${escapeHTML(t.name)}</td><td>${escapeHTML(t.value)}</td><td>${escapeHTML(t.status)}</td></tr>`
- ).join("")||`<tr><td colspan="4">Chưa có giao dịch demo.</td></tr>`;
-}
-function buyCoins(coins,price){
- if(!requireLogin())return;
- if(!confirm("Mô phỏng mua "+coins+" Xu với giá "+price.toLocaleString("vi-VN")+"đ? Đây không phải thanh toán thật."))return;
- current().coins+=coins;
- state.transactions.unshift({user:state.current,time:new Date().toLocaleString("vi-VN"),name:"Gói "+coins+" Xu",value:price.toLocaleString("vi-VN")+"đ",status:"Demo - chưa thanh toán"});
- saveState();renderWallet();toast("Đã cộng Xu mô phỏng vào ví.");
+document.getElementById('chatForm').addEventListener('submit',e=>{
+ e.preventDefault();if(!current()){toast('Đăng nhập để gửi tin nhắn.');showPage('login');return}
+ const input=document.getElementById('chatInput'),text=input.value.trim();if(!text||!activeChat)return;
+ const c=db.chats.find(x=>x.id===activeChat);c.messages.push({from:'me',text,time:new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})});
+ saveDB();input.value='';openChat(activeChat);
+});
+document.getElementById('supportForm').addEventListener('submit',e=>{
+ e.preventDefault();const f=new FormData(e.target);
+ db.tickets.push({topic:f.get('topic'),message:f.get('message'),status:'Mới',user:current()?.name||'Khách chưa đăng nhập'});
+ saveDB();e.target.reset();toast('Đã gửi yêu cầu hỗ trợ demo.');
+});
+document.getElementById('reportForm').addEventListener('submit',e=>{
+ e.preventDefault();const f=new FormData(e.target);
+ db.reports.push({target:f.get('target'),reason:f.get('reason'),detail:f.get('detail'),status:'Mới'});
+ saveDB();e.target.reset();toast('Đã ghi nhận báo cáo demo.');
+});
+function buyDemo(name,amount,coins){
+ if(!current()){toast('Đăng nhập trước khi mua gói.');showPage('login');return}
+ db.transactions.push({user:current().name,name,amount,status:'Chờ thanh toán thử nghiệm',date:new Date().toLocaleDateString('vi-VN')});
+ saveDB();toast('Đã tạo đơn thử nghiệm. Chưa phát sinh thanh toán thật.');renderTransactions();
 }
 function buyPremium(){
- if(!requireLogin())return;
- if(!confirm("Đăng ký Premium demo với giá "+state.premiumPrice.toLocaleString("vi-VN")+"đ/tháng? Đây không phải giao dịch thật."))return;
- current().coins+=70;
- state.transactions.unshift({user:state.current,time:new Date().toLocaleString("vi-VN"),name:"Premium 1 tháng + 70 Xu",value:state.premiumPrice.toLocaleString("vi-VN")+"đ",status:"Demo - chưa thanh toán"});
- state.notifications.unshift({id:Date.now(),text:"Bạn đã đăng ký Premium demo và được cộng 70 Xu."});
- saveState();renderWallet();toast("Đã kích hoạt Premium mô phỏng.");
+ if(!current()){toast('Đăng nhập trước khi đăng ký.');showPage('login');return}
+ db.transactions.push({user:current().name,name:'Premium tháng',amount:db.prices.premium,status:'Chờ thanh toán thử nghiệm',date:new Date().toLocaleDateString('vi-VN')});
+ saveDB();toast('Đã tạo đơn Premium demo, chưa thu tiền thật.');renderTransactions();
 }
-function renderTutors(){
- const tutors=[
-  {name:"Cô Lan",lang:"Tiếng Anh",level:"IELTS 7.5",fee:"150.000đ/buổi",desc:"Luyện giao tiếp và IELTS."},
-  {name:"Thầy Minh",lang:"Tiếng Nhật",level:"JLPT N1",fee:"180.000đ/buổi",desc:"Luyện phản xạ và giao tiếp tiếng Nhật."},
-  {name:"Cô Hương",lang:"Tiếng Hàn",level:"TOPIK 6",fee:"160.000đ/buổi",desc:"Học tiếng Hàn từ cơ bản đến nâng cao."}
- ];
- document.getElementById("tutorList").innerHTML=tutors.map(t=>`
- <div class="card"><div class="profile-row"><div class="avatar">${avatar(t.name)}</div><div><h3>${t.name}</h3><span class="tag">${t.lang}</span></div></div>
- <p class="muted">${t.level} · ${t.desc}</p><div class="price">${t.fee}</div>
- <button class="btn" onclick="bookTutor('${t.name}')">Gửi yêu cầu đặt buổi</button></div>`).join("");
+function renderTransactions(){
+ const el=document.getElementById('transactions');if(!el)return;
+ const rows=db.transactions.filter(t=>!current()||t.user===current().name);
+ el.innerHTML=rows.length?rows.map(t=>`<p>${safe(t.name)} · ${Number(t.amount).toLocaleString('vi-VN')}đ · <span class="pill">${safe(t.status)}</span></p>`).join(''):'<p class="muted">Chưa có giao dịch demo.</p>';
 }
-function bookTutor(name){
- if(!requireLogin())return;
- state.tickets.unshift({id:Date.now(),user:state.current,topic:"Đặt gia sư: "+name,message:"Người dùng quan tâm đến lịch học với "+name,status:"Mới"});
- saveState();toast("Đã gửi yêu cầu đặt gia sư demo.");
-}
-function sendSupport(){
- if(!requireLogin())return;
- const message=document.getElementById("supportMessage").value.trim();
- if(!message){toast("Vui lòng nhập nội dung cần hỗ trợ.");return}
- state.tickets.unshift({id:Date.now(),user:state.current,topic:document.getElementById("supportTopic").value,message,status:"Mới"});
- document.getElementById("supportMessage").value="";
- saveState();renderSupport();toast("Đã gửi yêu cầu đến bộ phận hỗ trợ demo.");
-}
-function renderSupport(){
- if(!requireLogin())return;
- const mine=state.tickets.filter(t=>t.user===state.current);
- document.getElementById("supportHistory").innerHTML=mine.map(t=>
- `<div style="padding:12px;border-bottom:1px solid var(--border)"><b>${escapeHTML(t.topic)}</b>
- <p class="muted">${escapeHTML(t.message)}</p><span class="tag">${escapeHTML(t.status)}</span></div>`
- ).join("")||`<div class="empty">Bạn chưa gửi yêu cầu hỗ trợ nào.</div>`;
+document.getElementById('adminLoginForm').addEventListener('submit',e=>{
+ e.preventDefault();const f=new FormData(e.target),adminEmail=localStorage.getItem(ADMINKEY);
+ if(!adminEmail){toast('Chưa thiết lập email admin trên trình duyệt này. Xem hướng dẫn bên dưới code.');return}
+ const u=db.users.find(x=>x.email===f.get('email')&&x.email===adminEmail&&x.password===f.get('password'));
+ if(!u){toast('Tài khoản chưa được cấp quyền admin hoặc mật khẩu sai.');return}
+ currentUser={id:u.id};showPage('admin');toast('Đã mở dashboard demo.');
+});
+function adminLogout(){currentUser=null;showPage('home');toast('Đã thoát khu vực quản trị.')}
+function adminTab(tab,button){
+ adminSection=tab;document.querySelectorAll('.admin-nav button').forEach(b=>b.classList.remove('active'));button.classList.add('active');renderAdminContent();
 }
 function renderAdmin(){
- const isAdmin=current()?.role==="admin";
- document.getElementById("adminLocked").classList.toggle("hidden",isAdmin);
- document.getElementById("adminContent").classList.toggle("hidden",!isAdmin);
- if(!isAdmin)return;
- document.getElementById("adminUsers").textContent=state.users.length;
- document.getElementById("adminTickets").textContent=state.tickets.length;
- document.getElementById("adminReports").textContent=state.reports.length;
- document.getElementById("adminPremiumPrice").value=state.premiumPrice;
- document.getElementById("adminCommission").value=state.commission;
- document.getElementById("adminUserRows").innerHTML=state.users.map(u=>`
- <tr><td>${escapeHTML(u.name)}</td><td>${u.role}</td><td>${escapeHTML(u.language)}</td>
- <td>${escapeHTML(u.city)}</td><td>${u.status||"Hoạt động"}</td>
- <td>${u.role==="admin"?"—":`<button class="btn small outline" onclick="toggleUser('${u.id}')">Đổi trạng thái</button>`}</td></tr>`).join("");
- document.getElementById("adminReportRows").innerHTML=state.reports.map(r=>
- `<div style="padding:10px;border-bottom:1px solid var(--border)"><b>${escapeHTML(getUser(r.from)?.name||"Người dùng")}</b>
- báo cáo <b>${escapeHTML(getUser(r.to)?.name||"Tài khoản")}</b>: ${escapeHTML(r.reason)}
- <span class="tag">${escapeHTML(r.status)}</span></div>`).join("")||`<p class="muted">Chưa có báo cáo.</p>`;
- document.getElementById("adminTicketRows").innerHTML=state.tickets.map(t=>
- `<div style="padding:12px;border-bottom:1px solid var(--border)"><b>${escapeHTML(getUser(t.user)?.name||"Người dùng")}</b>
- <p>${escapeHTML(t.topic)}: ${escapeHTML(t.message)}</p>
- <span class="tag">${escapeHTML(t.status)}</span>
- <button class="btn small secondary" onclick="resolveTicket(${t.id})">Đánh dấu đã xử lý</button></div>`
- ).join("")||`<p class="muted">Chưa có yêu cầu hỗ trợ.</p>`;
+ const el=document.getElementById('adminStats');
+ el.innerHTML=[
+  ['Tài khoản',db.users.length],['Premium',db.users.filter(u=>u.premium).length],
+  ['Lời mời kết nối',db.connections.length],['Báo cáo',db.reports.length]
+ ].map(x=>`<div class="card stat"><strong>${x[1]}</strong><span>${x[0]}</span></div>`).join('');
+ renderAdminContent();
 }
-function toggleUser(id){
- const u=getUser(id);if(!u)return;
- u.status=u.status==="Tạm khóa"?"Hoạt động":"Tạm khóa";
- saveState();renderAdmin();toast("Đã cập nhật trạng thái demo.");
+function renderAdminContent(){
+ const el=document.getElementById('adminContent');
+ if(adminSection==='users')el.innerHTML=`<h3>Quản lý người dùng</h3><div class="table-wrap"><table><tr><th>Tên</th><th>Email</th><th>Ngôn ngữ</th><th>Khu vực</th><th>Trạng thái</th></tr>${db.users.map(u=>`<tr><td>${safe(u.name)}</td><td>${safe(u.email)}</td><td>${safe(u.language)}</td><td>${safe(u.location)}</td><td>${u.premium?'Premium':'Thường'}</td></tr>`).join('')}</table></div>`;
+ if(adminSection==='reports')el.innerHTML=`<h3>Quản lý báo cáo</h3><div class="table-wrap"><table><tr><th>Tài khoản</th><th>Lý do</th><th>Mô tả</th><th>Trạng thái</th><th>Xử lý</th></tr>${db.reports.map((r,i)=>`<tr><td>${safe(r.target)}</td><td>${safe(r.reason)}</td><td>${safe(r.detail||'')}</td><td>${safe(r.status)}</td><td><button class="btn btn-soft" onclick="resolveItem('reports',${i})">Đánh dấu xử lý</button></td></tr>`).join('')}</table></div>`;
+ if(adminSection==='support')el.innerHTML=`<h3>Yêu cầu chăm sóc khách hàng</h3><div class="table-wrap"><table><tr><th>Người gửi</th><th>Chủ đề</th><th>Nội dung</th><th>Trạng thái</th><th>Xử lý</th></tr>${db.tickets.map((r,i)=>`<tr><td>${safe(r.user)}</td><td>${safe(r.topic)}</td><td>${safe(r.message)}</td><td>${safe(r.status)}</td><td><button class="btn btn-soft" onclick="resolveItem('tickets',${i})">Hoàn tất</button></td></tr>`).join('')}</table></div>`;
+ if(adminSection==='prices')el.innerHTML=`<h3>Cấu hình giá dịch vụ</h3><div class="card"><form id="priceForm"><div class="form-grid"><div class="field"><label>Gói Xu cơ bản (VNĐ)</label><input name="basic" type="number" value="${db.prices.basic}"></div><div class="field"><label>Gói Xu tiết kiệm (VNĐ)</label><input name="value" type="number" value="${db.prices.value}"></div><div class="field"><label>Premium tháng (VNĐ)</label><input name="premium" type="number" value="${db.prices.premium}"></div><div class="field"><label>Hoa hồng gia sư (%)</label><input name="commission" type="number" min="15" max="20" value="${db.prices.commission}"></div></div><button class="btn">Lưu cấu hình demo</button></form><p class="small muted">Giá mặc định theo bảng chi tiết trong file Khởi nghiệp: 20.000đ/20 Xu; 50.000đ/60 Xu; Premium 69.000đ/tháng, tặng 70 Xu. Hoa hồng gia sư 15–20%.</p></div>`;
+ if(adminSection==='matches')el.innerHTML=`<h3>Danh sách lời mời kết nối</h3><div class="table-wrap"><table><tr><th>Người gửi</th><th>Người nhận</th><th>Trạng thái</th></tr>${db.connections.map(c=>`<tr><td>${safe(db.users.find(u=>u.id===c.from)?.name||'')}</td><td>${safe(db.users.find(u=>u.id===c.to)?.name||'')}</td><td>${safe(c.status)}</td></tr>`).join('')}</table></div>`;
+ const pf=document.getElementById('priceForm');if(pf)pf.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(pf);db.prices={basic:+f.get('basic'),value:+f.get('value'),premium:+f.get('premium'),commission:+f.get('commission')};saveDB();toast('Đã lưu cấu hình giá demo.');});
 }
-function resolveTicket(id){
- const t=state.tickets.find(x=>x.id===id);if(!t)return;
- t.status="Đã xử lý";saveState();renderAdmin();toast("Đã cập nhật yêu cầu.");
-}
-function saveAdminSettings(){
- if(current()?.role!=="admin"){toast("Bạn không có quyền quản trị.");return}
- const price=Number(document.getElementById("adminPremiumPrice").value);
- const commission=Number(document.getElementById("adminCommission").value);
- if(price<1||commission<15||commission>20){toast("Giá phải lớn hơn 0; hoa hồng trong khoảng 15–20%.");return}
- state.premiumPrice=price;state.commission=commission;saveState();
- toast("Đã lưu cấu hình demo.");
-}
-init();
+function resolveItem(type,i){db[type][i].status='Đã xử lý';saveDB();renderAdminContent();toast('Đã cập nhật trạng thái.')}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+loadDB();
+document.getElementById('homeUsers').textContent=db.users.length;
+renderMatches();
 </script>
 </body>
 </html>
