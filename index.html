@@ -36,7 +36,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4 { color: var(--primary-dark); font-weight: 700; line-height: 1.3; }
+    h1, h2, h3, h4, h5 { color: var(--primary-dark); font-weight: 700; line-height: 1.3; }
     p { color: var(--text-main); }
     a { text-decoration: none; color: inherit; }
     
@@ -44,7 +44,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 20px;
+      padding: 9px 18px;
       border-radius: var(--radius-md);
       font-size: 14px;
       font-weight: 600;
@@ -62,6 +62,9 @@
 
     .btn-outline { background: transparent; border-color: var(--primary-dark); color: var(--primary-dark); }
     .btn-outline:hover { background-color: var(--primary-dark); color: var(--bg-cream); }
+
+    .btn-danger { background-color: #E26D6D; color: #FFF; }
+    .btn-danger:hover { background-color: #cc5454; }
 
     .badge {
       display: inline-block;
@@ -92,13 +95,13 @@
       stroke-linejoin: round;
     }
 
-    /* ================= HEADER NAVIGATION ================= */
+    /* ================= HEADER & TOP BAR ================= */
     header.main-header {
       background: var(--bg-cream);
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
     .nav-container {
@@ -111,16 +114,14 @@
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-size: 20px;
       font-weight: 800;
       color: var(--primary-dark);
       cursor: pointer;
     }
-    .brand-logo svg {
-      width: 36px;
-      height: 36px;
-    }
+    .brand-logo svg { width: 36px; height: 36px; }
+    
     .nav-links-desktop {
       display: flex;
       gap: 20px;
@@ -138,15 +139,16 @@
       color: var(--primary-dark);
       background-color: var(--primary-light);
     }
+    
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       position: relative;
     }
 
-    /* Nút thông báo chuông (dạng Facebook) */
-    .notif-bell-btn {
+    /* Nút tròn chung trên Header (Thông báo + Messenger) */
+    .round-nav-btn {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -160,10 +162,8 @@
       color: var(--primary-dark);
       transition: var(--transition);
     }
-    .notif-bell-btn:hover {
-      background: var(--primary-pastel);
-    }
-    .notif-badge-count {
+    .round-nav-btn:hover { background: var(--primary-pastel); }
+    .nav-badge-count {
       position: absolute;
       top: -2px;
       right: -2px;
@@ -179,63 +179,7 @@
       justify-content: center;
     }
 
-    /* Khung thông báo Popover phong cách Facebook */
-    .fb-notif-dropdown {
-      position: absolute;
-      top: 60px;
-      right: 50px;
-      width: 360px;
-      background: var(--bg-cream);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      box-shadow: 0 12px 32px rgba(48, 59, 52, 0.15);
-      display: none;
-      flex-direction: column;
-      z-index: 1050;
-      overflow: hidden;
-    }
-    .fb-notif-dropdown.show { display: flex; }
-    .fb-notif-header {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #FFF;
-    }
-    .fb-notif-list {
-      max-height: 380px;
-      overflow-y: auto;
-    }
-    .fb-notif-item {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--bg-sub);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .fb-notif-item:hover {
-      background-color: var(--primary-light);
-    }
-    .fb-notif-item.unread {
-      background-color: #F1F8F3;
-    }
-    .fb-notif-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--primary-mint);
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-    .fb-notif-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .fb-notif-content { flex: 1; font-size: 13px; }
-    .fb-notif-content p { margin-bottom: 3px; }
-    .fb-notif-time { font-size: 11px; color: var(--text-muted); }
-
-    /* Nút Menu 3 gạch */
+    /* Menu 3 gạch */
     .menu-toggle-btn {
       width: 40px;
       height: 40px;
@@ -256,28 +200,190 @@
       border-radius: 2px;
     }
 
-    /* Menu Dropdown 3 gạch (Đúng 4 mục theo yêu cầu) */
+    /* ================= MESSENGER FACEBOOK-STYLE POPOVER ================= */
+    .fb-messenger-popover {
+      position: absolute;
+      top: 64px;
+      right: 50px;
+      width: 380px;
+      height: 520px;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: 0 16px 36px rgba(48, 59, 52, 0.18);
+      display: none;
+      flex-direction: column;
+      z-index: 1100;
+      overflow: hidden;
+    }
+    .fb-messenger-popover.show { display: flex; }
+    .messenger-popover-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFF;
+    }
+    .messenger-views-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Màn hình danh sách chat */
+    .messenger-list-view {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: #FFF;
+      transition: var(--transition);
+    }
+    .messenger-search-bar {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--bg-sub);
+    }
+    .messenger-conversations {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .messenger-convo-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--bg-sub);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .messenger-convo-item:hover { background-color: var(--primary-light); }
+    .messenger-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--primary-mint);
+      flex-shrink: 0;
+    }
+    .messenger-convo-info { flex: 1; min-width: 0; }
+    .messenger-convo-info h5 { font-size: 14px; margin-bottom: 2px; }
+    .messenger-convo-info p {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Màn hình chat trực tiếp 1-1 */
+    .messenger-direct-view {
+      position: absolute;
+      top: 0; left: 100%; width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-sub);
+      transition: var(--transition);
+    }
+    .messenger-direct-view.active { left: 0; }
+    .direct-chat-top {
+      padding: 10px 14px;
+      background: #FFF;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .direct-messages-box {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chat-bubble {
+      max-width: 75%;
+      padding: 8px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .chat-bubble.in {
+      background: #FFF;
+      align-self: flex-start;
+      border: 1px solid var(--border-color);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-bubble.out {
+      background: var(--primary-dark);
+      color: #FFF;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .direct-chat-input-bar {
+      padding: 10px 12px;
+      background: #FFF;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Popover Thông báo Facebook */
+    .fb-notif-dropdown {
+      position: absolute;
+      top: 64px;
+      right: 90px;
+      width: 360px;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 32px rgba(48, 59, 52, 0.15);
+      display: none;
+      flex-direction: column;
+      z-index: 1100;
+      overflow: hidden;
+    }
+    .fb-notif-dropdown.show { display: flex; }
+    .fb-notif-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFF;
+    }
+    .fb-notif-list { max-height: 360px; overflow-y: auto; }
+    .fb-notif-item {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--bg-sub);
+      display: flex;
+      gap: 12px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .fb-notif-item.unread { background-color: #F1F8F3; font-weight: 600; }
+
+    /* Dropdown Menu 3 Gạch */
     .dropdown-nav-menu {
       position: absolute;
-      top: 60px;
+      top: 64px;
       right: 0;
-      width: 240px;
+      width: 250px;
       background: var(--bg-cream);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       box-shadow: var(--card-shadow);
       padding: 10px 0;
       display: none;
-      z-index: 1050;
+      z-index: 1100;
     }
     .dropdown-nav-menu.show { display: block; }
     .dropdown-nav-menu a {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px 20px;
+      justify-content: space-between;
+      padding: 12px 18px;
       font-size: 14px;
-      font-weight: 500;
       color: var(--text-main);
       transition: var(--transition);
     }
@@ -285,15 +391,20 @@
       background-color: var(--primary-light);
       color: var(--primary-dark);
     }
-
-    /* ================= MAIN LAYOUT & SECTIONS ================= */
-    .view-section {
-      display: none;
-      padding: 40px 0 80px;
+    .menu-coin-badge {
+      background: var(--primary-dark);
+      color: #FFF;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 700;
     }
+
+    /* ================= MAIN VIEWS ================= */
+    .view-section { display: none; padding: 40px 0 80px; }
     .view-section.active { display: block; }
 
-    /* Form Controls */
+    /* Form Styles */
     .form-group { margin-bottom: 16px; }
     .form-group label {
       display: block;
@@ -304,7 +415,7 @@
     }
     .form-control {
       width: 100%;
-      padding: 11px 14px;
+      padding: 10px 14px;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
       font-size: 14px;
@@ -321,59 +432,53 @@
     .hero-banner {
       background: linear-gradient(135deg, var(--bg-cream) 0%, var(--primary-light) 60%, var(--primary-pastel) 100%);
       border-radius: var(--radius-lg);
-      padding: 50px;
+      padding: 48px;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       align-items: center;
       gap: 30px;
       border: 1px solid var(--border-color);
-      margin-bottom: 50px;
+      margin-bottom: 48px;
     }
-    .hero-content h1 { font-size: 38px; margin-bottom: 18px; }
-    .hero-content p { font-size: 16px; margin-bottom: 28px; max-width: 540px; }
-    .hero-png-container {
-      text-align: center;
-    }
+    .hero-content h1 { font-size: 36px; margin-bottom: 16px; }
+    .hero-content p { font-size: 16px; margin-bottom: 24px; }
     .hero-png-img {
       max-width: 100%;
-      height: 280px;
+      height: 270px;
       object-fit: contain;
-      filter: drop-shadow(0 12px 24px rgba(82, 125, 97, 0.2));
+      filter: drop-shadow(0 12px 24px rgba(82, 125, 97, 0.18));
     }
 
-    .section-title-wrap {
-      text-align: center;
-      margin: 50px 0 32px;
-    }
+    .section-title-wrap { text-align: center; margin: 48px 0 30px; }
     .section-title-wrap h2 { font-size: 28px; margin-bottom: 8px; }
 
     /* Features Grid (Cách hoạt động) */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-      margin-bottom: 50px;
+      gap: 20px;
+      margin-bottom: 48px;
     }
     .feature-card {
       background: var(--bg-cream);
-      padding: 26px;
+      padding: 24px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
       box-shadow: var(--card-shadow);
     }
 
-    /* Pricing Grid (Các gói đăng ký) */
+    /* Pricing Grid (Các gói) */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 26px;
-      margin-bottom: 60px;
+      gap: 24px;
+      margin-bottom: 48px;
     }
     .pricing-card {
       background: var(--bg-cream);
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
-      padding: 32px;
+      padding: 30px;
       box-shadow: var(--card-shadow);
       display: flex;
       flex-direction: column;
@@ -386,7 +491,7 @@
     .pricing-card-badge {
       position: absolute;
       top: -12px;
-      right: 24px;
+      right: 20px;
       background: var(--primary-dark);
       color: #FFF;
       padding: 4px 12px;
@@ -398,48 +503,40 @@
       font-size: 32px;
       font-weight: 800;
       color: var(--primary-dark);
-      margin: 16px 0 20px;
+      margin: 14px 0 18px;
     }
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 28px;
-      flex: 1;
-    }
-    .pricing-features li {
-      margin-bottom: 12px;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .pricing-features { list-style: none; margin-bottom: 24px; flex: 1; }
+    .pricing-features li { margin-bottom: 10px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
 
-    /* Đăng ký hồ sơ cá nhân trên trang chủ */
-    .home-profile-card {
+    /* Form Đăng ký hồ sơ cá nhân đầy đủ 14 trường */
+    .full-profile-card {
       background: var(--bg-cream);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 36px;
       box-shadow: var(--card-shadow);
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 40px;
-      align-items: center;
+      margin-bottom: 40px;
     }
-    .home-profile-png {
-      max-width: 100%;
-      height: 260px;
-      object-fit: contain;
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .grid-3-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
     }
 
     /* Matching Partner Grid */
     .matching-layout {
       display: grid;
-      grid-template-columns: 290px 1fr;
-      gap: 28px;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
     }
     .filter-panel {
       background: var(--bg-cream);
-      padding: 24px;
+      padding: 22px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
       height: fit-content;
@@ -469,8 +566,8 @@
       border-bottom: 1px solid var(--bg-sub);
     }
     .partner-avatar-img {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--primary-mint);
@@ -479,158 +576,115 @@
     .partner-body .row-info { margin-bottom: 6px; }
     .partner-body .row-info span.label { color: var(--text-muted); display: inline-block; width: 75px; }
 
-    /* ================= BONG BÓNG CHAT VÀ HỘP THƯ GÓC PHẢI DƯỚI ================= */
-    .floating-chat-bubble {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--primary-dark);
-      color: #FFF;
-      box-shadow: 0 10px 25px rgba(48, 59, 52, 0.25);
-      border: 2px solid var(--primary-mint);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1000;
-      transition: var(--transition);
-    }
-    .floating-chat-bubble:hover {
-      transform: scale(1.08);
-      background: #42674e;
-    }
-    .floating-chat-bubble svg { width: 28px; height: 28px; }
-    .bubble-badge {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: #E26D6D;
-      color: #FFF;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      font-size: 11px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #FFF;
-    }
-
-    /* Hộp thư tổng hợp dạng Messenger nổi */
-    .floating-inbox-modal {
-      position: fixed;
-      bottom: 96px;
-      right: 24px;
-      width: 480px;
-      height: 580px;
-      background: var(--bg-cream);
+    /* ================= ADMIN PORTAL & DASHBOARD ================= */
+    .admin-wrapper {
+      background: #FFF;
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
-      border: 1px solid var(--border-color);
-      display: none;
-      flex-direction: column;
-      z-index: 1000;
-      overflow: hidden;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
     }
-    .floating-inbox-modal.open { display: flex; }
-    .inbox-modal-header {
-      background: var(--primary-dark);
-      color: #FFF;
-      padding: 14px 18px;
+    .admin-nav-tabs {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .inbox-modal-body {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      flex: 1;
-      height: calc(100% - 53px);
-      overflow: hidden;
-    }
-    .inbox-sidebar {
-      border-right: 1px solid var(--border-color);
-      background: #FFF;
-      overflow-y: auto;
-    }
-    .inbox-channel-item {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--bg-sub);
-      cursor: pointer;
-      font-size: 13px;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
       gap: 10px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 24px;
+      overflow-x: auto;
     }
-    .inbox-channel-item:hover, .inbox-channel-item.active {
-      background: var(--primary-light);
-      font-weight: 600;
-    }
-    .inbox-channel-item.admin-channel {
-      border-left: 4px solid var(--primary-dark);
-      background: #F1F8F3;
-    }
-    .inbox-chat-area {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      background: var(--bg-sub);
-    }
-    .inbox-chat-header {
+    .admin-tab-btn {
       padding: 10px 16px;
-      background: #FFF;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 13px;
-      font-weight: 700;
+      border: none;
+      background: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+    }
+    .admin-tab-btn.active {
       color: var(--primary-dark);
+      border-bottom-color: var(--primary-dark);
     }
-    .inbox-messages-container {
-      flex: 1;
-      padding: 14px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .admin-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
     }
-    .msg-bubble {
-      max-width: 80%;
-      padding: 8px 14px;
-      border-radius: 14px;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-    .msg-bubble.in {
-      background: #FFF;
-      align-self: flex-start;
-      border: 1px solid var(--border-color);
-    }
-    .msg-bubble.out {
-      background: var(--primary-dark);
-      color: #FFF;
-      align-self: flex-end;
-    }
-    .msg-bubble.system-match {
-      background: var(--primary-pastel);
+    .stat-box {
+      background: var(--primary-light);
       border: 1px solid var(--primary-mint);
-      align-self: center;
-      max-width: 90%;
-      font-size: 12px;
-      text-align: center;
+      border-radius: var(--radius-sm);
+      padding: 16px;
     }
-    .inbox-input-form {
-      padding: 10px 14px;
-      background: #FFF;
+    .stat-box h5 { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .stat-box .val { font-size: 24px; font-weight: 800; color: var(--primary-dark); }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    .admin-table th, .admin-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .admin-table th { background: var(--bg-sub); color: var(--primary-dark); }
+
+    /* ================= FOOTER ================= */
+    footer.main-footer {
+      background: var(--bg-cream);
       border-top: 1px solid var(--border-color);
+      padding: 48px 0 24px;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+    .footer-grid-nav {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .footer-col h4 { font-size: 15px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: var(--text-muted); }
+    .footer-col ul li a:hover { color: var(--primary-dark); }
+    
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
       display: flex;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .logo-key-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .key-secret-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary-mint);
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      transition: var(--transition);
+    }
+    .key-secret-btn:hover {
+      color: var(--primary-dark);
+      transform: scale(1.15);
     }
 
-    /* ================= MODAL HỆ THỐNG ================= */
+    /* Modal */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -657,7 +711,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .modal-close {
       background: none;
@@ -667,65 +721,12 @@
       color: var(--text-muted);
     }
 
-    /* ================= GIAO DIỆN ADMIN ================= */
-    .admin-wrapper {
-      background: #FFF;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      box-shadow: var(--card-shadow);
-    }
-    .admin-matching-card {
-      background: var(--bg-cream);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 16px;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    /* ================= FOOTER VÀ BIỂU TƯỢNG KEY ================= */
-    footer.main-footer {
-      background: var(--bg-cream);
-      border-top: 1px solid var(--border-color);
-      padding: 40px 0 24px;
-      margin-top: 60px;
-      font-size: 14px;
-      position: relative;
-    }
-    .footer-bottom {
-      border-top: 1px solid var(--border-color);
-      padding-top: 20px;
-      margin-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-    .admin-key-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #A8D5B5;
-      padding: 6px;
-      border-radius: 4px;
-      transition: var(--transition);
-    }
-    .admin-key-btn:hover {
-      color: var(--primary-dark);
-      background: var(--primary-light);
-    }
-
     @media (max-width: 900px) {
-      .hero-banner { grid-template-columns: 1fr; padding: 30px; }
-      .home-profile-card { grid-template-columns: 1fr; }
+      .hero-banner { grid-template-columns: 1fr; padding: 28px; }
+      .grid-2-col, .grid-3-col { grid-template-columns: 1fr; }
       .matching-layout { grid-template-columns: 1fr; }
-      .floating-inbox-modal { width: calc(100vw - 32px); right: 16px; bottom: 84px; height: 500px; }
-      .inbox-modal-body { grid-template-columns: 130px 1fr; }
+      .footer-grid-nav { grid-template-columns: 1fr 1fr; }
+      .fb-messenger-popover { width: calc(100vw - 32px); right: 16px; }
       .fb-notif-dropdown { width: calc(100vw - 32px); right: 16px; }
       .nav-links-desktop { display: none; }
     }
@@ -736,7 +737,7 @@
   <!-- ==================== HEADER NAVIGATION ==================== -->
   <header class="main-header" id="app-header">
     <div class="container nav-container">
-      <!-- Logo TalkBuddy -->
+      <!-- Logo -->
       <div class="brand-logo" onclick="app.navigate('home')">
         <svg viewBox="0 0 40 40">
           <circle cx="20" cy="20" r="18" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
@@ -747,19 +748,25 @@
         <span>TalkBuddy</span>
       </div>
 
-      <!-- Điều hướng chính -->
+      <!-- Links Desktop -->
       <nav class="nav-links-desktop">
         <a href="javascript:void(0)" onclick="app.navigate('home')" id="nav-item-home" class="active">Trang chủ</a>
         <a href="javascript:void(0)" onclick="app.navigate('tutors')" id="nav-item-tutors">Gia sư</a>
         <a href="javascript:void(0)" onclick="app.navigate('matching')" id="nav-item-matching">Tìm bạn luyện nói</a>
       </nav>
 
-      <!-- Hành động góc phải: Thông báo chuông + Menu 3 gạch -->
+      <!-- Actions: Thông báo + Chatbox Messenger + Menu 3 gạch -->
       <div class="nav-actions">
-        <!-- Nút Thông báo (Kiểu Facebook) -->
-        <button class="notif-bell-btn" onclick="app.toggleNotifDropdown()" title="Thông báo">
+        <!-- Nút Thông báo -->
+        <button class="round-nav-btn" onclick="app.toggleNotifDropdown()" title="Thông báo">
           <svg class="icon"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-          <span class="notif-badge-count" id="notif-count-badge">2</span>
+          <span class="nav-badge-count" id="notif-count-badge">1</span>
+        </button>
+
+        <!-- Nút Chatbox Messenger tròn trên thanh điều hướng -->
+        <button class="round-nav-btn" onclick="app.toggleMessengerPopover()" title="Hộp thư Messenger">
+          <svg class="icon"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <span class="nav-badge-count" id="messenger-count-badge">2</span>
         </button>
 
         <!-- Nút Menu 3 gạch -->
@@ -769,35 +776,81 @@
           <span></span>
         </button>
 
-        <!-- KHUNG THÔNG BÁO DẠNG FACEBOOK DROPDOWN -->
+        <!-- KHUNG THÔNG BÁO DẠNG FACEBOOK -->
         <div class="fb-notif-dropdown" id="fb-notif-dropdown">
           <div class="fb-notif-header">
             <h4 style="font-size: 15px;">Thông báo</h4>
             <a href="javascript:void(0)" style="font-size: 12px; color: var(--primary-dark);" onclick="app.markAllNotifsRead()">Đánh dấu đã đọc</a>
           </div>
-          <div class="fb-notif-list" id="fb-notif-list">
-            <!-- Render danh sách thông báo -->
+          <div class="fb-notif-list" id="fb-notif-list"></div>
+        </div>
+
+        <!-- KHUNG CHAT MESSENGER NHỎ DẠNG FACEBOOK -->
+        <div class="fb-messenger-popover" id="fb-messenger-popover">
+          <div class="messenger-popover-header">
+            <h4 style="font-size: 15px;">Đoạn chat Messenger</h4>
+            <div style="display: flex; gap: 8px;">
+              <button onclick="app.toggleMessengerPopover()" style="background:none; border:none; cursor:pointer; color:var(--text-muted); font-size:18px;">&times;</button>
+            </div>
+          </div>
+          <div class="messenger-views-container">
+            <!-- 1. Danh sách hội thoại -->
+            <div class="messenger-list-view" id="messenger-list-view">
+              <div class="messenger-search-bar">
+                <input type="text" class="form-control" placeholder="Tìm kiếm trong Messenger..." style="padding: 6px 10px; font-size: 12px;">
+              </div>
+              <div class="messenger-conversations" id="messenger-convos-container">
+                <!-- Render các đoạn chat -->
+              </div>
+            </div>
+            <!-- 2. Trực tiếp hội thoại 1-1 -->
+            <div class="messenger-direct-view" id="messenger-direct-view">
+              <div class="direct-chat-top">
+                <button onclick="app.backToMessengerList()" style="background:none; border:none; cursor:pointer; font-size:16px;">&larr;</button>
+                <img src="" id="direct-chat-avatar" class="messenger-avatar" style="width:30px; height:30px;">
+                <div style="flex:1;">
+                  <h5 id="direct-chat-name" style="font-size:13px;">Tên bạn học</h5>
+                  <div style="font-size:10px; color:var(--text-muted);" id="direct-chat-status">Đang hoạt động</div>
+                </div>
+              </div>
+              <div class="direct-messages-box" id="direct-messages-box">
+                <!-- Chat messages -->
+              </div>
+              <form class="direct-chat-input-bar" onsubmit="app.handleSendMessengerDirect(event)">
+                <input type="text" class="form-control" id="direct-chat-input" placeholder="Nhập tin nhắn..." style="padding: 6px 10px; font-size: 13px;" required>
+                <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Gửi</button>
+              </form>
+            </div>
           </div>
         </div>
 
-        <!-- MENU 3 GẠCH (Đúng 4 mục theo thứ tự yêu cầu) -->
+        <!-- DROPDOWN MENU 3 GẠCH (HIỂN THỊ RÕ 20 XU NGAY TẠI MENU) -->
         <div class="dropdown-nav-menu" id="dropdown-menu">
-          <a href="javascript:void(0)" onclick="app.navigate('profile')">
-            <svg class="icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            Hồ sơ cá nhân
-          </a>
           <a href="javascript:void(0)" onclick="app.navigate('pricing')">
-            <svg class="icon"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><line x1="12" y1="6" x2="12" y2="8"></line><line x1="12" y1="16" x2="12" y2="18"></line></svg>
-            Xu và Premium
+            <div style="display:flex; align-items:center; gap:10px;">
+              <svg class="icon"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><line x1="12" y1="6" x2="12" y2="8"></line><line x1="12" y1="16" x2="12" y2="18"></line></svg>
+              <span>Xu và Premium</span>
+            </div>
+            <span class="menu-coin-badge" id="menu-coin-display">20 Xu</span>
+          </a>
+          <a href="javascript:void(0)" onclick="app.navigate('profile')">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <svg class="icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Hồ sơ cá nhân</span>
+            </div>
           </a>
           <a href="javascript:void(0)" onclick="app.navigate('support')">
-            <svg class="icon"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            Hỗ trợ khách hàng
+            <div style="display:flex; align-items:center; gap:10px;">
+              <svg class="icon"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <span>Hỗ trợ khách hàng</span>
+            </div>
           </a>
           <div id="menu-auth-item">
-            <a href="javascript:void(0)" onclick="app.openAuthModal('login')">
-              <svg class="icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
-              Đăng nhập / Đăng ký
+            <a href="javascript:void(0)" onclick="app.openAuthModal()">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <svg class="icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                <span>Đăng ký / Đăng nhập</span>
+              </div>
             </a>
           </div>
         </div>
@@ -809,10 +862,10 @@
   <section id="view-home" class="view-section active">
     <div class="container">
       
-      <!-- 1. BANNER CHÍNH CÓ HÌNH MINH HOẠ PNG -->
+      <!-- 1. Hero Banner PNG -->
       <div class="hero-banner">
         <div class="hero-content">
-          <span class="badge" style="margin-bottom: 12px;">Cộng đồng kết nối 1-1 tại TP.HCM</span>
+          <span class="badge" style="margin-bottom: 12px;">Nền tảng kết nối 1-1 tại TP.HCM</span>
           <h1>Tìm bạn đồng hành lý tưởng để luyện nói ngoại ngữ.</h1>
           <p>
             Chia sẻ ngôn ngữ, trình độ và khu vực của bạn. TalkBuddy giúp bạn kết nối với người bạn luyện nói phù hợp để cùng thực hành giao tiếp và cải thiện phản xạ mỗi ngày.
@@ -822,46 +875,45 @@
             <a href="#home-how" class="btn btn-secondary">Tìm hiểu cách hoạt động</a>
           </div>
         </div>
-        <div class="hero-png-container">
-          <!-- Hình ảnh PNG minh họa hai bạn trò chuyện ngoại ngữ -->
+        <div style="text-align: center;">
           <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80" alt="Hai người đang luyện nói ngoại ngữ" class="hero-png-img">
         </div>
       </div>
 
-      <!-- 2. CÁCH HOẠT ĐỘNG -->
+      <!-- 2. Cách hoạt động -->
       <div id="home-how">
         <div class="section-title-wrap">
           <h2>Cách hoạt động</h2>
-          <p>Quy trình 4 bước đơn giản để bắt đầu buổi trò chuyện giao tiếp tự tin.</p>
+          <p>Thực hành trực tiếp 1-1 tại quán cà phê hoặc thư viện tại các quận TP.HCM.</p>
         </div>
         <div class="features-grid">
           <div class="feature-card">
             <span class="badge" style="margin-bottom: 10px;">Bước 1</span>
-            <h3>Hoàn thiện hồ sơ</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Chọn ngôn ngữ (Anh, Nhật, Hàn, Trung), quận sinh sống và mục tiêu học tập.</p>
+            <h3>Đăng ký hồ sơ</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Cung cấp trình độ, mục tiêu và quận bạn đang sinh sống tại TP.HCM.</p>
           </div>
           <div class="feature-card">
             <span class="badge" style="margin-bottom: 10px;">Bước 2</span>
-            <h3>Đối chiếu thông minh</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Hệ thống và ban quản trị thẩm định mức độ tương thích trên thang 100 điểm.</p>
+            <h3>Hệ thống ghép đôi</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Thuật toán 100 điểm tính toán mức độ hòa hợp về mục tiêu và khoảng cách.</p>
           </div>
           <div class="feature-card">
             <span class="badge" style="margin-bottom: 10px;">Bước 3</span>
-            <h3>Nhận thông báo ghép đôi</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Admin Support gửi thông báo ghép nối và mở kênh chat kết nối 2 bên.</p>
+            <h3>Nhận thông báo & Chat</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Trò chuyện qua Messenger để chốt khung giờ và quán cà phê phù hợp.</p>
           </div>
           <div class="feature-card">
             <span class="badge" style="margin-bottom: 10px;">Bước 4</span>
-            <h3>Gặp gỡ & Luyện tập</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Hẹn gặp tại quán cà phê gần bạn tại TP.HCM để nâng cao phản xạ.</p>
+            <h3>Giao tiếp tự tin</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">Luyện phản xạ thực tế, mở rộng vốn từ vựng và tự tin nói ngoại ngữ.</p>
           </div>
         </div>
       </div>
 
-      <!-- 3. CÁC GÓI ĐĂNG KÝ (XU & PREMIUM) -->
+      <!-- 3. Các gói đăng ký (Xu & Premium 69.000đ) -->
       <div class="section-title-wrap">
         <h2>Các gói đăng ký</h2>
-        <p>Quy đổi minh bạch: 1.000 VNĐ = 1 Xu. Luyện nói tự tin không giới hạn.</p>
+        <p>Tặng ngay 20 Xu miễn phí khi gia nhập. Tỷ lệ quy đổi: 1.000 VNĐ = 1 Xu.</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
@@ -879,10 +931,10 @@
         <div class="pricing-card">
           <div class="pricing-card-badge">Tặng +10 Xu</div>
           <h3>Gói Tiết Kiệm</h3>
-          <p style="font-size: 13px; color: var(--text-muted);">Tối ưu chi phí cho người học thường xuyên.</p>
+          <p style="font-size: 13px; color: var(--text-muted);">Lựa chọn tối ưu cho học viên luyện tập đều đặn.</p>
           <div class="pricing-price">50.000đ</div>
           <ul class="pricing-features">
-            <li>Nhận ngay 60 Xu (Tặng 10 Xu)</li>
+            <li>Nhận ngay 60 Xu (Tặng thêm 10 Xu)</li>
             <li>Fast Matching kết nối siêu tốc</li>
             <li>Mở rộng thêm 5 lượt kết nối bạn học</li>
           </ul>
@@ -892,38 +944,60 @@
         <div class="pricing-card featured">
           <div class="pricing-card-badge">Khuyên Dùng</div>
           <h3>Hội Viên Premium</h3>
-          <p style="font-size: 13px; color: var(--text-muted);">Trải nghiệm toàn diện và trợ giá gia sư chuyên sâu.</p>
+          <p style="font-size: 13px; color: var(--text-muted);">Đặc quyền tối đa, không quảng cáo và trợ giá gia sư.</p>
           <div class="pricing-price">69.000đ <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">/ tháng</span></div>
           <ul class="pricing-features">
             <li>Tặng 70 Xu hàng tháng vào ví</li>
             <li>Không quảng cáo phiền toái</li>
-            <li>Ưu tiên Fast Matching với bạn học quốc tế</li>
+            <li>Ưu tiên ghép đôi với người nước ngoài tại TP.HCM</li>
             <li><strong>Giảm 50% phí hoa hồng</strong> khi đặt gia sư 1-1</li>
           </ul>
           <button class="btn btn-primary" onclick="app.subscribePremium()">Đăng ký 69.000đ/tháng</button>
         </div>
       </div>
 
-      <!-- 4. ĐĂNG KÝ HỒ SƠ CÁ NHÂN -->
+      <!-- 4. Form Đăng ký hồ sơ cá nhân đầy đủ 14 trường yêu cầu -->
       <div class="section-title-wrap">
         <h2>Đăng ký hồ sơ cá nhân</h2>
-        <p>Thiết lập thông tin để hệ thống tìm kiếm người bạn luyện nói phù hợp nhất tại TP.HCM.</p>
+        <p>Hoàn thiện hồ sơ để hệ thống và Admin ghép đôi chính xác nhất tại TP.HCM.</p>
       </div>
-      <div class="home-profile-card">
-        <div style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80" alt="Sinh viên học ngoại ngữ cùng nhau" class="home-profile-png" style="border-radius: 14px;">
-          <h3 style="margin-top: 14px; font-size: 18px;">Gia nhập cộng đồng TP.HCM</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Hơn 500+ bạn trẻ đang tìm người luyện nói mỗi tuần.</p>
-        </div>
-        <form onsubmit="app.handleSaveHomeProfile(event)">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+
+      <div class="full-profile-card">
+        <form onsubmit="app.handleFullProfileSubmit(event)">
+          <!-- Hàng 1: Avatar PNG, Họ tên, Ngày sinh, Giới tính -->
+          <div class="grid-3-col">
             <div class="form-group">
-              <label>Họ và tên</label>
-              <input type="text" class="form-control" id="home-prof-name" placeholder="Nguyễn Văn A" required>
+              <label>1. Ảnh đại diện</label>
+              <select class="form-control" id="prof-avatar">
+                <option value="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80">Nữ – Thanh lịch (PNG)</option>
+                <option value="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80">Nam – Trẻ trung (PNG)</option>
+                <option value="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80">Nữ – Năng động (PNG)</option>
+                <option value="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80">Nam – Chững chạc (PNG)</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Khu vực TP.HCM</label>
-              <select class="form-control" id="home-prof-district" required>
+              <label>2. Họ và tên</label>
+              <input type="text" class="form-control" id="prof-fullname" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+              <label>3. Ngày sinh</label>
+              <input type="date" class="form-control" id="prof-dob" required>
+            </div>
+          </div>
+
+          <!-- Hàng 2: Giới tính, Khu vực TP.HCM, Nghề nghiệp/Trường -->
+          <div class="grid-3-col">
+            <div class="form-group">
+              <label>4. Giới tính</label>
+              <select class="form-control" id="prof-gender">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>5. Khu vực sinh sống tại TP.HCM</label>
+              <select class="form-control" id="prof-district" required>
                 <option value="Quận 1">Quận 1</option>
                 <option value="Quận 3">Quận 3</option>
                 <option value="Quận 5">Quận 5</option>
@@ -933,45 +1007,96 @@
                 <option value="Phú Nhuận">Phú Nhuận</option>
                 <option value="Gò Vấp">Gò Vấp</option>
                 <option value="Tân Bình">Tân Bình</option>
+                <option value="Tân Phú">Tân Phú</option>
                 <option value="Thành phố Thủ Đức">Thành phố Thủ Đức</option>
               </select>
             </div>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
             <div class="form-group">
-              <label>Ngôn ngữ muốn luyện</label>
-              <select class="form-control" id="home-prof-lang">
+              <label>6. Trường học hoặc nghề nghiệp</label>
+              <input type="text" class="form-control" id="prof-occupation" placeholder="Ví dụ: ĐH Kinh Tế / Nhân viên Marketing" required>
+            </div>
+          </div>
+
+          <!-- Hàng 3: Ngôn ngữ, Trình độ, Mục tiêu -->
+          <div class="grid-3-col">
+            <div class="form-group">
+              <label>7. Ngôn ngữ đang học</label>
+              <select class="form-control" id="prof-language">
                 <option value="Tiếng Anh">Tiếng Anh</option>
-                <option value="Tiếng Trung">Tiếng Trung</option>
                 <option value="Tiếng Nhật">Tiếng Nhật</option>
                 <option value="Tiếng Hàn">Tiếng Hàn</option>
+                <option value="Tiếng Trung">Tiếng Trung</option>
                 <option value="Tiếng Pháp">Tiếng Pháp</option>
+                <option value="Ngôn ngữ khác">Ngôn ngữ khác</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Trình độ hiện tại</label>
-              <select class="form-control" id="home-prof-level">
+              <label>8. Trình độ hiện tại</label>
+              <select class="form-control" id="prof-level">
+                <option value="Mới bắt đầu">Mới bắt đầu</option>
                 <option value="Sơ cấp">Sơ cấp</option>
                 <option value="Trung cấp">Trung cấp</option>
-                <option value="Nâng cao">Nâng cao</option>
+                <option value="Trung cấp nâng cao">Trung cấp nâng cao</option>
                 <option value="Cao cấp">Cao cấp</option>
               </select>
             </div>
+            <div class="form-group">
+              <label>9. Mục tiêu học tập</label>
+              <select class="form-control" id="prof-goal">
+                <option value="Giao tiếp hằng ngày">Giao tiếp hằng ngày</option>
+                <option value="Du học">Du học</option>
+                <option value="Công việc">Công việc</option>
+                <option value="Phỏng vấn">Phỏng vấn</option>
+                <option value="IELTS">IELTS</option>
+                <option value="TOEIC">TOEIC</option>
+                <option value="JLPT">JLPT</option>
+                <option value="TOPIK">TOPIK</option>
+                <option value="HSK">HSK</option>
+                <option value="Luyện phản xạ">Luyện phản xạ</option>
+                <option value="Tăng sự tự tin khi giao tiếp">Tăng sự tự tin khi giao tiếp</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Mục tiêu luyện tập</label>
-            <select class="form-control" id="home-prof-goal">
-              <option value="Giao tiếp">Giao tiếp hằng ngày phản xạ</option>
-              <option value="Công việc">Giao tiếp công việc & Phỏng vấn</option>
-              <option value="Du học">Chuẩn bị đi du học</option>
-              <option value="IELTS">Luyện thi chứng chỉ (IELTS/JLPT/HSK)</option>
-            </select>
+
+          <!-- Hàng 4: Sở thích, Chủ đề muốn nói -->
+          <div class="grid-2-col">
+            <div class="form-group">
+              <label>10. Sở thích cá nhân</label>
+              <input type="text" class="form-control" id="prof-interests" placeholder="Ví dụ: Cà phê, Đọc sách, Âm nhạc, Du lịch">
+            </div>
+            <div class="form-group">
+              <label>11. Chủ đề muốn trò chuyện</label>
+              <input type="text" class="form-control" id="prof-topics" placeholder="Ví dụ: Công nghệ, Văn hóa khởi nghiệp, Ẩm thực Sài Gòn">
+            </div>
           </div>
-          <div class="form-group">
-            <label>Thời gian rảnh</label>
-            <input type="text" class="form-control" id="home-prof-free" placeholder="Ví dụ: Tối thứ 5 & Chiều Chủ Nhật">
+
+          <!-- Hàng 5: Thời gian rảnh, Tần suất, Hình thức -->
+          <div class="grid-3-col">
+            <div class="form-group">
+              <label>12. Thời gian rảnh</label>
+              <input type="text" class="form-control" id="prof-freetime" placeholder="Ví dụ: Tối thứ 4 & Chiều Chủ Nhật" required>
+            </div>
+            <div class="form-group">
+              <label>13. Tần suất luyện tập</label>
+              <select class="form-control" id="prof-freq">
+                <option value="1-2 buổi / tuần">1-2 buổi / tuần</option>
+                <option value="3-4 buổi / tuần">3-4 buổi / tuần</option>
+                <option value="Hằng ngày">Hằng ngày</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>14. Hình thức luyện tập mong muốn</label>
+              <select class="form-control" id="prof-mode">
+                <option value="Trực tiếp tại quán cà phê/thư viện">Trực tiếp tại quán cà phê/thư viện</option>
+                <option value="Online 1-1">Online 1-1</option>
+                <option value="Linh hoạt cả hai">Linh hoạt cả hai</option>
+              </select>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; margin-top: 8px;">Lưu & Bắt đầu tìm kiếm bạn học</button>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 13px; font-size: 15px; margin-top: 10px;">
+            Lưu hồ sơ & Bắt đầu tìm bạn học
+          </button>
         </form>
       </div>
 
@@ -1029,16 +1154,6 @@
               <option value="Thủ Đức">Thủ Đức</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Mục tiêu</label>
-            <select class="form-control" id="filter-goal" onchange="app.applyFilters()">
-              <option value="All">Mọi mục tiêu</option>
-              <option value="Giao tiếp">Giao tiếp</option>
-              <option value="Công việc">Công việc</option>
-              <option value="Phỏng vấn">Phỏng vấn</option>
-              <option value="IELTS">IELTS</option>
-            </select>
-          </div>
         </div>
 
         <div class="partner-grid" id="partner-cards-container"></div>
@@ -1046,72 +1161,18 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW 4: HỒ SƠ CÁ NHÂN ==================== -->
-  <section id="view-profile" class="view-section">
-    <div class="container" style="max-width: 700px;">
-      <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--card-shadow);">
-        <h2 style="margin-bottom: 20px;">Hồ sơ học viên cá nhân</h2>
-        <form onsubmit="app.handleUpdateProfile(event)">
-          <div class="form-group">
-            <label>Họ và tên</label>
-            <input type="text" class="form-control" id="prof-fullname" required>
-          </div>
-          <div class="form-group">
-            <label>Khu vực TP.HCM</label>
-            <select class="form-control" id="prof-district" required>
-              <option value="Quận 1">Quận 1</option>
-              <option value="Quận 3">Quận 3</option>
-              <option value="Quận 5">Quận 5</option>
-              <option value="Quận 7">Quận 7</option>
-              <option value="Quận 10">Quận 10</option>
-              <option value="Bình Thạnh">Bình Thạnh</option>
-              <option value="Phú Nhuận">Phú Nhuận</option>
-              <option value="Gò Vấp">Gò Vấp</option>
-              <option value="Tân Bình">Tân Bình</option>
-              <option value="Thành phố Thủ Đức">Thành phố Thủ Đức</option>
-            </select>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-            <div class="form-group">
-              <label>Ngôn ngữ</label>
-              <select class="form-control" id="prof-language">
-                <option value="Tiếng Anh">Tiếng Anh</option>
-                <option value="Tiếng Trung">Tiếng Trung</option>
-                <option value="Tiếng Nhật">Tiếng Nhật</option>
-                <option value="Tiếng Hàn">Tiếng Hàn</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Trình độ</label>
-              <select class="form-control" id="prof-level">
-                <option value="Sơ cấp">Sơ cấp</option>
-                <option value="Trung cấp">Trung cấp</option>
-                <option value="Nâng cao">Nâng cao</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Sở thích trò chuyện</label>
-            <input type="text" class="form-control" id="prof-interests" placeholder="Ví dụ: Cà phê, Du lịch, Công nghệ">
-          </div>
-          <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Lưu thay đổi</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== VIEW 5: XU VÀ PREMIUM ==================== -->
+  <!-- ==================== VIEW 4: XU VÀ PREMIUM ==================== -->
   <section id="view-pricing" class="view-section">
     <div class="container">
       <div class="section-title-wrap">
         <h2>Ví Xu và Hội Viên Premium</h2>
-        <p>Số dư ví hiện tại: <strong id="wallet-balance-num">20</strong> Xu</p>
+        <p>Số dư ví hiện tại của bạn: <strong id="wallet-balance-num">20</strong> Xu</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3>Gói Xu Cơ Bản</h3>
           <div class="pricing-price">20.000đ</div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">20 Xu vào tài khoản luyện nói.</p>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Nhận ngay 20 Xu vào tài khoản.</p>
           <button class="btn btn-secondary" onclick="app.buyCoins('Gói Cơ bản', 20000, 20)">Mua 20 Xu</button>
         </div>
         <div class="pricing-card">
@@ -1132,7 +1193,7 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW 6: HỖ TRỢ KHÁCH HÀNG ==================== -->
+  <!-- ==================== VIEW 5: HỖ TRỢ KHÁCH HÀNG ==================== -->
   <section id="view-support" class="view-section">
     <div class="container" style="max-width: 680px;">
       <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--card-shadow);">
@@ -1158,211 +1219,293 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW 7: QUẢN TRỊ ADMIN ==================== -->
+  <!-- ==================== VIEW 6: ADMIN DASHBOARD (BẢO MẬT RIÊNG) ==================== -->
   <section id="view-admin" class="view-section">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <div>
-          <h2>Quản trị hệ thống TalkBuddy TP.HCM</h2>
-          <p style="font-size: 13px; color: var(--text-muted);">Thẩm định kết nối, gửi thông báo ghép đôi và trao đổi với khách hàng.</p>
+          <h2>Trung tâm Quản trị Toàn diện TalkBuddy TP.HCM</h2>
+          <p style="font-size: 13px; color: var(--text-muted);">Phiên làm việc Quản trị viên: <strong id="admin-session-badge">Admin Manager</strong></p>
         </div>
-        <button class="btn btn-outline" onclick="app.navigate('home')">Thoát Admin</button>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-outline" onclick="app.adminChangePasswordPrompt()">Đổi mật khẩu</button>
+          <button class="btn btn-danger" onclick="app.adminLogout()">Đăng xuất Admin</button>
+        </div>
       </div>
 
       <div class="admin-wrapper">
-        <!-- 1. KẾT NỐI THÀNH CÔNG (MATCHING DESK) -->
-        <h3 style="font-size: 18px; margin-bottom: 14px;">Ghép đôi tương thích (Admin Matching Desk)</h3>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-          Xem các cặp đôi có độ tương thích cao tại TP.HCM và gửi thông báo ghép nối chính thức để 2 học viên bắt đầu trao đổi.
-        </p>
-
-        <div id="admin-matching-list">
-          <!-- Render danh sách cặp đôi tương thích -->
+        <!-- Thanh Tab điều hướng Quản trị -->
+        <div class="admin-nav-tabs">
+          <button class="admin-tab-btn active" onclick="app.switchAdminTab('overview')">Tổng quan (Dashboard)</button>
+          <button class="admin-tab-btn" onclick="app.switchAdminTab('matching')">Quản lý Matching</button>
+          <button class="admin-tab-btn" onclick="app.switchAdminTab('chatbox')">Chatbox Khách hàng</button>
+          <button class="admin-tab-btn" onclick="app.switchAdminTab('users')">Quản lý Người dùng</button>
+          <button class="admin-tab-btn" onclick="app.switchAdminTab('services')">Quản lý Dịch vụ & Xu</button>
+          <button class="admin-tab-btn" onclick="app.switchAdminTab('support')">Hỗ trợ & Báo cáo</button>
+          <button class="admin-tab-btn" onclick="app.switchAdminTab('content')">Quản lý Nội dung</button>
         </div>
 
-        <!-- 2. CHATBOX TRỰC TIẾP GIỮA ADMIN VÀ KHÁCH HÀNG -->
-        <h3 style="font-size: 18px; margin: 32px 0 14px;">Chatbox giữa Admin và Khách hàng</h3>
-        <div style="border: 1px solid var(--border-color); border-radius: var(--radius-sm); overflow: hidden; display: grid; grid-template-columns: 220px 1fr; height: 360px;">
-          <div style="border-right: 1px solid var(--border-color); background: #FFF; overflow-y: auto;" id="admin-user-chat-list">
-            <!-- Danh sách người dùng -->
-          </div>
-          <div style="display: flex; flex-direction: column; background: var(--bg-sub);">
-            <div style="padding: 10px 16px; background: #FFF; border-bottom: 1px solid var(--border-color); font-weight: 700; font-size: 13px;" id="admin-chat-target-name">
-              Chọn một học viên để trao đổi
-            </div>
-            <div style="flex: 1; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;" id="admin-chat-messages">
-              <div style="text-align: center; font-size: 12px; color: var(--text-muted);">Chưa chọn hội thoại</div>
-            </div>
-            <form style="padding: 10px; background: #FFF; border-top: 1px solid var(--border-color); display: flex; gap: 8px;" onsubmit="app.handleAdminSendMessage(event)">
-              <input type="text" class="form-control" id="admin-chat-input" placeholder="Nhập tin nhắn hỗ trợ từ phía Admin..." required>
-              <button type="submit" class="btn btn-primary" style="padding: 8px 14px;">Gửi</button>
-            </form>
+        <!-- 1. TAB: TỔNG QUAN STATS -->
+        <div id="admin-sec-overview" class="admin-sub-sec">
+          <div class="admin-stat-grid">
+            <div class="stat-box"><h5>Tổng người dùng</h5><div class="val">254</div></div>
+            <div class="stat-box"><h5>Người dùng mới</h5><div class="val">+38</div></div>
+            <div class="stat-box"><h5>Người dùng hoạt động</h5><div class="val">182</div></div>
+            <div class="stat-box"><h5>Tổng kết nối</h5><div class="val">146</div></div>
+            <div class="stat-box"><h5>Tổng tin nhắn</h5><div class="val">1.890</div></div>
+            <div class="stat-box"><h5>Hội viên Premium</h5><div class="val">42</div></div>
+            <div class="stat-box"><h5>Doanh thu tháng</h5><div class="val">6.850.000đ</div></div>
+            <div class="stat-box"><h5>Tổng số báo cáo</h5><div class="val">3</div></div>
+            <div class="stat-box"><h5>Ticket chưa xử lý</h5><div class="val">2</div></div>
           </div>
         </div>
+
+        <!-- 2. TAB: QUẢN LÝ MATCHING -->
+        <div id="admin-sec-matching" class="admin-sub-sec" style="display:none;">
+          <h4>Đối chiếu Matching & Ghép đôi tương thích (TP.HCM)</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+            Trọng số hệ thống: Ngôn ngữ & Trình độ (25đ) &bull; Mục tiêu (20đ) &bull; Sở thích (20đ) &bull; Khu vực (15đ) &bull; Thời gian (15đ) &bull; Phong cách (5đ).
+          </p>
+          <div id="admin-matching-desk-list"></div>
+        </div>
+
+        <!-- 3. TAB: CHATBOX KHÁCH HÀNG -->
+        <div id="admin-sec-chatbox" class="admin-sub-sec" style="display:none;">
+          <h4>Chatbox Admin &bull; Nhắn tin cho khách hàng đã ghép đôi hoặc hỗ trợ</h4>
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-sm); overflow: hidden; display: grid; grid-template-columns: 240px 1fr; height: 380px; margin-top: 14px;">
+            <div style="border-right: 1px solid var(--border-color); background: #FFF; overflow-y: auto;" id="admin-customer-chat-list"></div>
+            <div style="display: flex; flex-direction: column; background: var(--bg-sub);">
+              <div style="padding: 10px 16px; background: #FFF; border-bottom: 1px solid var(--border-color); font-weight: 700; font-size: 13px;" id="admin-chat-header-title">Chọn khách hàng</div>
+              <div style="flex: 1; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;" id="admin-chat-thread-box"></div>
+              <form style="padding: 10px; background: #FFF; border-top: 1px solid var(--border-color); display: flex; gap: 8px;" onsubmit="app.handleAdminSendDirect(event)">
+                <input type="text" class="form-control" id="admin-input-direct" placeholder="Nhắn tin thông báo ghép đôi hoặc tư vấn..." required>
+                <button type="submit" class="btn btn-primary" style="padding: 8px 14px;">Gửi</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. TAB: QUẢN LÝ NGƯỜI DÙNG -->
+        <div id="admin-sec-users" class="admin-sub-sec" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h4>Danh sách học viên TP.HCM</h4>
+            <input type="text" class="form-control" placeholder="Tìm theo tên hoặc quận..." style="width:240px;" oninput="app.searchAdminUsers(this.value)">
+          </div>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Họ tên</th><th>Quận</th><th>Ngôn ngữ</th><th>Trình độ</th><th>Trạng thái</th><th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- 5. TAB: QUẢN LÝ DỊCH VỤ -->
+        <div id="admin-sec-services" class="admin-sub-sec" style="display:none;">
+          <h4>Cấu hình Gói dịch vụ, Xu & Hoa hồng Gia sư</h4>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:16px;">
+            <div style="background:var(--bg-cream); border:1px solid var(--border-color); padding:18px; border-radius:var(--radius-sm);">
+              <h5>Gói Xu & Premium</h5>
+              <p style="font-size:13px; margin: 8px 0;">Gói Cơ bản: 20.000đ (20 Xu)<br>Gói Tiết kiệm: 50.000đ (60 Xu)<br>Premium: 69.000đ/tháng (70 Xu, giảm 50% hoa hồng)</p>
+              <button class="btn btn-secondary" style="font-size:12px;" onclick="alert('Đã cập nhật bảng giá dịch vụ thành công!')">Cập nhật bảng giá</button>
+            </div>
+            <div style="background:var(--bg-cream); border:1px solid var(--border-color); padding:18px; border-radius:var(--radius-sm);">
+              <h5>Hoa hồng Gia sư 1-1</h5>
+              <p style="font-size:13px; margin: 8px 0;">Mức hoa hồng tiêu chuẩn: <strong>18%</strong><br>Ưu đãi Hội viên Premium: <strong>9%</strong> (Giảm 50%)</p>
+              <button class="btn btn-secondary" style="font-size:12px;" onclick="alert('Đã lưu cấu hình tỷ lệ hoa hồng!')">Lưu cấu hình</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. TAB: HỖ TRỢ & BÁO CÁO -->
+        <div id="admin-sec-support" class="admin-sub-sec" style="display:none;">
+          <h4>Ticket hỗ trợ & Báo cáo vi phạm</h4>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Mã Ticket</th><th>Người gửi</th><th>Phân loại</th><th>Nội dung</th><th>Xử lý</th>
+              </tr>
+            </thead>
+            <tbody id="admin-support-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- 7. TAB: QUẢN LÝ NỘI DUNG -->
+        <div id="admin-sec-content" class="admin-sub-sec" style="display:none;">
+          <h4>Quản lý Chủ đề luyện nói & FAQs</h4>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Các chủ đề đang mở khóa: Giao tiếp cà phê, Phỏng vấn xin việc, Du học, Công nghệ AI.</p>
+          <button class="btn btn-primary" onclick="alert('Đã đồng bộ ngân hàng chủ đề luyện nói mới!')">Thêm chủ đề mới</button>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ==================== BONG BÓNG CHAT NỔI (GÓC PHẢI DƯỚI) ==================== -->
-  <div class="floating-chat-bubble" onclick="app.toggleInboxModal()" title="Hộp thư & Hỗ trợ">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-    <span class="bubble-badge" id="bubble-unread-badge">1</span>
-  </div>
-
-  <!-- CỬA SỔ HỘP THƯ TỔNG HỢP (MESSENGER NỔI) -->
-  <div class="floating-inbox-modal" id="floating-inbox-modal">
-    <div class="inbox-modal-header">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <svg class="icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        <span style="font-weight: 700; font-size: 15px;">Hộp thư TalkBuddy</span>
-      </div>
-      <button onclick="app.toggleInboxModal()" style="background:none; border:none; color:#FFF; font-size:20px; cursor:pointer;">&times;</button>
-    </div>
-    <div class="inbox-modal-body">
-      <!-- Cột trái: Kênh Admin Support + Danh sách Partner -->
-      <div class="inbox-sidebar" id="inbox-channels-sidebar">
-        <!-- Channel list generated by JS -->
-      </div>
-      <!-- Cột phải: Khung chat nội dung -->
-      <div class="inbox-chat-area">
-        <div class="inbox-chat-header" id="inbox-active-title">
-          TalkBuddy Support
-        </div>
-        <div class="inbox-messages-container" id="inbox-messages-box">
-          <!-- Messages rendered here -->
-        </div>
-        <form class="inbox-input-form" onsubmit="app.handleSendInboxMessage(event)">
-          <input type="text" class="form-control" id="inbox-input-field" placeholder="Nhập tin nhắn..." required>
-          <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;">Gửi</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== MODAL ĐĂNG NHẬP / ĐĂNG KÝ ==================== -->
-  <div class="modal-overlay" id="auth-modal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3 id="auth-modal-title">Đăng nhập tài khoản</h3>
-        <button class="modal-close" onclick="app.closeModal('auth-modal')">&times;</button>
-      </div>
-      <form onsubmit="app.handleAuthSubmit(event)">
-        <div class="form-group">
-          <label>Số điện thoại</label>
-          <input type="tel" class="form-control" id="auth-phone" placeholder="0901234567" required pattern="[0-9]{10}">
-        </div>
-        <div class="form-group">
-          <label>Mật khẩu</label>
-          <input type="password" class="form-control" id="auth-password" placeholder="Nhập mật khẩu" required minlength="6">
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; margin-top: 10px;">Xác nhận</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ==================== MODAL ADMIN LOGIN (KEY) ==================== -->
-  <div class="modal-overlay" id="admin-login-modal">
-    <div class="modal-box" style="max-width: 400px;">
-      <div class="modal-header">
-        <h3>Xác thực Admin Portal</h3>
-        <button class="modal-close" onclick="app.closeModal('admin-login-modal')">&times;</button>
-      </div>
-      <form onsubmit="app.handleAdminLogin(event)">
-        <div class="form-group">
-          <label>Mã khóa bảo mật (Admin Key)</label>
-          <input type="password" class="form-control" id="admin-key-input" placeholder="Nhập mã truy cập quản trị..." required>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Mở giao diện Quản trị</button>
-      </form>
-    </div>
-  </div>
-
   <!-- ==================== FOOTER ==================== -->
   <footer class="main-footer">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-        <div class="brand-logo">
-          <svg viewBox="0 0 40 40">
-            <circle cx="20" cy="20" r="18" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
-            <circle cx="15" cy="16" r="2.5" fill="#527D61"/>
-            <circle cx="25" cy="16" r="2.5" fill="#527D61"/>
-            <path d="M14 22 C16 27, 24 27, 26 22" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-          <span>TalkBuddy TP.HCM</span>
+      <div class="footer-grid-nav">
+        <!-- Logo & Nút Chìa Khóa Bí Mật -->
+        <div class="footer-col">
+          <div class="logo-key-inline">
+            <div class="brand-logo" onclick="app.navigate('home')">
+              <svg viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="18" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
+                <circle cx="15" cy="16" r="2.5" fill="#527D61"/>
+                <circle cx="25" cy="16" r="2.5" fill="#527D61"/>
+                <path d="M14 22 C16 27, 24 27, 26 22" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <span>TalkBuddy</span>
+            </div>
+            <!-- BIỂU TƯỢNG CHÌA KHÓA MỞ CỔNG ADMIN NGAY CUỐI LOGO -->
+            <button class="key-secret-btn" onclick="app.openAdminAuthModal()" title="Cổng Quản trị hệ thống (Admin Key)">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M21 2l-2 2m-1.5 1.5L14 9l-1.5-1.5M3 21l6.5-6.5m0 0A5 5 0 1 0 5 9.5a5 5 0 0 0 4.5 5z"></path></svg>
+            </button>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">
+            Nền tảng kết nối luyện nói ngoại ngữ 1-1 trực tiếp dành cho người trẻ tại TP.HCM.
+          </p>
         </div>
-        <p style="font-size: 13px; color: var(--text-muted);">
-          Nền tảng kết nối người học ngoại ngữ 1-1 trực tiếp tại khu vực TP.HCM.
-        </p>
+
+        <!-- Chính sách -->
+        <div class="footer-col">
+          <h4>Chính sách</h4>
+          <ul>
+            <li><a href="javascript:void(0)">Quy tắc an toàn</a></li>
+            <li><a href="javascript:void(0)">Điều khoản sử dụng</a></li>
+            <li><a href="javascript:void(0)">Chính sách bảo mật</a></li>
+            <li><a href="javascript:void(0)">Chính sách hoàn tiền</a></li>
+          </ul>
+        </div>
+
+        <!-- Khu vực -->
+        <div class="footer-col">
+          <h4>Khu vực TP.HCM</h4>
+          <ul>
+            <li><a href="javascript:void(0)">Quận 1 & Quận 3</a></li>
+            <li><a href="javascript:void(0)">Bình Thạnh & Phú Nhuận</a></li>
+            <li><a href="javascript:void(0)">Quận 7 & Quận 10</a></li>
+            <li><a href="javascript:void(0)">Thành phố Thủ Đức</a></li>
+          </ul>
+        </div>
+
+        <!-- Liên hệ -->
+        <div class="footer-col">
+          <h4>Liên hệ</h4>
+          <ul>
+            <li>Email: hotro@talkbuddy.vn</li>
+            <li>Hotline: (028) 3822 9999</li>
+            <li>Địa chỉ: Quận 1, TP. Hồ Chí Minh</li>
+          </ul>
+        </div>
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2025 TalkBuddy. Tất cả các quyền được bảo lưu.</div>
-        
-        <!-- BIỂU TƯỢNG CHIẾC CHÌA KHÓA (KEY ICON) CUỐI TRANG MỞ ADMIN -->
-        <button class="admin-key-btn" onclick="app.openAdminKeyModal()" title="Cổng quản trị viên (Admin Key)">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M21 2l-2 2m-1.5 1.5L14 9l-1.5-1.5M3 21l6.5-6.5m0 0A5 5 0 1 0 5 9.5a5 5 0 0 0 4.5 5z"></path></svg>
-        </button>
+        <div>&copy; 2025 TalkBuddy TP.HCM. Tất cả các quyền được bảo lưu.</div>
+        <div>Học ngoại ngữ thực chiến &bull; An toàn &bull; Văn minh</div>
       </div>
     </div>
   </footer>
 
+  <!-- ==================== MODAL ADMIN AUTHENTICATION ==================== -->
+  <div class="modal-overlay" id="admin-auth-modal">
+    <div class="modal-box" style="max-width: 400px;">
+      <div class="modal-header">
+        <h3>Xác thực Quản trị viên</h3>
+        <button class="modal-close" onclick="app.closeModal('admin-auth-modal')">&times;</button>
+      </div>
+      <form onsubmit="app.handleAdminLogin(event)">
+        <div class="form-group">
+          <label>Tài khoản Quản trị (Username)</label>
+          <input type="text" class="form-control" id="admin-user-input" placeholder="Nhập username quản trị..." required>
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu (Password)</label>
+          <input type="password" class="form-control" id="admin-pass-input" placeholder="Nhập mật khẩu quản trị..." required>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Cổng kiểm soát nội bộ dành cho Quản lý & Nhân viên TalkBuddy.</div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 6px;">Truy cập Dashboard</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL ĐĂNG NHẬP / ĐĂNG KÝ HỌC VIÊN ==================== -->
+  <div class="modal-overlay" id="client-auth-modal">
+    <div class="modal-box" style="max-width: 420px;">
+      <div class="modal-header">
+        <h3>Đăng nhập / Đăng ký</h3>
+        <button class="modal-close" onclick="app.closeModal('client-auth-modal')">&times;</button>
+      </div>
+      <form onsubmit="app.handleClientAuth(event)">
+        <div class="form-group">
+          <label>Số điện thoại</label>
+          <input type="tel" class="form-control" id="client-phone-input" placeholder="0901234567" required pattern="[0-9]{10}">
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu</label>
+          <input type="password" class="form-control" id="client-pass-input" placeholder="Nhập mật khẩu" required minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Tiếp tục</button>
+      </form>
+    </div>
+  </div>
+
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
     const app = {
-      currentUser: null,
-      activeInboxChannel: 'support', // 'support' hoặc partner ID
-      adminSelectedUserId: 1,
+      currentUser: {
+        fullname: 'Học viên TalkBuddy',
+        coins: 20,
+        isPremium: false,
+        district: 'Quận 1'
+      },
+      activeMessengerPartnerId: 'support',
+      adminSelectedUser: 1,
 
-      // Dữ liệu bạn học TP.HCM với hình ảnh PNG rõ nét
+      // Dữ liệu bạn học TP.HCM với hình ảnh PNG
       partners: [
-        { id: 1, name: 'Lan Hương', age: 22, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 1', goal: 'Công việc', free: 'Tối T4 & T7', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80' },
-        { id: 2, name: 'Thảo Vy', age: 24, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 3', goal: 'Phỏng vấn', free: 'Sáng Chủ Nhật', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80' },
-        { id: 3, name: 'Bảo Nam', age: 21, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 5', goal: 'Giao tiếp', free: 'Tối T3 & T6', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
-        { id: 4, name: 'Khánh Linh', age: 23, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 10', goal: 'Giao tiếp', free: 'Chiều T7', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80' },
-        { id: 5, name: 'Tuấn Kiệt', age: 26, lang: 'Tiếng Anh', level: 'Nâng cao', district: 'Gò Vấp', goal: 'Giao tiếp', free: 'Tối cuối tuần', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' }
+        { id: 1, name: 'Lan Hương', age: 22, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 1', goal: 'Công việc', free: 'Tối T4 & T7', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80', status: 'Hoạt động' },
+        { id: 2, name: 'Thảo Vy', age: 24, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 3', goal: 'Phỏng vấn', free: 'Sáng Chủ Nhật', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80', status: 'Hoạt động' },
+        { id: 3, name: 'Bảo Nam', age: 21, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 5', goal: 'Giao tiếp', free: 'Tối T3 & T6', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80', status: 'Hoạt động' },
+        { id: 4, name: 'Khánh Linh', age: 23, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 10', goal: 'Giao tiếp', free: 'Chiều T7', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80', status: 'Hoạt động' },
+        { id: 5, name: 'Tuấn Kiệt', age: 26, lang: 'Tiếng Anh', level: 'Nâng cao', district: 'Gò Vấp', goal: 'Giao tiếp', free: 'Tối cuối tuần', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80', status: 'Hoạt động' }
       ],
 
-      // Cặp đôi tương thích hiển thị trên Admin Matching Desk
-      adminMatchPairs: [
+      // Hội thoại Messenger Facebook Style
+      messengerConversations: {
+        support: [
+          { sender: 'them', text: 'Chào bạn! Mình là hỗ trợ viên TalkBuddy. Bạn đã nhận 20 Xu miễn phí để bắt đầu kết nối bạn học tại TP.HCM.' }
+        ],
+        1: [
+          { sender: 'them', text: 'Chào bạn! Mình vừa nhận được thông báo ghép đôi từ Admin TalkBuddy nè.' },
+          { sender: 'me', text: 'Chào Lan Hương! Mình đang muốn luyện nói tiếng Anh về chủ đề công việc tại Quận 1.' }
+        ]
+      },
+
+      notifications: [
+        { id: 1, text: 'Bạn đã nhận 20 Xu miễn phí khi gia nhập TalkBuddy TP.HCM!', time: 'Vừa xong', unread: true },
+        { id: 2, text: 'Admin đã gợi ý đối tác luyện nói có độ tương thích 95% ở gần bạn.', time: '10 phút trước', unread: true }
+      ],
+
+      adminMatches: [
         { id: 'MP-01', userA: 'Lan Hương (Quận 1)', userB: 'Thảo Vy (Quận 3)', lang: 'Tiếng Anh', score: 95, sent: false },
         { id: 'MP-02', userA: 'Bảo Nam (Quận 5)', userB: 'Khánh Linh (Quận 10)', lang: 'Tiếng Trung', score: 92, sent: false }
       ],
 
-      // Thông báo hệ thống dạng Facebook
-      notifications: [
-        { id: 1, title: 'Ghép đôi thành công', content: 'Admin Support đã gợi ý bạn học Lan Hương (Quận 1) tương thích 95% với bạn.', time: '5 phút trước', unread: true, avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80' },
-        { id: 2, title: 'Ưu đãi Premium', content: 'Gói Hội viên Premium 69.000đ/tháng tặng kèm 70 Xu và trợ giá gia sư 50%.', time: '1 giờ trước', unread: true, avatar: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=100&q=80' }
-      ],
-
-      // Hộp thư hội thoại
-      inboxConversations: {
-        support: [
-          { sender: 'support', text: 'Chào mừng bạn đến với TalkBuddy TP.HCM! Đội ngũ Admin sẵn sàng hỗ trợ ghép đôi bạn học phù hợp nhất.', time: '09:00' }
-        ],
-        1: [
-          { sender: 'them', text: 'Chào bạn! Mình nhận được gợi ý ghép đôi từ Admin TalkBuddy nè.', time: '10:15' },
-          { sender: 'me', text: 'Chào Lan Hương! Rất vui được làm quen với bạn.', time: '10:20' }
-        ]
-      },
-
       init: function() {
-        // Đọc phiên đăng nhập nếu có
-        const saved = localStorage.getItem('talkbuddy_user');
-        if (saved) {
-          try { this.currentUser = JSON.parse(saved); } catch(e) { this.currentUser = null; }
-        }
-        this.updateAuthMenuUI();
-        this.renderNotifList();
         this.renderPartners();
         this.renderTutors();
+        this.renderMessengerList();
+        this.renderNotifications();
         this.renderAdminMatchingDesk();
-        this.renderAdminUserChatList();
+        this.renderAdminUsersTable();
+        this.renderAdminCustomerChat();
       },
 
       navigate: function(viewId) {
         document.getElementById('dropdown-menu').classList.remove('show');
+        document.getElementById('fb-messenger-popover').classList.remove('show');
         document.getElementById('fb-notif-dropdown').classList.remove('show');
 
         document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
@@ -1376,111 +1519,147 @@
 
         const navTab = document.getElementById('nav-item-' + viewId);
         if (navTab) navTab.classList.add('active');
+      },
 
-        if (viewId === 'profile' && this.currentUser) {
-          document.getElementById('prof-fullname').value = this.currentUser.fullname || '';
-          document.getElementById('prof-district').value = this.currentUser.district || 'Quận 1';
+      /* ================= MESSENGER FACEBOOK STYLE ================= */
+      toggleMessengerPopover: function() {
+        document.getElementById('fb-notif-dropdown').classList.remove('show');
+        document.getElementById('dropdown-menu').classList.remove('show');
+        const pop = document.getElementById('fb-messenger-popover');
+        pop.classList.toggle('show');
+        if (pop.classList.contains('show')) {
+          this.renderMessengerList();
+          this.backToMessengerList();
         }
       },
 
-      /* Quản lý Thông báo dạng Facebook */
-      toggleNotifDropdown: function() {
-        document.getElementById('dropdown-menu').classList.remove('show');
-        const box = document.getElementById('fb-notif-dropdown');
-        box.classList.toggle('show');
+      renderMessengerList: function() {
+        const container = document.getElementById('messenger-convos-container');
+        let html = `
+          <div class="messenger-convo-item" onclick="app.openMessengerDirect('support', 'TalkBuddy Support', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80')">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="messenger-avatar">
+            <div class="messenger-convo-info">
+              <h5>TalkBuddy Support (Admin)</h5>
+              <p>Chào bạn! Mình là hỗ trợ viên TalkBuddy...</p>
+            </div>
+          </div>
+        `;
+
+        this.partners.forEach(p => {
+          const msgs = this.messengerConversations[p.id];
+          const lastMsg = msgs ? msgs[msgs.length - 1].text : 'Chạm để bắt đầu trò chuyện';
+          html += `
+            <div class="messenger-convo-item" onclick="app.openMessengerDirect(${p.id}, '${p.name}', '${p.img}')">
+              <img src="${p.img}" class="messenger-avatar">
+              <div class="messenger-convo-info">
+                <h5>${p.name} (${p.district})</h5>
+                <p>${lastMsg}</p>
+              </div>
+            </div>
+          `;
+        });
+        container.innerHTML = html;
       },
 
-      renderNotifList: function() {
-        const container = document.getElementById('fb-notif-list');
-        const unreadCount = this.notifications.filter(n => n.unread).length;
-        const countBadge = document.getElementById('notif-count-badge');
-        countBadge.innerText = unreadCount;
-        countBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+      openMessengerDirect: function(id, name, avatar) {
+        this.activeMessengerPartnerId = id;
+        document.getElementById('direct-chat-name').innerText = name;
+        document.getElementById('direct-chat-avatar').src = avatar;
+        document.getElementById('messenger-direct-view').classList.add('active');
+        this.renderMessengerDirectMessages();
+      },
 
+      backToMessengerList: function() {
+        document.getElementById('messenger-direct-view').classList.remove('active');
+      },
+
+      renderMessengerDirectMessages: function() {
+        const box = document.getElementById('direct-messages-box');
+        const msgs = this.messengerConversations[this.activeMessengerPartnerId] || [];
+        box.innerHTML = msgs.map(m => `
+          <div class="chat-bubble ${m.sender === 'me' ? 'out' : 'in'}">${m.text}</div>
+        `).join('');
+        box.scrollTop = box.scrollHeight;
+      },
+
+      handleSendMessengerDirect: function(e) {
+        e.preventDefault();
+        const input = document.getElementById('direct-chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        if (!this.messengerConversations[this.activeMessengerPartnerId]) {
+          this.messengerConversations[this.activeMessengerPartnerId] = [];
+        }
+
+        this.messengerConversations[this.activeMessengerPartnerId].push({ sender: 'me', text: text });
+        input.value = '';
+        this.renderMessengerDirectMessages();
+
+        // Tự động phản hồi sau 1.2s
+        setTimeout(() => {
+          this.messengerConversations[this.activeMessengerPartnerId].push({
+            sender: 'them',
+            text: 'Cảm ơn tin nhắn của bạn! Chúng mình hẹn gặp tại quán cà phê trung tâm nhé.'
+          });
+          this.renderMessengerDirectMessages();
+          this.renderMessengerList();
+        }, 1200);
+      },
+
+      /* ================= THÔNG BÁO & MENU 3 GẠCH ================= */
+      toggleNotifDropdown: function() {
+        document.getElementById('fb-messenger-popover').classList.remove('show');
+        document.getElementById('dropdown-menu').classList.remove('show');
+        document.getElementById('fb-notif-dropdown').classList.toggle('show');
+      },
+
+      renderNotifications: function() {
+        const container = document.getElementById('fb-notif-list');
         container.innerHTML = this.notifications.map(n => `
           <div class="fb-notif-item ${n.unread ? 'unread' : ''}" onclick="app.clickNotification(${n.id})">
-            <div class="fb-notif-avatar">
-              <img src="${n.avatar}" alt="Notification Avatar">
-            </div>
-            <div class="fb-notif-content">
-              <p><strong>${n.title}</strong>: ${n.content}</p>
-              <div class="fb-notif-time">${n.time}</div>
+            <div>
+              <p>${n.text}</p>
+              <span style="font-size:11px; color:var(--text-muted);">${n.time}</span>
             </div>
           </div>
         `).join('');
       },
 
       clickNotification: function(id) {
-        const item = this.notifications.find(n => n.id === id);
-        if (item) item.unread = false;
-        this.renderNotifList();
+        const notif = this.notifications.find(n => n.id === id);
+        if (notif) notif.unread = false;
+        this.renderNotifications();
         document.getElementById('fb-notif-dropdown').classList.remove('show');
-        this.openInboxModal('support');
+        this.toggleMessengerPopover();
       },
 
       markAllNotifsRead: function() {
         this.notifications.forEach(n => n.unread = false);
-        this.renderNotifList();
+        this.renderNotifications();
       },
 
-      /* Quản lý Menu 3 gạch */
       toggleMenu: function() {
+        document.getElementById('fb-messenger-popover').classList.remove('show');
         document.getElementById('fb-notif-dropdown').classList.remove('show');
         document.getElementById('dropdown-menu').classList.toggle('show');
       },
 
-      updateAuthMenuUI: function() {
-        const authItem = document.getElementById('menu-auth-item');
-        if (this.currentUser) {
-          authItem.innerHTML = `
-            <a href="javascript:void(0)" onclick="app.logout()" style="color:#E26D6D;">
-              <svg class="icon"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-              Đăng xuất (${this.currentUser.fullname})
-            </a>
-          `;
-        } else {
-          authItem.innerHTML = `
-            <a href="javascript:void(0)" onclick="app.openAuthModal('login')">
-              <svg class="icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
-              Đăng nhập / Đăng ký
-            </a>
-          `;
-        }
-      },
-
-      /* Đăng ký hồ sơ ngay tại trang chủ */
-      handleSaveHomeProfile: function(e) {
+      /* ================= HỒ SƠ 14 TRƯỜNG ================= */
+      handleFullProfileSubmit: function(e) {
         e.preventDefault();
-        const name = document.getElementById('home-prof-name').value;
-        const district = document.getElementById('home-prof-district').value;
-        const lang = document.getElementById('home-prof-lang').value;
-        const level = document.getElementById('home-prof-level').value;
-        const goal = document.getElementById('home-prof-goal').value;
-
-        this.currentUser = { fullname: name, district: district, language: lang, level: level, goal: goal, coins: 20 };
-        localStorage.setItem('talkbuddy_user', JSON.stringify(this.currentUser));
-        this.updateAuthMenuUI();
-        alert('Đã thiết lập hồ sơ thành công! Đang chuyển đến danh sách bạn học tương thích.');
+        this.currentUser.fullname = document.getElementById('prof-fullname').value;
+        this.currentUser.district = document.getElementById('prof-district').value;
+        alert(`Chúc mừng ${this.currentUser.fullname}! Hồ sơ học viên 14 trường thông tin đã hoàn tất thành công.`);
         this.navigate('matching');
       },
 
-      /* Matching Partners */
+      /* ================= MATCHING PARTNERS ================= */
       renderPartners: function() {
         const container = document.getElementById('partner-cards-container');
         if (!container) return;
 
-        const langFilter = document.getElementById('filter-language') ? document.getElementById('filter-language').value : 'All';
-        const distFilter = document.getElementById('filter-district') ? document.getElementById('filter-district').value : 'All';
-        const goalFilter = document.getElementById('filter-goal') ? document.getElementById('filter-goal').value : 'All';
-
-        const filtered = this.partners.filter(p => {
-          if (langFilter !== 'All' && p.lang !== langFilter) return false;
-          if (distFilter !== 'All' && !p.district.includes(distFilter)) return false;
-          if (goalFilter !== 'All' && p.goal !== goalFilter) return false;
-          return true;
-        });
-
-        container.innerHTML = filtered.map(p => `
+        container.innerHTML = this.partners.map(p => `
           <div class="partner-card">
             <div class="partner-card-header">
               <img src="${p.img}" alt="${p.name}" class="partner-avatar-img">
@@ -1496,32 +1675,35 @@
               <div class="row-info"><span class="label">Thời gian:</span> ${p.free}</div>
             </div>
             <div style="padding:12px 16px; border-top:1px solid var(--bg-sub);">
-              <button class="btn btn-primary" style="width:100%; font-size:13px;" onclick="app.openInboxModal(${p.id})">Gửi lời mời trò chuyện</button>
+              <button class="btn btn-primary" style="width:100%; font-size:13px;" onclick="app.quickConnectPartner(${p.id}, '${p.name}', '${p.img}')">Gửi tin nhắn Messenger</button>
             </div>
           </div>
         `).join('');
       },
 
+      quickConnectPartner: function(id, name, img) {
+        this.toggleMessengerPopover();
+        this.openMessengerDirect(id, name, img);
+      },
+
       applyFilters: function() { this.renderPartners(); },
       resetFilters: function() {
-        if (document.getElementById('filter-language')) document.getElementById('filter-language').value = 'All';
-        if (document.getElementById('filter-district')) document.getElementById('filter-district').value = 'All';
-        if (document.getElementById('filter-goal')) document.getElementById('filter-goal').value = 'All';
+        document.getElementById('filter-language').value = 'All';
+        document.getElementById('filter-district').value = 'All';
         this.renderPartners();
       },
 
-      /* Gia sư */
       renderTutors: function() {
         const container = document.getElementById('tutors-container');
         if (!container) return;
         const tutors = [
-          { name: 'Thầy Trần Quang', lang: 'Tiếng Anh', exp: '5 năm luyện thi IELTS 8.5', fee: '220.000đ / buổi', district: 'Quận 1 & Online', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
-          { name: 'Cô Mai Phương', lang: 'Tiếng Trung', exp: 'Thạc sĩ Ngôn ngữ HSK 6', fee: '180.000đ / buổi', district: 'Quận 5, Quận 10', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80' }
+          { name: 'Thầy Trần Quang', lang: 'Tiếng Anh', exp: 'IELTS 8.5, 5 năm kèm phỏng vấn', fee: '220.000đ / buổi', district: 'Quận 1 & Online', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
+          { name: 'Cô Mai Phương', lang: 'Tiếng Trung', exp: 'HSK 6, khẩu ngữ thương mại', fee: '180.000đ / buổi', district: 'Quận 5, Quận 10', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80' }
         ];
         container.innerHTML = tutors.map(t => `
           <div class="partner-card">
             <div class="partner-card-header">
-              <img src="${t.img}" alt="${t.name}" class="partner-avatar-img">
+              <img src="${t.img}" class="partner-avatar-img">
               <div>
                 <h4 style="font-size:15px;">${t.name}</h4>
                 <div style="font-size:12px; color:var(--text-muted);">${t.district}</div>
@@ -1533,256 +1715,222 @@
               <div class="row-info"><span class="label">Học phí:</span> <strong>${t.fee}</strong></div>
             </div>
             <div style="padding:12px 16px; border-top:1px solid var(--bg-sub);">
-              <button class="btn btn-primary" style="width:100%; font-size:13px;" onclick="alert('Đã gửi thông tin đặt lịch tới gia sư!')">Đặt lịch luyện tập</button>
+              <button class="btn btn-primary" style="width:100%; font-size:13px;" onclick="alert('Đã gửi thông tin hẹn lịch luyện nói với gia sư!')">Đặt lịch luyện tập</button>
             </div>
           </div>
         `).join('');
       },
 
-      /* HỘP THƯ CHATBOX NỔI (BONG BÓNG GÓC PHẢI DƯỚI) */
-      toggleInboxModal: function() {
-        const modal = document.getElementById('floating-inbox-modal');
-        modal.classList.toggle('open');
-        if (modal.classList.contains('open')) {
-          this.renderInboxChannels();
-          this.renderInboxChat();
-        }
+      /* ================= XU & PREMIUM ================= */
+      buyCoins: function(pack, price, coins) {
+        alert(`Mô phỏng thanh toán thành công ${price.toLocaleString()}đ! Đã nạp ${coins} Xu vào tài khoản.`);
+        this.currentUser.coins += coins;
+        document.getElementById('wallet-balance-num').innerText = this.currentUser.coins;
+        document.getElementById('menu-coin-display').innerText = this.currentUser.coins + ' Xu';
       },
 
-      openInboxModal: function(channelId) {
-        this.activeInboxChannel = channelId;
-        const modal = document.getElementById('floating-inbox-modal');
-        modal.classList.add('open');
-        this.renderInboxChannels();
-        this.renderInboxChat();
+      subscribePremium: function() {
+        alert('Chúc mừng bạn đã nâng cấp Hội viên Premium (69.000đ/tháng)! Nhận 70 Xu vào ví.');
+        this.currentUser.coins += 70;
+        this.currentUser.isPremium = true;
+        document.getElementById('wallet-balance-num').innerText = this.currentUser.coins;
+        document.getElementById('menu-coin-display').innerText = this.currentUser.coins + ' Xu';
       },
 
-      renderInboxChannels: function() {
-        const sidebar = document.getElementById('inbox-channels-sidebar');
-        let html = `
-          <div class="inbox-channel-item admin-channel ${this.activeInboxChannel === 'support' ? 'active' : ''}" onclick="app.switchInboxChannel('support')">
-            <svg class="icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            <div><strong>Admin Support</strong></div>
-          </div>
-        `;
-        this.partners.forEach(p => {
-          html += `
-            <div class="inbox-channel-item ${this.activeInboxChannel == p.id ? 'active' : ''}" onclick="app.switchInboxChannel(${p.id})">
-              <span>${p.name}</span>
-            </div>
-          `;
-        });
-        sidebar.innerHTML = html;
-      },
-
-      switchInboxChannel: function(channelId) {
-        this.activeInboxChannel = channelId;
-        this.renderInboxChannels();
-        this.renderInboxChat();
-      },
-
-      renderInboxChat: function() {
-        const titleEl = document.getElementById('inbox-active-title');
-        const box = document.getElementById('inbox-messages-box');
-
-        if (this.activeInboxChannel === 'support') {
-          titleEl.innerText = 'TalkBuddy Support (Hệ thống & Ghép đôi)';
-        } else {
-          const partner = this.partners.find(p => p.id == this.activeInboxChannel);
-          titleEl.innerText = partner ? `${partner.name} (${partner.district})` : 'Hội thoại bạn học';
-        }
-
-        const msgs = this.inboxConversations[this.activeInboxChannel] || [];
-        box.innerHTML = msgs.map(m => {
-          if (m.type === 'system-match') {
-            return `<div class="msg-bubble system-match">${m.text}</div>`;
-          }
-          return `<div class="msg-bubble ${m.sender === 'me' ? 'out' : 'in'}">${m.text}</div>`;
-        }).join('');
-        box.scrollTop = box.scrollHeight;
-      },
-
-      handleSendInboxMessage: function(e) {
+      handleCreateSupportTicket: function(e) {
         e.preventDefault();
-        const input = document.getElementById('inbox-input-field');
-        const text = input.value.trim();
-        if (!text) return;
+        alert('Yêu cầu hỗ trợ đã được tạo thành công! Admin sẽ phản hồi trong ít phút.');
+        document.getElementById('supp-content').value = '';
+        this.navigate('home');
+      },
 
-        if (!this.inboxConversations[this.activeInboxChannel]) {
-          this.inboxConversations[this.activeInboxChannel] = [];
-        }
+      /* ================= ADMIN MANAGEMENT ================= */
+      openAdminAuthModal: function() {
+        document.getElementById('admin-auth-modal').classList.add('active');
+      },
 
-        this.inboxConversations[this.activeInboxChannel].push({
-          sender: 'me',
-          text: text,
-          time: 'Vừa xong'
-        });
+      handleAdminLogin: function(e) {
+        e.preventDefault();
+        const user = document.getElementById('admin-user-input').value;
+        const pass = document.getElementById('admin-pass-input').value;
 
-        input.value = '';
-        this.renderInboxChat();
-
-        // Tự động phản hồi mô phỏng nếu là kênh support
-        if (this.activeInboxChannel === 'support') {
-          setTimeout(() => {
-            this.inboxConversations['support'].push({
-              sender: 'support',
-              text: 'Admin đã nhận thông tin và sẽ hỗ trợ ghép đôi hoặc giải đáp cho bạn ngay.',
-              time: 'Vừa xong'
-            });
-            this.renderInboxChat();
-          }, 1000);
+        // Tài khoản quản trị nội bộ
+        if ((user === 'admin' || user === 'manager') && (pass === 'talkbuddy2025' || pass === 'admin123')) {
+          this.closeModal('admin-auth-modal');
+          document.getElementById('admin-user-input').value = '';
+          document.getElementById('admin-pass-input').value = '';
+          this.navigate('admin');
+        } else {
+          alert('Tài khoản hoặc mật khẩu Quản trị viên không chính xác!');
         }
       },
 
-      /* ADMIN MATCHING DESK & GỬI THÔNG BÁO CHO KHÁCH HÀNG */
+      adminLogout: function() {
+        if (confirm('Đăng xuất khỏi phiên Quản trị Admin?')) {
+          this.navigate('home');
+        }
+      },
+
+      adminChangePasswordPrompt: function() {
+        const newPass = prompt('Nhập mật khẩu quản trị mới:');
+        if (newPass && newPass.length >= 6) {
+          alert('Đổi mật khẩu Quản trị viên thành công!');
+        } else if (newPass) {
+          alert('Mật khẩu phải từ 6 ký tự trở lên.');
+        }
+      },
+
+      switchAdminTab: function(tabId) {
+        document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.admin-sub-sec').forEach(s => s.style.display = 'none');
+
+        const activeBtn = event.target;
+        if (activeBtn) activeBtn.classList.add('active');
+
+        const target = document.getElementById('admin-sec-' + tabId);
+        if (target) target.style.display = 'block';
+      },
+
       renderAdminMatchingDesk: function() {
-        const container = document.getElementById('admin-matching-list');
+        const container = document.getElementById('admin-matching-desk-list');
         if (!container) return;
 
-        container.innerHTML = this.adminMatchPairs.map(pair => `
-          <div class="admin-matching-card">
+        container.innerHTML = this.adminMatches.map(m => `
+          <div style="background:var(--bg-cream); border:1px solid var(--border-color); padding:16px; border-radius:var(--radius-sm); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
             <div>
-              <span class="badge" style="margin-bottom:6px;">Điểm tương thích: ${pair.score}%</span>
-              <h4 style="font-size:15px;">${pair.userA} &harr; ${pair.userB}</h4>
-              <p style="font-size:12px; color:var(--text-muted); margin-top:3px;">Ngôn ngữ: ${pair.lang} &bull; Cùng khu vực lân cận tại TP.HCM</p>
+              <span class="badge">Độ tương thích: ${m.score}%</span>
+              <h5 style="margin-top:6px; font-size:14px;">${m.userA} &harr; ${m.userB}</h5>
+              <div style="font-size:12px; color:var(--text-muted);">Ngôn ngữ: ${m.lang} &bull; Tiêu chuẩn ghép đôi tự nhiên tại TP.HCM</div>
             </div>
             <div>
-              ${pair.sent 
-                ? '<span style="font-size:12px; color:var(--primary-dark); font-weight:700;">Đã gửi thông báo kết nối</span>' 
-                : `<button class="btn btn-primary" style="font-size:12px; padding:8px 14px;" onclick="app.sendAdminMatchNotification('${pair.id}')">Gửi thông báo kết nối</button>`
+              ${m.sent 
+                ? '<span style="font-weight:700; color:var(--primary-dark); font-size:13px;">Đã gửi thông báo kết nối</span>'
+                : `<button class="btn btn-primary" style="font-size:12px;" onclick="app.adminTriggerMatch('${m.id}')">Gửi thông báo kết nối</button>`
               }
             </div>
           </div>
         `).join('');
       },
 
-      sendAdminMatchNotification: function(pairId) {
-        const pair = this.adminMatchPairs.find(p => p.id === pairId);
-        if (!pair) return;
+      adminTriggerMatch: function(id) {
+        const m = this.adminMatches.find(x => x.id === id);
+        if (m) {
+          m.sent = true;
+          this.renderAdminMatchingDesk();
 
-        pair.sent = true;
-        this.renderAdminMatchingDesk();
+          // Tự động đẩy thông báo và tin nhắn Messenger
+          this.notifications.unshift({
+            id: Date.now(),
+            text: `Admin đã ghép đôi thành công cho bạn với ${m.userA.includes('Lan Hương') ? 'Lan Hương' : 'Khánh Linh'}!`,
+            time: 'Vừa xong',
+            unread: true
+          });
+          this.renderNotifications();
 
-        // 1. Thêm thông báo mới vào Notification popup Facebook
-        this.notifications.unshift({
-          id: Date.now(),
-          title: 'Kết nối thành công từ Admin',
-          content: `Ban quản trị đã ghép nối thành công cho bạn với ${pair.userA.includes('Lan Hương') ? 'Lan Hương' : 'Khánh Linh'}. Hãy mở hộp thư để trao đổi lịch hẹn!`,
-          time: 'Vừa xong',
-          unread: true,
-          avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'
-        });
-        this.renderNotifList();
+          this.messengerConversations['support'].push({
+            sender: 'them',
+            text: `Thông báo ghép đôi: Admin đã kết nối thành công cặp đôi ${m.userA} và ${m.userB}. Chúc hai bạn có buổi luyện nói hiệu quả!`
+          });
 
-        // 2. Tự động đưa tin nhắn ghép nối vào hộp thư khách hàng
-        this.inboxConversations['support'].push({
-          sender: 'support',
-          type: 'system-match',
-          text: `Thông báo ghép đôi thành công: Admin đã kết nối bạn và ${pair.userA.includes('Lan Hương') ? 'Lan Hương (Quận 1)' : 'Khánh Linh (Quận 10)'}. Điểm tương thích: ${pair.score}%. Hai bạn có thể bắt đầu nhắn tin và hẹn địa điểm cà phê!`,
-          time: 'Vừa xong'
-        });
-
-        alert(`Đã gửi thông báo kết nối thành công tới ${pair.userA} và ${pair.userB}!`);
+          alert(`Đã gửi thông báo kết nối thành công cho 2 học viên (${m.userA} & ${m.userB})!`);
+        }
       },
 
-      /* CHATBOX ADMIN VÀ KHÁCH HÀNG */
-      renderAdminUserChatList: function() {
-        const container = document.getElementById('admin-user-chat-list');
-        if (!container) return;
+      renderAdminCustomerChat: function() {
+        const list = document.getElementById('admin-customer-chat-list');
+        if (!list) return;
 
-        container.innerHTML = this.partners.map(p => `
-          <div class="inbox-channel-item ${this.adminSelectedUserId == p.id ? 'active' : ''}" onclick="app.selectAdminChatUser(${p.id})">
-            <div>
-              <div style="font-weight:600;">${p.name}</div>
-              <div style="font-size:11px; color:var(--text-muted);">${p.district}</div>
-            </div>
+        list.innerHTML = this.partners.map(p => `
+          <div style="padding:10px 14px; border-bottom:1px solid var(--bg-sub); cursor:pointer;" onclick="app.adminSelectChatUser(${p.id}, '${p.name}')">
+            <strong>${p.name}</strong>
+            <div style="font-size:11px; color:var(--text-muted);">${p.district} &bull; ${p.lang}</div>
           </div>
         `).join('');
+
+        this.adminSelectChatUser(1, 'Lan Hương');
       },
 
-      selectAdminChatUser: function(userId) {
-        this.adminSelectedUserId = userId;
-        this.renderAdminUserChatList();
-        const p = this.partners.find(u => u.id == userId);
-        document.getElementById('admin-chat-target-name').innerText = `Trao đổi với học viên: ${p ? p.name : ''} (${p ? p.district : ''})`;
-
-        const box = document.getElementById('admin-chat-messages');
+      adminSelectChatUser: function(id, name) {
+        this.adminSelectedUser = id;
+        document.getElementById('admin-chat-header-title').innerText = 'Nhắn tin hỗ trợ: ' + name;
+        const box = document.getElementById('admin-chat-thread-box');
         box.innerHTML = `
-          <div class="msg-bubble in">Em chào Admin TalkBuddy ạ, nhờ Admin tư vấn giúp em bạn luyện phản xạ cuối tuần này ở Quận 1.</div>
+          <div class="chat-bubble in">Dạ chào Admin TalkBuddy, em đã nhận được gợi ý bạn luyện nói cuối tuần này tại Quận 1 rồi ạ!</div>
         `;
       },
 
-      handleAdminSendMessage: function(e) {
+      handleAdminSendDirect: function(e) {
         e.preventDefault();
-        const input = document.getElementById('admin-chat-input');
+        const input = document.getElementById('admin-input-direct');
         const text = input.value.trim();
         if (!text) return;
 
-        const box = document.getElementById('admin-chat-messages');
-        box.innerHTML += `<div class="msg-bubble out">${text}</div>`;
+        const box = document.getElementById('admin-chat-thread-box');
+        box.innerHTML += `<div class="chat-bubble out">${text}</div>`;
         input.value = '';
         box.scrollTop = box.scrollHeight;
       },
 
-      /* MỞ MODAL KEY ADMIN */
-      openAdminKeyModal: function() {
-        document.getElementById('admin-login-modal').classList.add('active');
+      renderAdminUsersTable: function() {
+        const tbody = document.getElementById('admin-users-tbody');
+        if (!tbody) return;
+
+        tbody.innerHTML = this.partners.map(p => `
+          <tr>
+            <td><strong>${p.name}</strong></td>
+            <td>${p.district}</td>
+            <td>${p.lang}</td>
+            <td>${p.level}</td>
+            <td><span class="badge">${p.status}</span></td>
+            <td>
+              <button class="btn btn-outline" style="padding:4px 8px; font-size:11px;" onclick="app.toggleLockUser(${p.id})">
+                ${p.status === 'Hoạt động' ? 'Khóa' : 'Mở khóa'}
+              </button>
+            </td>
+          </tr>
+        `).join('');
       },
 
-      handleAdminLogin: function(e) {
-        e.preventDefault();
-        const key = document.getElementById('admin-key-input').value;
-        if (key === 'talkbuddy2025' || key === 'admin123') {
-          this.closeModal('admin-login-modal');
-          document.getElementById('admin-key-input').value = '';
-          this.navigate('admin');
-        } else {
-          alert('Khóa bảo mật quản trị viên không chính xác!');
+      toggleLockUser: function(id) {
+        const p = this.partners.find(x => x.id === id);
+        if (p) {
+          p.status = p.status === 'Hoạt động' ? 'Đã khóa' : 'Hoạt động';
+          this.renderAdminUsersTable();
+          alert(`Đã cập nhật trạng thái tài khoản ${p.name}: ${p.status}`);
         }
       },
 
-      /* MODAL AUTH */
+      searchAdminUsers: function(keyword) {
+        const tbody = document.getElementById('admin-users-tbody');
+        const filtered = this.partners.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()) || p.district.toLowerCase().includes(keyword.toLowerCase()));
+        tbody.innerHTML = filtered.map(p => `
+          <tr>
+            <td><strong>${p.name}</strong></td>
+            <td>${p.district}</td>
+            <td>${p.lang}</td>
+            <td>${p.level}</td>
+            <td><span class="badge">${p.status}</span></td>
+            <td>
+              <button class="btn btn-outline" style="padding:4px 8px; font-size:11px;" onclick="app.toggleLockUser(${p.id})">
+                ${p.status === 'Hoạt động' ? 'Khóa' : 'Mở khóa'}
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      },
+
+      /* Modal Auth */
       openAuthModal: function() {
         document.getElementById('dropdown-menu').classList.remove('show');
-        document.getElementById('auth-modal').classList.add('active');
+        document.getElementById('client-auth-modal').classList.add('active');
       },
 
-      handleAuthSubmit: function(e) {
+      handleClientAuth: function(e) {
         e.preventDefault();
-        const phone = document.getElementById('auth-phone').value;
-        this.currentUser = { fullname: 'Học viên TalkBuddy', phone: phone, district: 'Quận 1', coins: 20 };
-        localStorage.setItem('talkbuddy_user', JSON.stringify(this.currentUser));
-        this.closeModal('auth-modal');
-        this.updateAuthMenuUI();
-        alert('Đăng nhập thành công!');
-      },
-
-      logout: function() {
-        if (confirm('Xác nhận đăng xuất tài khoản?')) {
-          localStorage.removeItem('talkbuddy_user');
-          this.currentUser = null;
-          this.updateAuthMenuUI();
-          this.navigate('home');
-        }
-      },
-
-      buyCoins: function(pack, price, coins) {
-        alert(`Mô phỏng thanh toán thành công ${price.toLocaleString()}đ! Đã nạp ${coins} Xu.`);
-        const num = document.getElementById('wallet-balance-num');
-        if (num) num.innerText = parseInt(num.innerText) + coins;
-      },
-
-      subscribePremium: function() {
-        alert('Đăng ký Gói Hội Viên Premium 69.000đ/tháng thành công! Tặng ngay 70 Xu vào ví.');
-        const num = document.getElementById('wallet-balance-num');
-        if (num) num.innerText = parseInt(num.innerText) + 70;
-      },
-
-      handleCreateSupportTicket: function(e) {
-        e.preventDefault();
-        alert('Yêu cầu hỗ trợ đã được gửi thành công đến Admin TalkBuddy!');
-        document.getElementById('supp-content').value = '';
-        this.navigate('home');
+        const phone = document.getElementById('client-phone-input').value;
+        this.currentUser.phone = phone;
+        this.closeModal('client-auth-modal');
+        alert('Đăng nhập thành công! Chào mừng bạn gia nhập TalkBuddy TP.HCM.');
       },
 
       closeModal: function(modalId) {
