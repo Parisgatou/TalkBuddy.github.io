@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TalkBuddy HCM - Nền Tảng Kết Nối Bạn Luyện Nói Ngoại Ngữ Tại TP.HCM</title>
+  <title>TalkBuddy - Nền Tảng Kết Nối Bạn Luyện Nói Ngoại Ngữ Tại TP.HCM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
       --text-main: #303B34;
       --text-muted: #6B7B71;
       --border-color: #E2ECE5;
-      --shadow-soft: 0 8px 24px rgba(82, 125, 97, 0.08);
-      --shadow-sm: 0 2px 8px rgba(82, 125, 97, 0.06);
+      --shadow-soft: 0 12px 30px rgba(82, 125, 97, 0.10);
+      --shadow-sm: 0 4px 12px rgba(82, 125, 97, 0.08);
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
@@ -51,7 +51,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 20px;
+      padding: 10px 22px;
       border-radius: var(--radius-md);
       font-weight: 600;
       font-size: 14px;
@@ -85,23 +85,18 @@
     .btn-outline:hover {
       background: var(--primary-light);
     }
-    .btn-sm { padding: 6px 12px; font-size: 12px; border-radius: var(--radius-sm); }
+    .btn-sm { padding: 6px 14px; font-size: 12px; border-radius: var(--radius-sm); }
 
     /* BADGES */
     .badge {
       display: inline-flex;
       align-items: center;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
       background: var(--primary-light);
       color: var(--primary-dark);
-    }
-    .badge-demo {
-      background: #FFEAA7;
-      color: #B7791F;
-      border: 1px dashed #D69E2E;
     }
     .badge-hcm {
       background: #E0F2FE;
@@ -129,21 +124,17 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 800;
       font-size: 20px;
       color: var(--primary-dark);
+      cursor: pointer;
     }
-    .brand-logo-sq {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, var(--primary-neutral), var(--primary-dark));
+    .brand-logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 800;
     }
     .nav-actions {
       display: flex;
@@ -172,15 +163,14 @@
       height: 2px;
       background-color: var(--primary-dark);
       border-radius: 2px;
-      transition: var(--transition);
     }
 
     /* OFF-CANVAS NAVIGATION */
     .nav-drawer {
       position: fixed;
       top: 0;
-      right: -320px;
-      width: 300px;
+      right: -340px;
+      width: 320px;
       height: 100vh;
       background: var(--bg-cream);
       box-shadow: -4px 0 24px rgba(0,0,0,0.12);
@@ -197,7 +187,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(48, 59, 52, 0.35);
+      background: rgba(48, 59, 52, 0.4);
       z-index: 1050;
       display: none;
     }
@@ -213,7 +203,7 @@
     .nav-menu-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       overflow-y: auto;
       flex: 1;
     }
@@ -234,7 +224,7 @@
       color: var(--primary-dark);
     }
 
-    /* MAIN CONTAINER / PAGES CONTROLLER */
+    /* MAIN CONTAINER / SECTIONS */
     main {
       min-height: calc(100vh - 160px);
       max-width: 1200px;
@@ -258,7 +248,7 @@
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 24px;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
     }
@@ -266,13 +256,13 @@
       box-shadow: var(--shadow-soft);
     }
 
-    /* HERO / LANDING PAGE */
+    /* HERO */
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 40px;
       align-items: center;
-      padding: 40px 0 60px;
+      padding: 40px 0 50px;
     }
     .hero-text h1 {
       font-size: 38px;
@@ -294,22 +284,16 @@
       background: linear-gradient(145deg, var(--primary-light), var(--primary-pastel));
       border: 2px solid #FFF;
       border-radius: var(--radius-lg);
-      padding: 30px;
+      padding: 20px;
       text-align: center;
       box-shadow: var(--shadow-soft);
-      position: relative;
     }
-    .illustration-holder {
+    .hero-png-img {
       width: 100%;
-      height: 240px;
-      background: #FFF;
+      height: 280px;
+      object-fit: cover;
       border-radius: var(--radius-md);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      border: 1px dashed var(--primary-neutral);
+      border: 1px solid #FFFFFF;
     }
 
     /* SECTION GRIDS */
@@ -323,6 +307,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
+      margin-top: 24px;
     }
 
     /* FORM STYLES */
@@ -351,7 +336,7 @@
       box-shadow: 0 0 0 3px rgba(168, 213, 181, 0.35);
     }
 
-    /* CHAT INBOX */
+    /* CHAT INBOX FULL */
     .chat-container {
       display: grid;
       grid-template-columns: 320px 1fr;
@@ -430,6 +415,58 @@
       gap: 10px;
     }
 
+    /* FLOATING MINI CHAT WIDGET */
+    #floating-chat-trigger {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary-dark);
+      color: #FFF;
+      padding: 12px 20px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(82, 125, 97, 0.35);
+      z-index: 1500;
+      transition: var(--transition);
+    }
+    #floating-chat-trigger:hover {
+      background: #41654e;
+      transform: translateY(-2px);
+    }
+    .mini-chat-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+    #floating-chat-popup {
+      position: fixed;
+      bottom: 84px;
+      right: 24px;
+      width: 360px;
+      height: 480px;
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+      z-index: 1600;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeIn 0.2s ease forwards;
+    }
+    #floating-chat-popup.active { display: flex; }
+    .floating-chat-header {
+      background: var(--primary-dark);
+      color: #FFF;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     /* MATCHING CARDS */
     .partner-card {
       display: flex;
@@ -445,25 +482,13 @@
       font-size: 13px;
     }
 
-    /* ADMIN DASHBOARD */
-    .admin-metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .metric-box {
-      background: #FFF;
-      padding: 18px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
-      border-left: 5px solid var(--primary-dark);
-    }
-    .metric-value {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-top: 6px;
+    /* AVATAR IMAGES */
+    .avatar-png {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-neutral);
     }
 
     /* MODAL */
@@ -491,7 +516,7 @@
     #toast-container {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      left: 20px;
       z-index: 3000;
       display: flex;
       flex-direction: column;
@@ -529,6 +554,7 @@
       .hero-grid { grid-template-columns: 1fr; }
       .chat-container { grid-template-columns: 1fr; }
       .chat-sidebar { max-height: 180px; }
+      #floating-chat-popup { width: calc(100vw - 32px); right: 16px; bottom: 80px; }
     }
   </style>
 </head>
@@ -537,17 +563,16 @@
   <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="brand" onclick="navigateTo('landing')" style="cursor: pointer;">
-        <div class="brand-logo-sq">TB</div>
+      <div class="brand" onclick="navigateTo('landing')">
+        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=120&q=80" alt="TalkBuddy Logo" class="brand-logo-img">
         <span>TalkBuddy</span>
-        <span class="badge badge-hcm">Khu vực TP.HCM</span>
-        <span class="badge badge-demo">Demo MVP</span>
+        <span class="badge badge-hcm">TP. Hồ Chí Minh</span>
       </div>
 
       <div class="nav-actions">
         <span id="header-user-status" style="font-size: 13px; font-weight: 600; color: var(--primary-dark);"></span>
         <button class="btn btn-sm btn-secondary" id="btn-login-header" onclick="navigateTo('auth')">Đăng nhập</button>
-        <button class="hamburger-btn" id="hamburger-btn" aria-label="Mở bảng điều hướng">
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Mở menu">
           <span></span>
           <span></span>
           <span></span>
@@ -561,157 +586,190 @@
   <aside class="nav-drawer" id="nav-drawer">
     <div class="nav-drawer-header">
       <div class="brand">
-        <div class="brand-logo-sq">TB</div>
-        <span>TalkBuddy HCM</span>
+        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=120&q=80" alt="TalkBuddy Logo" class="brand-logo-img">
+        <span>TalkBuddy</span>
       </div>
       <button class="btn btn-sm btn-outline" id="close-drawer">&times;</button>
     </div>
     <div class="nav-menu-list">
-      <div class="nav-menu-item" onclick="navTo('landing')">1. Trang chủ TP.HCM</div>
-      <div class="nav-menu-item" onclick="navTo('how-it-works')">2. Cách hoạt động</div>
-      <div class="nav-menu-item" onclick="navTo('matching')">3. Tìm bạn luyện nói tại TP.HCM</div>
-      <div class="nav-menu-item" onclick="navTo('partners')">4. Đối tác đã kết nối</div>
-      <div class="nav-menu-item" onclick="navTo('inbox')">5. Hộp thư & Trò chuyện <span class="badge" id="inbox-badge">2</span></div>
-      <div class="nav-menu-item" onclick="navTo('notifications')">6. Thông báo khu vực</div>
-      <div class="nav-menu-item" onclick="navTo('premium')">7. Gói Xu & Premium</div>
-      <div class="nav-menu-item" onclick="navTo('tutors')">8. Gia sư 1-1 tại TP.HCM</div>
-      <div class="nav-menu-item" onclick="navTo('foreign-partners')">9. Foreign Partner tại TP.HCM</div>
-      <div class="nav-menu-item" onclick="navTo('profile')">10. Hồ sơ cá nhân</div>
-      <div class="nav-menu-item" onclick="navTo('support')">11. Hỗ trợ khách hàng (CSKH)</div>
-      <div class="nav-menu-item" style="color: #A34848;" onclick="navTo('admin')">12. Quản trị Admin Dashboard</div>
-    </div>
-    <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-color);">
-      <button class="btn btn-sm btn-outline" style="width: 100%; margin-bottom: 8px;" onclick="switchUserRole()">Đổi tài khoản kiểm thử</button>
-      <div style="font-size: 11px; color: var(--text-muted); text-align: center;">Dự Án Thử Nghiệm Tại TP. Hồ Chí Minh</div>
+      <div class="nav-menu-item" onclick="navTo('landing')">1. Trang chủ</div>
+      <div class="nav-menu-item" onclick="navTo('matching')">2. Tìm bạn luyện nói (Matching)</div>
+      <div class="nav-menu-item" onclick="navTo('partners')">3. Danh sách đã kết nối</div>
+      <div class="nav-menu-item" onclick="navTo('inbox')">4. Hộp thư hội thoại</div>
+      <div class="nav-menu-item" onclick="navTo('tutors')">5. Gia sư 1-1 tại TP.HCM</div>
+      <div class="nav-menu-item" onclick="navTo('foreign-partners')">6. Foreign Partner</div>
+      <div class="nav-menu-item" onclick="navTo('profile')">7. Hồ sơ cá nhân</div>
+      <div class="nav-menu-item" onclick="navTo('support')">8. Hỗ trợ khách hàng</div>
+      <div class="nav-menu-item" style="color: #A34848;" onclick="navTo('admin')">9. Quản trị hệ thống</div>
     </div>
   </aside>
 
   <!-- MAIN CONTAINER -->
   <main id="app-container">
 
-    <!-- 1. LANDING PAGE (TẬP TRUNG KHU VỰC TP.HCM) -->
-    <section id="page-landing" class="page-section active">
-      <div class="hero-grid">
-        <div class="hero-text">
-          <div class="hero-badges">
-            <span class="badge badge-hcm">Dành riêng cho bạn trẻ tại TP. Hồ Chí Minh</span>
-            <span class="badge">Luyện nói 1-1 tại quán Cà phê & Online</span>
-          </div>
-          <h1>Tìm bạn đồng hành lý tưởng để luyện nói ngoại ngữ tại TP.HCM.</h1>
-          <p>Bạn là sinh viên hoặc người đi làm tại TP.HCM muốn tăng phản xạ Tiếng Anh, Tiếng Trung, Tiếng Nhật, Tiếng Hàn hay Tiếng Pháp? Chọn quận bạn đang ở, TalkBuddy sẽ kết nối bạn với bạn học phù hợp nhất ngay gần bạn.</p>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button class="btn btn-primary" onclick="navigateTo('matching')">Tìm bạn quanh khu vực của bạn</button>
-            <button class="btn btn-secondary" onclick="navigateTo('how-it-works')">Cách thức hoạt động</button>
-          </div>
+    <!-- 1. GIAO DIỆN ĐĂNG NHẬP / ĐĂNG KÝ (HIỂN THỊ ĐẦU TIÊN KHI MỚI VÀO WEB) -->
+    <section id="page-auth" class="page-section active">
+      <div style="max-width: 460px; margin: 40px auto;" class="card">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=300&q=80" alt="TalkBuddy Practice" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid var(--primary-pastel);">
+          <h2>Chào mừng đến với TalkBuddy</h2>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Nền tảng kết nối luyện nói 1-1 tại TP. Hồ Chí Minh</p>
         </div>
-        <div class="hero-visual-card">
-          <div class="illustration-holder">
-            <!-- Minh họa SVG 2 bạn trẻ Sài Gòn đang trò chuyện tại quán Cà phê -->
-            <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect x="20" y="140" width="280" height="12" rx="6" fill="#A8D5B5"/>
-              <circle cx="90" cy="80" r="28" fill="#527D61"/>
-              <circle cx="230" cy="80" r="28" fill="#527D61"/>
-              <rect x="65" y="112" width="50" height="30" rx="8" fill="#CFE8D5"/>
-              <rect x="205" y="112" width="50" height="30" rx="8" fill="#CFE8D5"/>
-              <path d="M 120 70 Q 160 50 180 70" stroke="#527D61" stroke-width="3" stroke-dasharray="4,4" fill="none"/>
-              <rect x="145" y="110" width="30" height="32" rx="4" fill="#6B7B71"/>
-              <text x="160" y="60" text-anchor="middle" font-size="11" fill="#527D61" font-weight="bold">Cà phê Sài Gòn / Let's Talk!</text>
-            </svg>
-            <div style="font-size: 13px; font-weight: 600; color: var(--primary-dark); margin-top: 8px;">Gặp gỡ tại quán Cà phê hoặc Video Call</div>
-          </div>
-          <div style="margin-top: 14px; font-size: 13px; color: var(--text-muted);">Đã kết nối hơn 1,200 bạn trẻ tại Quận 1, Quận 10, Bình Thạnh, Thủ Đức...</div>
-        </div>
-      </div>
-
-      <!-- Lợi ích cốt lõi -->
-      <div style="margin-top: 40px;">
-        <h2 style="text-align: center; margin-bottom: 24px;">Trải nghiệm kết nối tối ưu cho người học tại Sài Gòn</h2>
-        <div class="grid-3">
-          <div class="card">
-            <h4 style="margin-bottom: 8px;">Ghép đôi gần trường & nơi ở</h4>
-            <p style="font-size: 14px; color: var(--text-muted);">Thuật toán tối ưu hóa theo các cụm quận: Khu vực Làng Đại học (Thủ Đức), cụm Bách Khoa - Kinh Tế (Quận 10, Quận 5), khu trung tâm (Quận 1, Quận 3) hay Bình Thạnh.</p>
-          </div>
-          <div class="card">
-            <h4 style="margin-bottom: 8px;">An toàn & Xác minh thực</h4>
-            <p style="font-size: 14px; color: var(--text-muted);">100% tài khoản xác thực qua số điện thoại cá nhân. Tính năng báo cáo & chặn tức thì ngăn ngừa quấy rối hoặc sai mục đích học tập.</p>
-          </div>
-          <div class="card">
-            <h4 style="margin-bottom: 8px;">Chi phí thân thiện sinh viên</h4>
-            <p style="font-size: 14px; color: var(--text-muted);">Kết nối bạn cùng tiến hoàn toàn miễn phí. Gói Premium chỉ 69.000đ/tháng mở rộng không giới hạn lượt ghép đôi và ưu tiên kết nối khách quốc tế.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. CÁCH HOẠT ĐỘNG -->
-    <section id="page-how-it-works" class="page-section">
-      <h2>Quy trình 4 bước bắt đầu luyện nói tại TP.HCM</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Chủ động, dễ dàng gặp gỡ và duy trì phản xạ tự nhiên.</p>
-      <div class="grid-2">
-        <div class="card">
-          <span class="badge" style="margin-bottom: 12px;">Bước 1</span>
-          <h3>Chọn Quận/Huyện bạn sinh sống hoặc học tập</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Chọn vị trí tại TP.HCM (Ví dụ: Quận 10, Bình Thạnh, Thủ Đức), ngoại ngữ muốn rèn (Anh, Trung, Nhật, Hàn, Pháp) và khung giờ rảnh.</p>
-        </div>
-        <div class="card">
-          <span class="badge" style="margin-bottom: 12px;">Bước 2</span>
-          <h3>Thuật toán đề xuất Partner tương thích</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Hệ thống tự động so khớp mục tiêu (IELTS, phỏng vấn, giao tiếp hằng ngày) và khoảng cách di chuyển giữa hai bạn tại TP.HCM.</p>
-        </div>
-        <div class="card">
-          <span class="badge" style="margin-bottom: 12px;">Bước 3</span>
-          <h3>Gửi lời mời & Mở phòng chat riêng</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Chỉ khi cả hai bạn cùng đồng ý kết nối, kênh trò chuyện mới hiển thị để bảo đảm quyền riêng tư và hạn chế spam.</p>
-        </div>
-        <div class="card">
-          <span class="badge" style="margin-bottom: 12px;">Bước 4</span>
-          <h3>Hẹn Cà phê hoặc đàm thoại trực tuyến</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Thực hành trực tiếp 45-60 phút tại các địa điểm cà phê gợi ý hoặc gọi video theo bộ chủ đề luyện nói có sẵn trên TalkBuddy.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. AUTH / OTP DEMO -->
-    <section id="page-auth" class="page-section">
-      <div style="max-width: 440px; margin: 40px auto;" class="card">
-        <h2 style="text-align: center; margin-bottom: 8px;" id="auth-title">Đăng Nhập / Đăng Ký</h2>
-        <p style="text-align: center; font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Xác thực bằng số điện thoại di động tại Việt Nam.</p>
 
         <div id="step-phone">
           <div class="form-group">
-            <label>Số điện thoại (Đầu số VN)</label>
+            <label>Số điện thoại cá nhân</label>
             <input type="tel" id="auth-phone-input" class="form-control" placeholder="0901 234 567" value="0909123456">
           </div>
           <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
             <label style="display: flex; gap: 8px; align-items: flex-start; cursor: pointer;">
               <input type="checkbox" id="auth-terms" checked>
-              <span>Tôi xác nhận từ 18 tuổi trở lên, hiện đang sinh sống, học tập hoặc làm việc tại khu vực TP. Hồ Chí Minh và đồng ý với Quy chế TalkBuddy.</span>
+              <span>Tôi xác nhận từ đủ 18 tuổi trở lên, hiện đang sống/học tập tại TP.HCM và đồng ý với Quy chế sử dụng TalkBuddy.</span>
             </label>
           </div>
-          <button class="btn btn-primary" style="width: 100%;" onclick="requestOtpDemo()">Gửi mã OTP xác thực</button>
+          <button class="btn btn-primary" style="width: 100%;" onclick="requestOtp()">Nhận mã xác thực qua SMS</button>
+          
+          <div style="text-align: center; margin-top: 14px;">
+            <a href="javascript:void(0)" onclick="navigateTo('landing')" style="font-size: 13px; color: var(--primary-dark); font-weight: 600; text-decoration: underline;">
+              Hoặc xem giới thiệu trang chủ trước
+            </a>
+          </div>
         </div>
 
         <div id="step-otp" style="display: none;">
-          <div class="badge badge-demo" style="width: 100%; margin-bottom: 14px; justify-content: center;">
-            Mã OTP Thử Nghiệm: <strong>123456</strong>
+          <div class="badge" style="width: 100%; margin-bottom: 14px; justify-content: center; background: var(--primary-light);">
+            Mã OTP đã được gửi đến số điện thoại của bạn
           </div>
           <div class="form-group">
-            <label>Nhập mã OTP (6 số)</label>
-            <input type="text" id="auth-otp-input" class="form-control" placeholder="123456" maxlength="6">
+            <label>Nhập mã xác thực (6 số)</label>
+            <input type="text" id="auth-otp-input" class="form-control" placeholder="Nhập mã 123456" maxlength="6" value="123456">
           </div>
           <div style="display: flex; gap: 8px;">
             <button class="btn btn-secondary" style="flex: 1;" onclick="backToPhoneStep()">Quay lại</button>
-            <button class="btn btn-primary" style="flex: 2;" onclick="verifyOtpDemo()">Xác minh & Tiếp tục</button>
+            <button class="btn btn-primary" style="flex: 2;" onclick="verifyOtp()">Xác minh & Vào hệ thống</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. PROFILE SETUP (KHU VỰC QUẬN/HUYỆN TP.HCM) -->
+    <!-- 2. TRANG CHỦ HOÀN CHỈNH (HERO + CÁCH HOẠT ĐỘNG + CÁC GÓI) -->
+    <section id="page-landing" class="page-section">
+      
+      <!-- HERO BANNER -->
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-badges">
+            <span class="badge badge-hcm">Khu vực TP. Hồ Chí Minh</span>
+            <span class="badge">Luyện nói ngoại ngữ 1-1</span>
+          </div>
+          <h1>Tìm bạn đồng hành lý tưởng để luyện nói ngoại ngữ.</h1>
+          <p>Bạn muốn tăng phản xạ Tiếng Anh, Tiếng Trung, Tiếng Nhật, Tiếng Hàn hay Tiếng Pháp? Chia sẻ khu vực và mục tiêu, TalkBuddy sẽ giúp bạn tìm kiếm và kết nối với người bạn luyện nói phù hợp nhất tại TP.HCM.</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="requireLogin('matching')">Tìm bạn luyện nói</button>
+            <a href="#section-how" class="btn btn-secondary">Tìm hiểu cách hoạt động</a>
+          </div>
+        </div>
+        <div class="hero-visual-card">
+          <!-- Hình ảnh PNG hai bạn đang trao đổi luyện nói ngoại ngữ tại quán cà phê -->
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Hai người đang luyện nói ngoại ngữ tại quán cà phê" class="hero-png-img">
+          <div style="margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--primary-dark);">Thực hành trực tiếp tại các quán cà phê TP.HCM hoặc Video Call</div>
+        </div>
+      </div>
+
+      <!-- CÁCH HOẠT ĐỘNG -->
+      <div id="section-how" style="margin-top: 50px; padding-top: 20px;">
+        <h2 style="text-align: center; margin-bottom: 8px;">TalkBuddy hoạt động như thế nào?</h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Quy trình 4 bước đơn giản để bắt đầu buổi đàm thoại thực tế tại Sài Gòn.</p>
+        
+        <div class="grid-2">
+          <div class="card">
+            <span class="badge" style="margin-bottom: 12px;">Bước 1</span>
+            <h3>Thiết lập hồ sơ nói ngoại ngữ</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Chọn quận bạn đang sống/học tập (Quận 1, Quận 10, Bình Thạnh, Thủ Đức...), ngoại ngữ cần rèn luyện và lịch rảnh trong tuần.</p>
+          </div>
+          <div class="card">
+            <span class="badge" style="margin-bottom: 12px;">Bước 2</span>
+            <h3>Thuật toán tính điểm tương thích</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Hệ thống phân tích mục tiêu (giao tiếp, công việc, thi chứng chỉ) và cự ly di chuyển để đề xuất bạn học phù hợp nhất.</p>
+          </div>
+          <div class="card">
+            <span class="badge" style="margin-bottom: 12px;">Bước 3</span>
+            <h3>Gửi lời mời & Mở hộp thoại riêng</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Khi cả hai cùng đồng ý kết nối, phòng chat riêng sẽ được kích hoạt bảo đảm quyền riêng tư và an toàn.</p>
+          </div>
+          <div class="card">
+            <span class="badge" style="margin-bottom: 12px;">Bước 4</span>
+            <h3>Gặp gỡ luyện tập phản xạ</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Chủ động hẹn nhau tại các quán cà phê gần hai bạn hoặc gọi video call theo các chủ đề đàm thoại gợi ý.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CÁC GÓI DỊCH VỤ -->
+      <div id="section-pricing" style="margin-top: 60px;">
+        <h2 style="text-align: center; margin-bottom: 8px;">Các gói dịch vụ TalkBuddy</h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Mức phí minh bạch, thân thiện và linh hoạt dành cho sinh viên & người đi làm.</p>
+
+        <div class="grid-3">
+          <!-- Gói Cơ Bản -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="badge">Nạp Xu Cơ Bản</span>
+              <h3 style="margin: 12px 0 6px;">Gói Cơ Bản</h3>
+              <div style="font-size: 26px; font-weight: 800; color: var(--primary-dark);">20.000 VNĐ</div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Tỷ lệ quy đổi: 1.000đ = 1 Xu</p>
+              <ul style="font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+                <li>Nhận ngay 20 Xu vào tài khoản</li>
+                <li>Mở rộng 5 lượt gửi kết nối ưu tiên</li>
+                <li>Xu không có thời hạn hết hạn</li>
+              </ul>
+            </div>
+            <button class="btn btn-secondary" style="margin-top: 24px; width: 100%;" onclick="requireLogin('premium')">Mua Gói Cơ Bản</button>
+          </div>
+
+          <!-- Gói Tiết Kiệm -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-color: var(--primary-neutral);">
+            <div>
+              <span class="badge" style="background: var(--primary-pastel);">Tặng thêm 10 Xu</span>
+              <h3 style="margin: 12px 0 6px;">Gói Tiết Kiệm</h3>
+              <div style="font-size: 26px; font-weight: 800; color: var(--primary-dark);">50.000 VNĐ</div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Giá trị thực nhận: 60 Xu</p>
+              <ul style="font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+                <li>Nhận ngay 60 Xu (Thưởng 10 Xu)</li>
+                <li>Ghép đôi nhanh Fast Matching tại TP.HCM</li>
+                <li>Mở khóa kho chủ đề đàm thoại chuyên sâu</li>
+              </ul>
+            </div>
+            <button class="btn btn-secondary" style="margin-top: 24px; width: 100%;" onclick="requireLogin('premium')">Mua Gói Tiết Kiệm</button>
+          </div>
+
+          <!-- Gói Hội Viên PREMIUM -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(180deg, #FFFFFF 0%, #F3FAF4 100%); border: 2px solid var(--primary-dark);">
+            <div>
+              <span class="badge" style="background: var(--primary-dark); color: #FFF;">Gói Hội Viên Đề Xuất</span>
+              <h3 style="margin: 12px 0 6px;">TalkBuddy Premium</h3>
+              <div style="font-size: 28px; font-weight: 800; color: var(--primary-dark);">69.000 VNĐ <span style="font-size: 14px; font-weight: 500;">/ tháng</span></div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Đầy đủ quyền lợi ưu tiên cao nhất</p>
+              <ul style="font-size: 13px; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+                <li>Tặng 70 Xu vào tài khoản mỗi tháng</li>
+                <li>Trải nghiệm 100% không có quảng cáo</li>
+                <li>Ưu tiên hàng đầu trong hàng đợi ghép đôi TP.HCM</li>
+                <li>Ưu tiên tìm kiếm Foreign Partner tại TP.HCM</li>
+                <li>Không giới hạn số lượt gửi yêu cầu kết nối</li>
+                <li>Trợ giá 50% phí hoa hồng khi book Gia sư 1-1</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 24px; width: 100%;" onclick="requireLogin('premium')">Nâng Cấp 69.000đ / Tháng</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROFILE SETUP -->
     <section id="page-profile" class="page-section">
       <div style="max-width: 720px; margin: 0 auto;" class="card">
-        <h2>Hồ sơ luyện nói ngoại ngữ tại TP.HCM</h2>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Vị trí chính xác tại TP.HCM giúp thuật toán đề xuất bạn đồng hành ở cự ly gần nhất.</p>
+        <h2>Thiết lập hồ sơ luyện nói</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Vị trí chính xác tại TP.HCM giúp tìm kiếm bạn đồng hành ở cự ly gần nhất.</p>
 
         <div class="grid-2">
           <div class="form-group">
@@ -745,7 +803,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Trường học hoặc Nơi làm việc</label>
+            <label>Trường học hoặc Nghề nghiệp</label>
             <input type="text" id="prof-occupation" class="form-control" value="Sinh viên Đại học Kinh Tế TP.HCM (UEH)">
           </div>
         </div>
@@ -782,403 +840,245 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Hình thức luyện tập ưu tiên</label>
+            <label>Hình thức mong muốn</label>
             <select id="prof-mode" class="form-control">
-              <option value="Gặp trực tiếp quán Cà phê">Gặp trực tiếp quán Cà phê tại TP.HCM</option>
-              <option value="Online qua Video Call">Online qua Google Meet / Video Call</option>
-              <option value="Linh hoạt cả hai">Linh hoạt cả hai hình thức</option>
+              <option value="Gặp trực tiếp quán Cà phê">Gặp trực tiếp tại quán Cà phê</option>
+              <option value="Online qua Video Call">Online qua Video Call</option>
+              <option value="Linh hoạt cả hai">Linh hoạt cả hai</option>
             </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Sở thích & Điểm hẹn Cà phê ưa thích</label>
-          <input type="text" id="prof-interests" class="form-control" value="The Coffee House Sư Vạn Hạnh, Phúc Long, Sách kinh tế, Âm nhạc Indie">
+          <label>Quán Cà phê yêu thích & Sở thích</label>
+          <input type="text" id="prof-interests" class="form-control" value="The Coffee House Sư Vạn Hạnh, Phúc Long, Sách, Podcast">
         </div>
 
         <div class="form-group">
-          <label>Thời gian rảnh luyện tập trong tuần</label>
+          <label>Thời gian rảnh luyện tập</label>
           <input type="text" id="prof-avail" class="form-control" value="Chiều thứ Bảy & Sáng Chủ Nhật">
         </div>
 
-        <button class="btn btn-primary" onclick="saveProfileDemo()">Cập nhật hồ sơ TP.HCM</button>
+        <button class="btn btn-primary" onclick="saveProfile()">Lưu hồ sơ và tìm bạn ngay</button>
       </div>
     </section>
 
-    <!-- 5. MATCHING SYSTEM (KHU VỰC TP.HCM) -->
+    <!-- 4. MATCHING PORTAL -->
     <section id="page-matching" class="page-section">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
         <div>
-          <h2>Đối tác luyện nói tại TP. Hồ Chí Minh</h2>
-          <p style="color: var(--text-muted); font-size: 14px;">Thuật toán tính điểm tương thích theo cự ly các quận tại Sài Gòn & Mục tiêu học tập</p>
+          <h2>Đối tác luyện nói phù hợp tại TP.HCM</h2>
+          <p style="color: var(--text-muted); font-size: 14px;">Hệ thống tính điểm dựa trên độ tương thích trình độ, mục tiêu và quận bạn sinh sống.</p>
         </div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           <button class="btn btn-secondary btn-sm" onclick="filterLanguage('Tất cả')">Tất cả</button>
           <button class="btn btn-secondary btn-sm" onclick="filterLanguage('Tiếng Anh')">Tiếng Anh</button>
           <button class="btn btn-secondary btn-sm" onclick="filterLanguage('Tiếng Trung')">Tiếng Trung</button>
           <button class="btn btn-secondary btn-sm" onclick="filterLanguage('Tiếng Nhật')">Tiếng Nhật</button>
-          <button class="btn btn-secondary btn-sm" onclick="filterDistrict('Quận 10, TP.HCM')">Khu vực Q.10</button>
         </div>
       </div>
 
       <div class="grid-3" id="partner-cards-container">
-        <!-- Render 10 mock profiles tại TP.HCM -->
+        <!-- Render khi người dùng đã đăng nhập -->
       </div>
     </section>
 
-    <!-- 6. PARTNERS LIST -->
+    <!-- 5. DANH SÁCH BẠN ĐÃ KẾT NỐI -->
     <section id="page-partners" class="page-section">
-      <h2>Bạn đồng hành đã kết nối tại TP.HCM</h2>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Danh sách các bạn đã đồng thuận lời mời luyện nói cùng nhau.</p>
+      <h2>Bạn đồng hành đã kết nối</h2>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Danh sách những bạn đã đồng ý yêu cầu ghép đôi để cùng hẹn lịch đàm thoại.</p>
       
-      <div class="grid-2" id="connected-partners-list">
-        <!-- Render danh sách bạn bè -->
-      </div>
+      <div class="grid-2" id="connected-partners-list"></div>
     </section>
 
-    <!-- 7. INBOX & CHATBOX -->
+    <!-- 6. INBOX TOÀN DIỆN -->
     <section id="page-inbox" class="page-section">
       <div class="chat-container">
         <div class="chat-sidebar">
           <div style="padding: 14px; font-weight: 700; border-bottom: 1px solid var(--border-color); background: #FFF;">
             Hội thoại (<span id="chat-count">2</span>)
           </div>
-          <div class="chat-list" id="chat-user-list">
-            <!-- Render danh sách chat -->
-          </div>
+          <div class="chat-list" id="chat-user-list"></div>
         </div>
 
         <div class="chat-main">
           <div class="chat-header">
             <div>
-              <strong id="active-chat-name">Hoàng Long (Quận 10, TP.HCM)</strong>
-              <div style="font-size: 12px; color: #527D61;">● Đang online • Hẹn gặp tại Quận 10</div>
+              <strong id="active-chat-name">Hoàng Long (Quận 10)</strong>
+              <div style="font-size: 12px; color: #527D61;">Đang hoạt động • Hẹn gặp tại Quận 10</div>
             </div>
-            <div style="display: flex; gap: 8px;">
-              <button class="btn btn-sm btn-outline" onclick="openReportModal()">Báo cáo / Chặn</button>
-            </div>
+            <button class="btn btn-sm btn-outline" onclick="openReportModal()">Báo cáo đối tác</button>
           </div>
 
-          <div class="chat-messages" id="chat-messages-body">
-            <!-- Nội dung tin nhắn -->
-          </div>
+          <div class="chat-messages" id="chat-messages-body"></div>
 
           <div class="chat-input-bar">
-            <input type="text" id="chat-text-input" class="form-control" placeholder="Nhập tin nhắn (Gợi ý: hẹn quán cà phê gần bạn)..." onkeypress="if(event.key==='Enter') sendChatMessage()">
+            <input type="text" id="chat-text-input" class="form-control" placeholder="Nhập tin nhắn trao đổi ngoại ngữ..." onkeypress="if(event.key==='Enter') sendChatMessage()">
             <button class="btn btn-primary" onclick="sendChatMessage()">Gửi</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 8. NOTIFICATIONS -->
-    <section id="page-notifications" class="page-section">
-      <h2>Thông báo hoạt động tại TP.HCM</h2>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Cập nhật về các đối tác mới và hoạt động luyện tập quanh bạn.</p>
-
-      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 700px;" id="notif-list">
-        <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <strong>Hoàng Long (Quận 10)</strong> đã chấp nhận lời mời ghép đôi luyện Tiếng Anh!
-            <div style="font-size: 12px; color: var(--text-muted);">15 phút trước</div>
-          </div>
-          <button class="btn btn-sm btn-secondary" onclick="navigateTo('inbox')">Mở Chat</button>
-        </div>
-        <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            Có <strong>3 đối tác mới</strong> đạt độ tương thích trên 85% tại Quận 10 & Quận 3!
-            <div style="font-size: 12px; color: var(--text-muted);">1 giờ trước</div>
-          </div>
-          <button class="btn btn-sm btn-secondary" onclick="navigateTo('matching')">Xem ngay</button>
-        </div>
-        <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            Chào mừng bạn đến với giai đoạn Pilot thử nghiệm của TalkBuddy tại <strong>TP. Hồ Chí Minh</strong>.
-            <div style="font-size: 12px; color: var(--text-muted);">Hôm nay</div>
-          </div>
-          <span class="badge badge-hcm">Khu vực TP.HCM</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. COIN & PREMIUM (ĐÚNG GIÁ 69.000Đ/THÁNG TRONG TÀI LIỆU KHỞI NGHIỆP) -->
-    <section id="page-premium" class="page-section">
-      <div style="text-align: center; max-width: 650px; margin: 0 auto 30px;">
-        <h2>Gói Dịch Vụ TalkBuddy</h2>
-        <p style="color: var(--text-muted); font-size: 15px;">Ưu tiên ghép đôi nhanh với bạn học cùng quận và kết nối bạn bè quốc tế tại Sài Gòn.</p>
-        <div style="margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; background: #FFF; padding: 6px 16px; border-radius: 999px; border: 1px solid var(--border-color);">
-          <span>Số dư ví của bạn:</span>
-          <strong style="color: var(--primary-dark); font-size: 18px;" id="wallet-balance">20 Xu</strong>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <!-- Gói Cơ Bản Xu -->
-        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="badge">Nạp Xu Thường</span>
-            <h3 style="margin: 12px 0 6px;">Gói Cơ Bản</h3>
-            <div style="font-size: 24px; font-weight: 800; color: var(--primary-dark);">20.000 VNĐ</div>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Tỷ lệ chuẩn 1.000đ = 1 Xu</p>
-            <ul style="font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
-              <li>✔ Nhận ngay 20 Xu vào tài khoản</li>
-              <li>✔ Mở rộng 5 lượt kết nối ưu tiên quanh quận bạn ở</li>
-              <li>✔ Xu không bị giới hạn hạn sử dụng</li>
-            </ul>
-          </div>
-          <button class="btn btn-secondary" style="margin-top: 20px; width: 100%;" onclick="mockPurchase('20k', 20)">Mua Gói Cơ Bản</button>
-        </div>
-
-        <!-- Gói Tiết Kiệm Xu -->
-        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-color: var(--primary-neutral);">
-          <div>
-            <span class="badge" style="background: #CFE8D5;">Tặng thêm 10 Xu</span>
-            <h3 style="margin: 12px 0 6px;">Gói Tiết Kiệm</h3>
-            <div style="font-size: 24px; font-weight: 800; color: var(--primary-dark);">50.000 VNĐ</div>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Giá trị thực nhận: 60 Xu</p>
-            <ul style="font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
-              <li>✔ Nhận ngay 60 Xu (Đã cộng 10 Xu khuyến mãi)</li>
-              <li>✔ Ghép đôi ưu tiên Fast Matching tại TP.HCM</li>
-              <li>✔ Mở khóa trọn bộ chủ đề đàm thoại chuyên sâu</li>
-            </ul>
-          </div>
-          <button class="btn btn-secondary" style="margin-top: 20px; width: 100%;" onclick="mockPurchase('50k', 60)">Mua Gói Tiết Kiệm</button>
-        </div>
-
-        <!-- Gói Hội Viên PREMIUM -->
-        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(180deg, #FFFFFF 0%, #F3FAF4 100%); border: 2px solid var(--primary-dark);">
-          <div>
-            <span class="badge" style="background: var(--primary-dark); color: #FFF;">Gói Đề Xuất Cho Sinh Viên</span>
-            <h3 style="margin: 12px 0 6px;">TalkBuddy Premium</h3>
-            <div style="font-size: 28px; font-weight: 800; color: var(--primary-dark);">69.000 VNĐ <span style="font-size: 14px; font-weight: 500;">/ tháng</span></div>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Đầy đủ quyền lợi theo tài liệu dự án khởi nghiệp</p>
-            <ul style="font-size: 13px; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
-              <li>✔ Tặng 70 Xu vào tài khoản mỗi tháng</li>
-              <li>✔ Trải nghiệm không có quảng cáo</li>
-              <li>✔ Ưu tiên hàng đầu trong hàng đợi ghép đôi tại TP.HCM</li>
-              <li>✔ Ưu tiên tìm kiếm Foreign Partner tại TP.HCM</li>
-              <li>✔ Không giới hạn số lượt gửi yêu cầu kết nối</li>
-              <li>✔ Trợ giá 50% phí hoa hồng khi book Gia sư 1-1</li>
-            </ul>
-          </div>
-          <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="mockUpgradePremium()">Nâng Cấp 69.000đ / Tháng</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. GIA SƯ TẠI TP.HCM -->
+    <!-- 7. GIA SƯ 1-1 -->
     <section id="page-tutors" class="page-section">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
         <div>
           <h2>Gia sư Ngoại ngữ 1-1 tại TP.HCM</h2>
-          <p style="color: var(--text-muted); font-size: 14px;">Học cùng các gia sư, trợ giảng có chứng chỉ cao đang sinh sống tại TP.HCM.</p>
+          <p style="color: var(--text-muted); font-size: 14px;">Chỉnh sửa phát âm và hướng dẫn giao tiếp có giáo trình cụ thể.</p>
         </div>
-        <div class="badge" style="background: #EAF5EC;">Phí sàn: 15% - 20% (Premium được trợ giá 50%)</div>
       </div>
-
-      <div class="grid-3" id="tutor-cards-container">
-        <!-- Render gia sư mẫu tại TP.HCM -->
-      </div>
+      <div class="grid-3" id="tutor-cards-container"></div>
     </section>
 
-    <!-- 11. KẾT NỐI KHÁCH QUỐC TẾ TẠI TP.HCM -->
+    <!-- 8. FOREIGN PARTNER -->
     <section id="page-foreign-partners" class="page-section">
-      <h2>Foreign Partner Matching tại TP. Hồ Chí Minh</h2>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Giao lưu ngôn ngữ song phương (Language Exchange) cùng người nước ngoài đang làm việc hoặc du lịch tại Sài Gòn.</p>
+      <h2>Foreign Partner tại TP. Hồ Chí Minh</h2>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Giao lưu ngôn ngữ song phương (Language Exchange) cùng người nước ngoài tại Sài Gòn.</p>
       
       <div class="grid-2">
         <div class="card">
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-            <div style="width: 56px; height: 56px; border-radius: 50%; background: #CFE8D5; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #527D61;">DA</div>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Daniel" class="avatar-png">
             <div>
               <h3>Daniel Anderson (UK)</h3>
               <div style="font-size: 13px; color: var(--text-muted);">Sống tại: Thảo Điền, TP. Thủ Đức, TP.HCM</div>
             </div>
           </div>
           <p style="font-size: 14px; color: var(--text-main); margin-bottom: 12px;">
-            "Mình là giáo viên ESL đang sống tại Thảo Điền. Rất muốn tìm bạn người Việt để giao lưu: 30 phút Tiếng Anh - 30 phút Tiếng Việt tại các quán cà phê khu vực Q.1 hoặc Thủ Đức vào chiều Chủ Nhật."
+            "Mình là người Anh sống tại Thảo Điền. Rất muốn tìm bạn người Việt để giao lưu: 30 phút Tiếng Anh - 30 phút Tiếng Việt tại các quán cà phê khu vực Q.1 hoặc Thủ Đức."
           </p>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="badge">Native English</span>
-            <button class="btn btn-primary btn-sm" onclick="showToast('Đã gửi lời mời trao đổi ngôn ngữ tới Daniel tại Thủ Đức!')">Gửi lời mời ghép đôi</button>
-          </div>
+          <button class="btn btn-primary btn-sm" onclick="showToast('Đã gửi lời mời kết nối tới Daniel!')">Gửi lời mời ghép đôi</button>
         </div>
 
         <div class="card">
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-            <div style="width: 56px; height: 56px; border-radius: 50%; background: #CFE8D5; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #527D61;">KY</div>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Kenji" class="avatar-png">
             <div>
               <h3>Kenji Yamaguchi (Japan)</h3>
-              <div style="font-size: 13px; color: var(--text-muted);">Sống tại: Khu phố Nhật Lê Thánh Tôn, Quận 1, TP.HCM</div>
+              <div style="font-size: 13px; color: var(--text-muted);">Sống tại: Lê Thánh Tôn, Quận 1, TP.HCM</div>
             </div>
           </div>
           <p style="font-size: 14px; color: var(--text-main); margin-bottom: 12px;">
-            "Konnichiwa! Tôi là chuyên viên IT Nhật Bản làm việc tại Quận 1. Cần tìm bạn luyện Tiếng Việt đàm thoại và sẵn sàng hướng dẫn lại Tiếng Nhật chuẩn Tokyo."
+            "Konnichiwa! Tôi là kỹ sư Nhật Bản tại Quận 1. Cần tìm bạn luyện Tiếng Việt đàm thoại và sẵn lòng hướng dẫn lại Tiếng Nhật chuẩn Tokyo."
           </p>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="badge">Native Japanese</span>
-            <button class="btn btn-primary btn-sm" onclick="showToast('Đã gửi lời mời trao đổi ngôn ngữ tới Kenji tại Quận 1!')">Gửi lời mời ghép đôi</button>
-          </div>
+          <button class="btn btn-primary btn-sm" onclick="showToast('Đã gửi lời mời kết nối tới Kenji!')">Gửi lời mời ghép đôi</button>
         </div>
       </div>
     </section>
 
-    <!-- 12. HỖ TRỢ KHÁCH HÀNG (CUSTOMER SUPPORT TICKET) -->
+    <!-- 9. HỖ TRỢ KHÁCH HÀNG -->
     <section id="page-support" class="page-section">
-      <div style="max-width: 700px; margin: 0 auto;" class="card">
-        <h2>Bộ Phận Hỗ Trợ Người Dùng TP.HCM</h2>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Đội ngũ CSKH hỗ trợ sinh viên & học viên tại địa bàn TP.HCM trong khung giờ 08:00 - 22:00 mỗi ngày.</p>
+      <div style="max-width: 650px; margin: 0 auto;" class="card">
+        <h2>Hỗ trợ khách hàng TP.HCM</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Giải đáp thắc mắc về tài khoản, an toàn gặp gỡ và gói hội viên.</p>
 
         <div class="form-group">
-          <label>Phân loại sự cố</label>
+          <label>Vấn đề cần hỗ trợ</label>
           <select id="ticket-category" class="form-control">
-            <option value="Sự cố Ghép đôi tại Quận">Ghép đôi khu vực Quận/Huyện TP.HCM</option>
-            <option value="Tài khoản / Đăng nhập OTP">Tài khoản & Đăng nhập OTP</option>
-            <option value="Nạp xu & Gói Premium">Nạp xu & Gói Premium 69.000đ</option>
-            <option value="Góp ý điểm hẹn Cà phê">Góp ý địa điểm luyện nói an toàn</option>
+            <option value="Ghép đôi khu vực">Ghép đôi theo khu vực Quận/Huyện</option>
+            <option value="Tài khoản / Đăng nhập">Tài khoản & Xác minh OTP</option>
+            <option value="Gói Premium & Xu">Nâng cấp Premium 69.000đ & Nạp Xu</option>
+            <option value="Báo cáo an toàn">Báo cáo hành vi không phù hợp</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label>Tiêu đề yêu cầu</label>
-          <input type="text" id="ticket-subject" class="form-control" placeholder="Ví dụ: Cần hỗ trợ tìm thêm bạn luyện nói Tiếng Trung tại Quận 5">
+          <label>Tiêu đề</label>
+          <input type="text" id="ticket-subject" class="form-control" placeholder="Nhập tiêu đề yêu cầu...">
         </div>
 
         <div class="form-group">
           <label>Nội dung chi tiết</label>
-          <textarea id="ticket-message" class="form-control" rows="4" placeholder="Mô tả cụ thể câu hỏi hoặc đề xuất của bạn..."></textarea>
+          <textarea id="ticket-message" class="form-control" rows="4" placeholder="Mô tả cụ thể thắc mắc của bạn..."></textarea>
         </div>
 
-        <button class="btn btn-primary" onclick="submitSupportTicket()">Gửi phiếu yêu cầu</button>
-
-        <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-          <h4 style="margin-bottom: 12px;">Phiếu hỗ trợ gần đây</h4>
-          <div id="recent-tickets-list" style="font-size: 13px; color: var(--text-muted);">
-            <div style="padding: 10px; background: var(--bg-subtle); border-radius: var(--radius-sm); margin-bottom: 8px;">
-              <strong>#HCM-102: Hỏi về quy định gặp mặt offline an toàn</strong> - <span style="color: #527D61; font-weight: 600;">Đã phản hồi</span>
-              <div style="font-size: 12px; margin-top: 4px;">CSKH TalkBuddy: "Chào bạn, TalkBuddy khuyến khích người học luôn gặp nhau tại các chuỗi cà phê công cộng, sáng sủa và không chia sẻ địa chỉ nhà riêng nhé!"</div>
-            </div>
-          </div>
-        </div>
+        <button class="btn btn-primary" onclick="submitTicket()">Gửi yêu cầu hỗ trợ</button>
       </div>
     </section>
 
-    <!-- 13. ADMIN DASHBOARD (QUẢN TRỊ VIÊN) -->
+    <!-- 10. ADMIN DASHBOARD -->
     <section id="page-admin" class="page-section">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap;">
-        <div>
-          <h2>Quản Trị Hệ Thống Pilot TP.HCM</h2>
-          <p style="color: var(--text-muted); font-size: 14px;">Bảng kiểm soát người dùng và chất lượng kết nối trên địa bàn TP.HCM.</p>
-        </div>
-        <span class="badge" style="background: #FFE8E8; color: #9C2A2A;">Admin Pilot TP.HCM</span>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2>Bảng quản trị hệ thống</h2>
+        <span class="badge" style="background: #FFE8E8; color: #9C2A2A;">Admin Authorized</span>
       </div>
 
-      <!-- Thống kê KPIs -->
-      <div class="admin-metrics">
-        <div class="metric-box">
-          <div style="font-size: 13px; color: var(--text-muted);">Tổng Người Dùng TP.HCM</div>
-          <div class="metric-value" id="adm-total-users">10</div>
-        </div>
-        <div class="metric-box">
-          <div style="font-size: 13px; color: var(--text-muted);">Ghép Đôi Thành Công (HCM)</div>
-          <div class="metric-value">46</div>
-        </div>
-        <div class="metric-box">
-          <div style="font-size: 13px; color: var(--text-muted);">Doanh Thu Thử Nghiệm</div>
-          <div class="metric-value">2.140.000đ</div>
-        </div>
-        <div class="metric-box">
-          <div style="font-size: 13px; color: var(--text-muted);">Báo Cáo Chờ Duyệt</div>
-          <div class="metric-value" style="color: #C53030;" id="adm-pending-reports">1</div>
-        </div>
-      </div>
-
-      <!-- Bảng kiểm duyệt người dùng tại TP.HCM -->
-      <div class="card" style="margin-bottom: 24px;">
-        <h4 style="margin-bottom: 14px;">1. Danh sách người dùng & Cụm khu vực tại TP.HCM</h4>
+      <div class="card" style="margin-bottom: 20px;">
+        <h4 style="margin-bottom: 12px;">Quản lý tài khoản khu vực TP.HCM</h4>
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
             <thead>
-              <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+              <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted); text-align: left;">
                 <th style="padding: 8px;">Họ tên</th>
                 <th style="padding: 8px;">Ngôn ngữ</th>
                 <th style="padding: 8px;">Quận tại TP.HCM</th>
-                <th style="padding: 8px;">Gói dịch vụ</th>
                 <th style="padding: 8px;">Trạng thái</th>
                 <th style="padding: 8px;">Hành động</th>
               </tr>
             </thead>
-            <tbody id="admin-user-table-body">
-              <!-- Render DS User Admin -->
-            </tbody>
+            <tbody id="admin-user-table-body"></tbody>
           </table>
         </div>
-      </div>
-
-      <!-- Cấu hình trọng số thuật toán -->
-      <div class="card">
-        <h4 style="margin-bottom: 12px;">2. Cấu hình trọng số thuật toán Matching (Tổng = 100 Điểm)</h4>
-        <div class="grid-3" style="font-size: 13px;">
-          <div>
-            <label>Ngôn ngữ & Trình độ (Điểm)</label>
-            <input type="number" class="form-control" value="25" id="weight-lang">
-          </div>
-          <div>
-            <label>Mục tiêu rèn luyện (Điểm)</label>
-            <input type="number" class="form-control" value="20" id="weight-goal">
-          </div>
-          <div>
-            <label>Sở thích & Chủ đề (Điểm)</label>
-            <input type="number" class="form-control" value="20" id="weight-topic">
-          </div>
-          <div>
-            <label>Khoảng cách giữa các Quận HCM (Điểm)</label>
-            <input type="number" class="form-control" value="15" id="weight-loc">
-          </div>
-          <div>
-            <label>Lịch rảnh trong tuần (Điểm)</label>
-            <input type="number" class="form-control" value="15" id="weight-time">
-          </div>
-          <div>
-            <label>Hình thức học (Cà phê / Online) (Điểm)</label>
-            <input type="number" class="form-control" value="5" id="weight-style">
-          </div>
-        </div>
-        <button class="btn btn-primary btn-sm" style="margin-top: 16px;" onclick="saveAlgorithmWeights()">Lưu Cấu Hình Trọng Số</button>
       </div>
     </section>
 
   </main>
 
-  <!-- MODAL BÁO CÁO NGƯỜI DÙNG -->
+  <!-- KHUNG NHỎ CHATBOX NỔI (FLOATING CHAT WIDGET) -->
+  <div id="floating-chat-trigger" onclick="toggleFloatingChat()">
+    <!-- Hình ảnh PNG biểu tượng hộp thoại hội thoại -->
+    <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?auto=format&fit=crop&w=64&q=80" alt="Chat Icon" class="mini-chat-icon" style="border-radius: 50%;">
+    <span style="font-size: 13px; font-weight: 700;">Hộp thư hỗ trợ</span>
+  </div>
+
+  <div id="floating-chat-popup">
+    <div class="floating-chat-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=80&q=80" alt="CSKH" style="width: 24px; height: 24px; border-radius: 50%;">
+        <span style="font-weight: 700; font-size: 14px;">TalkBuddy Hỗ Trợ 1-1</span>
+      </div>
+      <button onclick="toggleFloatingChat()" style="background: transparent; border: none; color: white; font-size: 18px; cursor: pointer;">&times;</button>
+    </div>
+    <div style="flex: 1; padding: 14px; overflow-y: auto; background: #FAFCFA; display: flex; flex-direction: column; gap: 10px;" id="floating-chat-msgs">
+      <div class="bubble bubble-in">
+        Chào bạn! Bạn cần hỗ trợ kết nối bạn luyện nói tại khu vực nào ở TP.HCM?
+      </div>
+    </div>
+    <div style="padding: 10px; border-top: 1px solid var(--border-color); display: flex; gap: 6px; background: white;">
+      <input type="text" id="floating-chat-input" class="form-control" placeholder="Nhập câu hỏi..." style="font-size: 13px;" onkeypress="if(event.key==='Enter') sendFloatingMsg()">
+      <button class="btn btn-primary btn-sm" onclick="sendFloatingMsg()">Gửi</button>
+    </div>
+  </div>
+
+  <!-- MODAL BÁO CÁO -->
   <div class="modal-overlay" id="report-modal">
     <div class="modal-box">
-      <h3 style="margin-bottom: 8px;">Báo cáo vi phạm an toàn</h3>
-      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">TalkBuddy cam kết giữ môi trường học tập văn minh, an toàn tại TP.HCM.</p>
+      <h3 style="margin-bottom: 8px;">Báo cáo đối tác</h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Cam kết giữ môi trường thực hành văn minh tại TP.HCM.</p>
       
       <div class="form-group">
-        <label>Lý do báo cáo</label>
+        <label>Lý do vi phạm</label>
         <select id="report-reason" class="form-control">
           <option value="Quấy rối / Ngôn từ thiếu chuẩn mực">Quấy rối / Ngôn từ thiếu chuẩn mực</option>
           <option value="Gạ gẫm / Sai mục đích học tập">Gạ gẫm / Sai mục đích học tập</option>
-          <option value="Spam / Chào mời bán hàng đa cấp">Spam / Chào mời bán hàng đa cấp</option>
-          <option value="Không xuất hiện tại điểm hẹn cà phê">Không xuất hiện tại điểm hẹn cà phê đã hẹn</option>
+          <option value="Không đến điểm hẹn cà phê">Không đến điểm hẹn cà phê đã đồng ý</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label>Chi tiết bằng chứng</label>
-        <textarea id="report-details" class="form-control" rows="3" placeholder="Mô tả cụ thể hành vi hoặc tin nhắn..."></textarea>
+        <label>Nội dung chi tiết</label>
+        <textarea id="report-details" class="form-control" rows="3" placeholder="Mô tả cụ thể sự việc..."></textarea>
       </div>
 
       <div style="display: flex; gap: 8px; justify-content: flex-end;">
-        <button class="btn btn-secondary btn-sm" onclick="closeReportModal()">Hủy bỏ</button>
-        <button class="btn btn-primary btn-sm" style="background: #B93838;" onclick="submitUserReport()">Gửi Báo Cáo & Chặn Đối Tác</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeReportModal()">Hủy</button>
+        <button class="btn btn-primary btn-sm" style="background: #B93838;" onclick="submitReport()">Xác nhận báo cáo</button>
       </div>
     </div>
   </div>
 
-  <!-- TOAST NOTIFICATION CONTAINER -->
+  <!-- TOAST -->
   <div id="toast-container"></div>
 
   <!-- FOOTER -->
@@ -1186,46 +1086,39 @@
     <div class="footer-inner">
       <div>
         <div class="brand" style="margin-bottom: 8px;">
-          <div class="brand-logo-sq">TB</div>
-          <span>TalkBuddy HCM</span>
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=120&q=80" alt="Logo" class="brand-logo-img">
+          <span>TalkBuddy</span>
         </div>
-        <p style="font-size: 13px; max-width: 320px;">Nền tảng kết nối bạn luyện nói ngoại ngữ 1-1 tối ưu theo khu vực sinh sống và học tập tại TP. Hồ Chí Minh.</p>
+        <p style="font-size: 13px; max-width: 320px;">Nền tảng kết nối bạn học luyện nói ngoại ngữ thực tế 1-1 tại TP. Hồ Chí Minh.</p>
       </div>
       <div>
-        <h4 style="margin-bottom: 10px; font-size: 14px;">Địa bàn triển khai</h4>
+        <h4 style="margin-bottom: 10px; font-size: 14px;">Địa bàn TP.HCM</h4>
         <ul style="font-size: 13px; display: flex; flex-direction: column; gap: 6px;">
-          <li>Khu vực Quận 10 & Quận 5 (Cụm Bách Khoa, UEH)</li>
-          <li>Khu vực TP. Thủ Đức (Làng Đại Học & Thảo Điền)</li>
-          <li>Khu vực Quận 1 & Quận 3 (Trung tâm văn phòng)</li>
-          <li>Khu vực Bình Thạnh, Phú Nhuận, Gò Vấp</li>
+          <li>Quận 10 & Quận 5 (Khu ĐH Bách Khoa, Kinh Tế)</li>
+          <li>TP. Thủ Đức (Khu Làng Đại Học & Thảo Điền)</li>
+          <li>Quận 1 & Quận 3 (Trung tâm văn phòng)</li>
+          <li>Bình Thạnh & Phú Nhuận</li>
         </ul>
       </div>
       <div>
-        <h4 style="margin-bottom: 10px; font-size: 14px;">An toàn gặp gỡ</h4>
+        <h4 style="margin-bottom: 10px; font-size: 14px;">Chính sách & An toàn</h4>
         <ul style="font-size: 13px; display: flex; flex-direction: column; gap: 6px;">
-          <li>Quy tắc chọn quán Cà phê công cộng</li>
+          <li>Tiêu chuẩn gặp gỡ tại quán Cà phê</li>
           <li>Chính sách bảo mật số điện thoại</li>
-          <li>Cơ chế báo cáo & Khóa tài khoản vi phạm</li>
           <li>Điều khoản gói Premium 69.000đ</li>
         </ul>
       </div>
-      <div>
-        <h4 style="margin-bottom: 10px; font-size: 14px;">Liên hệ Dự án Pilot</h4>
-        <p style="font-size: 13px;">Địa bàn: TP. Hồ Chí Minh, Việt Nam</p>
-        <p style="font-size: 13px;">Email: hcm-pilot@talkbuddy.vn</p>
-      </div>
     </div>
     <div style="max-width: 1200px; margin: 24px auto 0; padding-top: 16px; border-top: 1px solid var(--border-color); text-align: center; font-size: 12px;">
-      &copy; 2025 TalkBuddy Vietnam. Phiên bản thử nghiệm Pilot chuyên biệt tại khu vực Thành phố Hồ Chí Minh.
+      &copy; 2025 TalkBuddy Vietnam. Nền tảng kết nối ngoại ngữ tại Thành phố Hồ Chí Minh.
     </div>
   </footer>
 
-  <!-- JAVASCRIPT: LOGIC & DỮ LIỆU ĐÃ ĐIỀU CHỈNH 100% VỀ TP.HCM -->
+  <!-- SCRIPT APP LOGIC -->
   <script>
-    /* =========================================================================
-       1. DATA STORAGE: 10 TÀI KHOẢN MẪU TẠI KHU VỰC TP. HỒ CHÍ MINH
-       ========================================================================= */
-    const MOCK_CURRENT_USER = {
+    let isLoggedIn = false;
+
+    const CURRENT_USER = {
       id: 'usr_me',
       name: 'Minh Anh',
       phone: '0909123456',
@@ -1235,25 +1128,24 @@
       level: 'Trung cấp',
       area: 'Quận 10, TP.HCM',
       goal: 'Học tập, IELTS',
-      interests: 'The Coffee House Sư Vạn Hạnh, Podcast, Phim ảnh',
+      interests: 'The Coffee House Sư Vạn Hạnh, Podcast, Sách',
       avail: 'Chiều thứ Bảy & Sáng Chủ Nhật',
-      wallet: 20,
-      isPremium: false
+      wallet: 20
     };
 
-    // 10 tài khoản mẫu - Đều thuộc các quận/huyện tại TP.HCM
+    // Dữ liệu nội bộ được bảo lưu chỉ để hệ thống matching hoạt động sau khi người dùng đăng nhập
     const MOCK_PARTNERS = [
       {
         id: 'usr_1',
         name: 'Hoàng Long',
         age: 22,
-        gender: 'Nam',
+        area: 'Quận 10, TP.HCM',
         language: 'Tiếng Anh',
         level: 'Trung cấp',
-        area: 'Quận 10, TP.HCM',
         goal: 'Học tập, IELTS',
-        interests: 'Cà phê sách Thành Thái, Công nghệ, IELTS Speaking Part 2',
+        interests: 'Cà phê sách Thành Thái, Công nghệ, IELTS Speaking',
         avail: 'Chiều thứ Bảy & Sáng Chủ Nhật',
+        avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80',
         score: 96,
         connected: true,
         reason: 'Cùng ở Quận 10, cùng luyện IELTS Speaking trung cấp và rảnh chiều thứ Bảy'
@@ -1262,13 +1154,13 @@
         id: 'usr_2',
         name: 'Lan Hương',
         age: 24,
-        gender: 'Nữ',
+        area: 'Quận 1, TP.HCM',
         language: 'Tiếng Anh',
         level: 'Cao cấp',
-        area: 'Quận 1, TP.HCM',
         goal: 'Công việc',
-        interests: 'Phúc Long Ngô Đức Kế, Tiếng Anh thuyết trình, Kinh tế',
+        interests: 'Phúc Long Ngô Đức Kế, Tiếng Anh thương mại',
         avail: 'Tối thứ Tư & Chiều Chủ Nhật',
+        avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
         score: 84,
         connected: false,
         reason: 'Gần Quận 10 (Quận 1), phù hợp nâng cao phản xạ công sở'
@@ -1277,73 +1169,73 @@
         id: 'usr_3',
         name: 'Thảo Vy',
         age: 21,
-        gender: 'Nữ',
+        area: 'Quận 3, TP.HCM',
         language: 'Tiếng Anh',
         level: 'Trung cấp',
-        area: 'Quận 3, TP.HCM',
         goal: 'Học tập, IELTS',
-        interests: 'Trung Nguyên Legend NTMK, Đọc báo nước ngoài, Du lịch',
+        interests: 'Trung Nguyên Legend NTMK, Đọc báo nước ngoài',
         avail: 'Sáng Chủ Nhật',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
         score: 92,
         connected: false,
-        reason: 'Quận 3 giáp ranh Quận 10, cùng mục tiêu luyện thi chứng chỉ IELTS'
+        reason: 'Quận 3 liền kề Quận 10, cùng mục tiêu chứng chỉ IELTS'
       },
       {
         id: 'usr_4',
         name: 'Tuấn Kiệt',
         age: 23,
-        gender: 'Nam',
+        area: 'Bình Thạnh, TP.HCM',
         language: 'Tiếng Nhật',
         level: 'Sơ cấp',
-        area: 'Bình Thạnh, TP.HCM',
         goal: 'Giao tiếp',
-        interests: 'Anime, Văn hóa Nhật Bản, Cà phê D2 Bình Thạnh',
+        interests: 'Anime, Văn hóa Nhật, Cà phê D2 Bình Thạnh',
         avail: 'Tối thứ Ba & thứ Năm',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
         score: 55,
         connected: false,
-        reason: 'Cùng tại TP.HCM nhưng khác ngôn ngữ (Tiếng Nhật)'
+        reason: 'Thuộc địa bàn TP.HCM (khác ngôn ngữ: Tiếng Nhật)'
       },
       {
         id: 'usr_5',
         name: 'Hải Yến',
         age: 20,
-        gender: 'Nữ',
+        area: 'Phú Nhuận, TP.HCM',
         language: 'Tiếng Nhật',
         level: 'Sơ cấp',
-        area: 'Phú Nhuận, TP.HCM',
         goal: 'Giao tiếp',
-        interests: 'Phan Xích Long Cà phê, Manga, Du lịch Nhật',
+        interests: 'Phan Xích Long Cà phê, Manga, Du lịch',
         avail: 'Sáng thứ Bảy',
+        avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80',
         score: 52,
         connected: false,
-        reason: 'Cùng tại TP.HCM nhưng khác ngôn ngữ'
+        reason: 'Thuộc địa bàn TP.HCM (khác ngôn ngữ)'
       },
       {
         id: 'usr_6',
         name: 'Bảo Nam',
         age: 25,
-        gender: 'Nam',
+        area: 'Quận 5, TP.HCM',
         language: 'Tiếng Trung',
         level: 'Trung cấp',
-        area: 'Quận 5, TP.HCM',
         goal: 'Giao tiếp',
-        interests: 'Ẩm thực Chợ Lớn, Thương mại điện tử, Phim Hoa ngữ',
+        interests: 'Ẩm thực Chợ Lớn, Thương mại điện tử',
         avail: 'Tối thứ Hai & thứ Sáu',
+        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80',
         score: 65,
         connected: false,
-        reason: 'Khu vực Quận 5 rất gần Quận 10 (khác ngôn ngữ thực hành: Tiếng Trung)'
+        reason: 'Quận 5 sát Quận 10 (khác ngôn ngữ: Tiếng Trung)'
       },
       {
         id: 'usr_7',
         name: 'Khánh Linh',
         age: 22,
-        gender: 'Nữ',
+        area: 'Quận 10, TP.HCM',
         language: 'Tiếng Trung',
         level: 'Trung cấp',
-        area: 'Quận 10, TP.HCM',
         goal: 'Học tập, IELTS',
         interests: 'Nhạc C-pop, Luyện HSK 4, Cà phê Vạn Hạnh Mall',
         avail: 'Chiều thứ Bảy',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
         score: 68,
         connected: false,
         reason: 'Cùng khu vực Quận 10 nhưng mục tiêu là Tiếng Trung'
@@ -1352,13 +1244,13 @@
         id: 'usr_8',
         name: 'Gia Hân',
         age: 19,
-        gender: 'Nữ',
+        area: 'Bình Thạnh, TP.HCM',
         language: 'Tiếng Hàn',
         level: 'Sơ cấp',
-        area: 'Bình Thạnh, TP.HCM',
         goal: 'Du học',
-        interests: 'K-pop, Phim Hàn Quốc, Thời trang Sài Gòn',
+        interests: 'K-pop, Phim Hàn Quốc, Thời trang',
         avail: 'Tối thứ Bảy & Chủ Nhật',
+        avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
         score: 50,
         connected: false,
         reason: 'Ngôn ngữ thực hành Tiếng Hàn tại Bình Thạnh'
@@ -1367,79 +1259,69 @@
         id: 'usr_9',
         name: 'Daniel Anderson',
         age: 27,
-        gender: 'Nam',
+        area: 'TP. Thủ Đức, TP.HCM',
         language: 'Tiếng Anh',
         level: 'Cao cấp',
-        area: 'TP. Thủ Đức, TP.HCM',
         goal: 'Giao tiếp',
-        interests: 'Trao đổi văn hóa, Cà phê Thảo Điền, Lịch sử Sài Gòn',
+        interests: 'Cà phê Thảo Điền, Lịch sử, Trao đổi văn hóa',
         avail: 'Chiều Chủ Nhật',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
         score: 88,
         connected: false,
-        reason: 'Người bản xứ Anh tại Thảo Điền, mong muốn giao lưu ngôn ngữ song phương'
+        reason: 'Người bản xứ Anh tại Thảo Điền mong muốn trao đổi ngôn ngữ'
       },
       {
         id: 'usr_10',
         name: 'Thanh Trúc',
         age: 23,
-        gender: 'Nữ',
+        area: 'Quận 3, TP.HCM',
         language: 'Tiếng Pháp',
         level: 'Sơ cấp',
-        area: 'Quận 3, TP.HCM',
         goal: 'Giao tiếp',
-        interests: 'Văn học Pháp, Làm bánh, Cà phê Tú Xương Quận 3',
+        interests: 'Văn học Pháp, Cà phê Tú Xương Quận 3',
         avail: 'Sáng thứ Bảy',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
         score: 60,
         connected: false,
-        reason: 'Gần Quận 10 (Quận 3) nhưng ngoại ngữ thực hành là Tiếng Pháp'
+        reason: 'Gần Quận 10 nhưng ngoại ngữ thực hành là Tiếng Pháp'
       }
     ];
 
-    const MOCK_TUTORS = [
+    const TUTORS_DATA = [
       {
-        id: 'tut_1',
         name: 'Trần Đăng Khoa',
         lang: 'Tiếng Anh (IELTS 8.5)',
-        exp: 'Giảng dạy tại Q.10, 4 năm kinh nghiệm luyện phản xạ Speaking du học',
+        exp: 'Giảng dạy tại Q.10, 4 năm kinh nghiệm luyện phản xạ',
         price: '180.000đ / buổi 45 phút',
-        rating: '4.9 ★ (88 đánh giá tại TP.HCM)'
+        rating: '4.9/5 điểm'
       },
       {
-        id: 'tut_2',
         name: 'Vương Tuyết Mai',
         lang: 'Tiếng Trung (HSK 6)',
-        exp: 'Tốt nghiệp ĐH Sư Phạm TP.HCM, chuyên chỉnh phát âm chuẩn Bắc Kinh',
+        exp: 'Tốt nghiệp ĐH Sư Phạm TP.HCM, phát âm chuẩn Bắc Kinh',
         price: '150.000đ / buổi 45 phút',
-        rating: '5.0 ★ (42 đánh giá tại Quận 5)'
+        rating: '5.0/5 điểm'
       },
       {
-        id: 'tut_3',
         name: 'Lê Hoàng Quân',
         lang: 'Tiếng Nhật (JLPT N1)',
-        exp: 'Kỹ sư cầu nối IT tại Quận 1, hướng dẫn đàm thoại thương mại thực tế',
+        exp: 'Kỹ sư cầu nối IT tại Q.1, đàm thoại thương mại thực tế',
         price: '170.000đ / buổi 45 phút',
-        rating: '4.8 ★ (65 đánh giá tại TP.HCM)'
+        rating: '4.8/5 điểm'
       }
     ];
 
-    const MOCK_CHATS = {
+    const CHAT_DATA = {
       'usr_1': [
         { sender: 'them', text: 'Chào Minh Anh! Thứ Bảy tuần này bạn rảnh luyện IELTS Speaking ở quán The Coffee House Sư Vạn Hạnh Quận 10 không?', time: '14:20' },
-        { sender: 'me', text: 'Chào Long! Khoảng 15h00 chiều thứ Bảy mình rảnh nè. Chỗ đó gần trường mình rất tiện luôn!', time: '14:22' },
-        { sender: 'them', text: 'Tuyệt vời! Chúng mình cùng luyện Part 2 về chủ đề Environment và Technology nhé!', time: '14:25' }
-      ],
-      'cskh': [
-        { sender: 'them', text: 'Chào bạn Minh Anh! Đội ngũ TalkBuddy TP.HCM có thể hỗ trợ gì cho bạn trong việc tìm bạn học tại khu vực Quận 10 hôm nay?', time: '09:00' },
-        { sender: 'me', text: 'Chào ad, gói Premium 69.000đ/tháng có áp dụng ưu tiên tìm bạn tại các quận giáp ranh như Q.10 và Q.3 không?', time: '09:05' },
-        { sender: 'them', text: 'Dạ có bạn nhé! Thuật toán Fast Matching sẽ tự động quét các quận liền kề và đẩy độ ưu tiên hồ sơ của bạn lên đầu danh sách ạ!', time: '09:07' }
+        { sender: 'me', text: 'Chào Long! Chiều thứ Bảy khoảng 15h00 mình rảnh nè. Chỗ đó gần trường mình rất tiện luôn!', time: '14:22' },
+        { sender: 'them', text: 'Tuyệt vời! Chúng mình cùng luyện Part 2 về chủ đề Environment nhé!', time: '14:25' }
       ]
     };
 
-    let activeChatPartnerId = 'usr_1';
+    let activeChatId = 'usr_1';
 
-    /* =========================================================================
-       2. CONTROLLERS & MENU NAVIGATION
-       ========================================================================= */
+    /* MENU CONTROLLER */
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const navDrawer = document.getElementById('nav-drawer');
     const navBackdrop = document.getElementById('nav-backdrop');
@@ -1468,6 +1350,15 @@
       }
     }
 
+    function requireLogin(destPage) {
+      if (!isLoggedIn) {
+        showToast('Vui lòng đăng nhập để bắt đầu trải nghiệm kết nối!');
+        navigateTo('auth');
+      } else {
+        navigateTo(destPage);
+      }
+    }
+
     function showToast(msg) {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
@@ -1480,10 +1371,8 @@
       }, 3500);
     }
 
-    /* =========================================================================
-       3. AUTH / OTP DEMO
-       ========================================================================= */
-    function requestOtpDemo() {
+    /* AUTH LOGIC */
+    function requestOtp() {
       const phone = document.getElementById('auth-phone-input').value.trim();
       const terms = document.getElementById('auth-terms').checked;
       if (!phone) {
@@ -1491,12 +1380,12 @@
         return;
       }
       if (!terms) {
-        alert('Vui lòng xác nhận bạn đủ 18 tuổi và đang ở TP. Hồ Chí Minh');
+        alert('Vui lòng xác nhận đủ 18 tuổi và đang ở TP.HCM');
         return;
       }
       document.getElementById('step-phone').style.display = 'none';
       document.getElementById('step-otp').style.display = 'block';
-      showToast('Mã OTP thử nghiệm TP.HCM: 123456');
+      showToast('Đã gửi mã xác thực SMS');
     }
 
     function backToPhoneStep() {
@@ -1504,99 +1393,61 @@
       document.getElementById('step-otp').style.display = 'none';
     }
 
-    function verifyOtpDemo() {
+    function verifyOtp() {
       const otp = document.getElementById('auth-otp-input').value.trim();
       if (otp === '123456') {
-        showToast('Xác thực OTP thành công! Chào mừng bạn đến với TalkBuddy TP.HCM.');
-        document.getElementById('header-user-status').innerText = 'Xin chào, ' + MOCK_CURRENT_USER.name;
+        isLoggedIn = true;
+        document.getElementById('header-user-status').innerText = CURRENT_USER.name;
         document.getElementById('btn-login-header').style.display = 'none';
-        navigateTo('profile');
+        showToast('Đăng nhập thành công!');
+        initAuthenticatedUI();
+        navigateTo('landing');
       } else {
-        alert('Mã OTP không đúng! Hãy dùng mã demo: 123456');
+        alert('Mã xác thực không chính xác.');
       }
     }
 
-    /* =========================================================================
-       4. PROFILE SAVE
-       ========================================================================= */
-    function saveProfileDemo() {
-      MOCK_CURRENT_USER.name = document.getElementById('prof-name').value;
-      MOCK_CURRENT_USER.gender = document.getElementById('prof-gender').value;
-      MOCK_CURRENT_USER.area = document.getElementById('prof-area').value;
-      MOCK_CURRENT_USER.language = document.getElementById('prof-lang').value;
-      MOCK_CURRENT_USER.level = document.getElementById('prof-level').value;
-      MOCK_CURRENT_USER.goal = document.getElementById('prof-goal').value;
-      MOCK_CURRENT_USER.interests = document.getElementById('prof-interests').value;
-      MOCK_CURRENT_USER.avail = document.getElementById('prof-avail').value;
+    /* INITIALIZE DATA ONLY AFTER LOGIN */
+    function initAuthenticatedUI() {
+      renderMatching();
+      renderConnected();
+      renderChatSidebar();
+      renderChatMessages();
+      renderTutors();
+      renderAdmin();
+    }
 
-      document.getElementById('header-user-status').innerText = 'Xin chào, ' + MOCK_CURRENT_USER.name;
-      showToast('Đã lưu thông tin hồ sơ tại ' + MOCK_CURRENT_USER.area);
-      recalculateMatching();
+    function saveProfile() {
+      CURRENT_USER.name = document.getElementById('prof-name').value;
+      CURRENT_USER.gender = document.getElementById('prof-gender').value;
+      CURRENT_USER.area = document.getElementById('prof-area').value;
+      CURRENT_USER.language = document.getElementById('prof-lang').value;
+      CURRENT_USER.level = document.getElementById('prof-level').value;
+      CURRENT_USER.goal = document.getElementById('prof-goal').value;
+      CURRENT_USER.interests = document.getElementById('prof-interests').value;
+      CURRENT_USER.avail = document.getElementById('prof-avail').value;
+
+      document.getElementById('header-user-status').innerText = CURRENT_USER.name;
+      showToast('Đã lưu hồ sơ tại ' + CURRENT_USER.area);
+      renderMatching();
       navigateTo('matching');
     }
 
-    /* =========================================================================
-       5. MATCHING THEO CÁC QUẬN TP.HCM (100 ĐIỂM)
-       ========================================================================= */
-    function recalculateMatching() {
-      MOCK_PARTNERS.forEach(p => {
-        let score = 0;
-        
-        // 1. Ngôn ngữ & Trình độ (25 điểm)
-        if (p.language === MOCK_CURRENT_USER.language) {
-          score += 15;
-          if (p.level === MOCK_CURRENT_USER.level) score += 10;
-          else score += 5;
-        }
-
-        // 2. Mục tiêu học tập (20 điểm)
-        if (p.goal === MOCK_CURRENT_USER.goal) score += 20;
-        else score += 8;
-
-        // 3. Sở thích & Điểm hẹn Cà phê (20 điểm)
-        if (p.interests.toLowerCase().includes('cà phê') || p.interests.toLowerCase().includes('sách')) score += 20;
-        else score += 10;
-
-        // 4. Khoảng cách Quận/Huyện tại TP.HCM (15 điểm)
-        if (p.area === MOCK_CURRENT_USER.area) {
-          score += 15; // Cùng quận (Quận 10)
-        } else if (
-          (MOCK_CURRENT_USER.area.includes('Quận 10') && (p.area.includes('Quận 3') || p.area.includes('Quận 5') || p.area.includes('Quận 1')))
-        ) {
-          score += 12; // Các quận lân cận trung tâm TP.HCM
-        } else {
-          score += 6; // Các quận xa hơn (Thủ Đức, Gò Vấp...)
-        }
-
-        // 5. Lịch rảnh (15 điểm)
-        if (p.avail.toLowerCase().includes('chủ nhật') || p.avail.toLowerCase().includes('thứ bảy') || p.avail.toLowerCase().includes('thứ 7')) {
-          score += 15;
-        } else {
-          score += 6;
-        }
-
-        // 6. Hình thức tương thích (5 điểm)
-        score += 5;
-
-        p.score = Math.min(100, score);
-      });
-
-      renderPartners();
-    }
-
-    function renderPartners(filteredList = MOCK_PARTNERS) {
+    /* MATCHING */
+    function renderMatching(list = MOCK_PARTNERS) {
       const container = document.getElementById('partner-cards-container');
       container.innerHTML = '';
 
-      filteredList.forEach(p => {
+      list.forEach(p => {
         const card = document.createElement('div');
         card.className = 'card partner-card';
         card.innerHTML = `
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-              <div>
-                <h3 style="font-size: 18px;">${p.name}, ${p.age}</h3>
-                <div style="font-size: 13px; color: var(--primary-dark); font-weight:600;">📍 ${p.area}</div>
+            <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+              <img src="${p.avatar}" alt="${p.name}" class="avatar-png">
+              <div style="flex: 1;">
+                <h3 style="font-size: 17px;">${p.name}, ${p.age}</h3>
+                <div style="font-size: 13px; color: var(--primary-dark); font-weight: 600;">${p.area}</div>
               </div>
               <span class="score-pill">${p.score}% Hợp</span>
             </div>
@@ -1607,22 +1458,18 @@
               <span class="badge" style="background:#FFF; border:1px solid var(--border-color);">${p.goal}</span>
             </div>
 
-            <p style="font-size: 13px; color: var(--text-main); margin-bottom: 8px;">
-              <strong>Điểm hẹn / Sở thích:</strong> ${p.interests}
-            </p>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
-              <strong>Khung giờ rảnh:</strong> ${p.avail}
-            </p>
+            <p style="font-size: 13px; margin-bottom: 6px;"><strong>Điểm hẹn / Sở thích:</strong> ${p.interests}</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;"><strong>Khung giờ:</strong> ${p.avail}</p>
 
             <div style="font-size: 12px; background: var(--primary-light); padding: 8px 10px; border-radius: 8px; color: var(--primary-dark); margin-bottom: 16px;">
-              💡 <strong>Lý do phù hợp:</strong> ${p.reason}
+              <strong>Lý do phù hợp:</strong> ${p.reason}
             </div>
           </div>
 
           <div style="display: flex; gap: 8px;">
             ${p.connected 
-              ? `<button class="btn btn-primary btn-sm" style="flex:1;" onclick="openSpecificChat('${p.id}')">Trò chuyện ngay</button>`
-              : `<button class="btn btn-secondary btn-sm" style="flex:1;" onclick="sendMatchRequest('${p.id}')">Gửi lời mời kết nối</button>`
+              ? `<button class="btn btn-primary btn-sm" style="flex:1;" onclick="openChat('${p.id}')">Trò chuyện</button>`
+              : `<button class="btn btn-secondary btn-sm" style="flex:1;" onclick="sendMatch('${p.id}')">Gửi lời mời</button>`
             }
             <button class="btn btn-outline btn-sm" onclick="openReportModal()">Báo cáo</button>
           </div>
@@ -1632,89 +1479,69 @@
     }
 
     function filterLanguage(lang) {
-      if (lang === 'Tất cả') renderPartners(MOCK_PARTNERS);
-      else renderPartners(MOCK_PARTNERS.filter(p => p.language === lang));
+      if (lang === 'Tất cả') renderMatching(MOCK_PARTNERS);
+      else renderMatching(MOCK_PARTNERS.filter(p => p.language === lang));
     }
 
-    function filterDistrict(district) {
-      renderPartners(MOCK_PARTNERS.filter(p => p.area.includes(district)));
-    }
-
-    function sendMatchRequest(partnerId) {
-      const partner = MOCK_PARTNERS.find(p => p.id === partnerId);
-      if (partner) {
-        partner.connected = true;
-        showToast(`Đã gửi lời mời luyện nói tới ${partner.name} (${partner.area})!`);
-        renderPartners();
-        renderConnectedList();
+    function sendMatch(partnerId) {
+      const p = MOCK_PARTNERS.find(x => x.id === partnerId);
+      if (p) {
+        p.connected = true;
+        showToast('Đã gửi lời mời ghép đôi tới ' + p.name);
+        renderMatching();
+        renderConnected();
       }
     }
 
-    function renderConnectedList() {
+    function renderConnected() {
       const container = document.getElementById('connected-partners-list');
       container.innerHTML = '';
       const list = MOCK_PARTNERS.filter(p => p.connected);
-
-      if (list.length === 0) {
-        container.innerHTML = '<div style="color:var(--text-muted); font-size:14px;">Chưa có bạn luyện nói nào được kết nối. Hãy gửi lời mời tại mục Tìm bạn!</div>';
-        return;
-      }
 
       list.forEach(p => {
         const item = document.createElement('div');
         item.className = 'card';
         item.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-              <h4>${p.name} - ${p.language} (${p.level})</h4>
-              <div style="font-size:13px; color:var(--text-muted);">📍 ${p.area} • Lịch rảnh: ${p.avail}</div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <img src="${p.avatar}" alt="${p.name}" class="avatar-png">
+              <div>
+                <h4>${p.name} - ${p.language} (${p.level})</h4>
+                <div style="font-size: 13px; color: var(--text-muted);">${p.area} • Rảnh: ${p.avail}</div>
+              </div>
             </div>
-            <button class="btn btn-primary btn-sm" onclick="openSpecificChat('${p.id}')">Mở Chatbox</button>
+            <button class="btn btn-primary btn-sm" onclick="openChat('${p.id}')">Mở Chat</button>
           </div>
         `;
         container.appendChild(item);
       });
     }
 
-    /* =========================================================================
-       6. CHAT & MESSAGING SYSTEM
-       ========================================================================= */
+    /* FULL INBOX */
     function renderChatSidebar() {
       const list = document.getElementById('chat-user-list');
       list.innerHTML = `
-        <div class="chat-user-item ${activeChatPartnerId === 'usr_1' ? 'active' : ''}" onclick="selectChat('usr_1', 'Hoàng Long (Quận 10, TP.HCM)')">
-          <div style="width:36px; height:36px; border-radius:50%; background:var(--primary-pastel); display:flex; align-items:center; justify-content:center; font-weight:700;">HL</div>
+        <div class="chat-user-item ${activeChatId === 'usr_1' ? 'active' : ''}" onclick="selectChat('usr_1', 'Hoàng Long (Quận 10)')">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80" alt="HL" style="width:36px; height:36px; border-radius:50%; object-fit:cover;">
           <div style="flex:1; overflow:hidden;">
             <div style="font-weight:600; font-size:14px;">Hoàng Long (Q.10)</div>
             <div style="font-size:12px; color:var(--text-muted); text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">The Coffee House Sư Vạn Hạnh...</div>
-          </div>
-        </div>
-        <div class="chat-user-item ${activeChatPartnerId === 'cskh' ? 'active' : ''}" onclick="selectChat('cskh', 'TalkBuddy CSKH TP.HCM')">
-          <div style="width:36px; height:36px; border-radius:50%; background:#CFE8D5; display:flex; align-items:center; justify-content:center; font-weight:700; color:#527D61;">CS</div>
-          <div style="flex:1; overflow:hidden;">
-            <div style="font-weight:600; font-size:14px;">TalkBuddy CSKH TP.HCM</div>
-            <div style="font-size:12px; color:var(--text-muted); text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">Dạ có bạn nhé! Thuật toán...</div>
           </div>
         </div>
       `;
     }
 
     function selectChat(id, name) {
-      activeChatPartnerId = id;
+      activeChatId = id;
       document.getElementById('active-chat-name').innerText = name;
       renderChatSidebar();
       renderChatMessages();
     }
 
-    function openSpecificChat(partnerId) {
+    function openChat(partnerId) {
       const p = MOCK_PARTNERS.find(x => x.id === partnerId);
-      if (!MOCK_CHATS[partnerId]) {
-        MOCK_CHATS[partnerId] = [
-          { sender: 'them', text: `Chào ${MOCK_CURRENT_USER.name}! Rất vui được ghép đôi luyện tập cùng bạn tại ${p ? p.area : 'TP.HCM'}.`, time: 'Vừa xong' }
-        ];
-      }
-      activeChatPartnerId = partnerId;
-      document.getElementById('active-chat-name').innerText = p ? `${p.name} (${p.area})` : 'Bạn đồng hành TP.HCM';
+      activeChatId = partnerId;
+      document.getElementById('active-chat-name').innerText = p ? `${p.name} (${p.area})` : 'Bạn đồng hành';
       navigateTo('inbox');
       renderChatSidebar();
       renderChatMessages();
@@ -1723,7 +1550,7 @@
     function renderChatMessages() {
       const box = document.getElementById('chat-messages-body');
       box.innerHTML = '';
-      const msgs = MOCK_CHATS[activeChatPartnerId] || [];
+      const msgs = CHAT_DATA[activeChatId] || [];
 
       msgs.forEach(m => {
         const bubble = document.createElement('div');
@@ -1739,95 +1566,62 @@
       const text = input.value.trim();
       if (!text) return;
 
-      if (!MOCK_CHATS[activeChatPartnerId]) MOCK_CHATS[activeChatPartnerId] = [];
+      if (!CHAT_DATA[activeChatId]) CHAT_DATA[activeChatId] = [];
       const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      MOCK_CHATS[activeChatPartnerId].push({
-        sender: 'me',
-        text: text,
-        time: timeNow
-      });
-
+      CHAT_DATA[activeChatId].push({ sender: 'me', text, time: timeNow });
       input.value = '';
       renderChatMessages();
-
-      // Giả lập bot phản hồi nếu là CSKH TP.HCM
-      if (activeChatPartnerId === 'cskh') {
-        setTimeout(() => {
-          MOCK_CHATS['cskh'].push({
-            sender: 'them',
-            text: 'Cảm ơn bạn. Chuyên viên hỗ trợ TalkBuddy tại khu vực TP.HCM đã ghi nhận và sẽ giải đáp chi tiết cho bạn nhé!',
-            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-          });
-          renderChatMessages();
-        }, 1200);
-      }
     }
 
-    /* =========================================================================
-       7. COIN & PREMIUM TRANSACTIONS (69.000Đ/THÁNG)
-       ========================================================================= */
-    function mockPurchase(plan, coinsAdded) {
-      MOCK_CURRENT_USER.wallet += coinsAdded;
-      document.getElementById('wallet-balance').innerText = MOCK_CURRENT_USER.wallet + ' Xu';
-      showToast(`Mô phỏng thanh toán thành công! Đã nạp +${coinsAdded} Xu vào ví.`);
+    /* FLOATING MINI CHATBOX WIDGET */
+    function toggleFloatingChat() {
+      const popup = document.getElementById('floating-chat-popup');
+      popup.classList.toggle('active');
     }
 
-    function mockUpgradePremium() {
-      MOCK_CURRENT_USER.isPremium = true;
-      MOCK_CURRENT_USER.wallet += 70;
-      document.getElementById('wallet-balance').innerText = MOCK_CURRENT_USER.wallet + ' Xu';
-      showToast('Kích hoạt thành công TalkBuddy Premium 69.000đ/tháng (+70 Xu thưởng)!');
+    function sendFloatingMsg() {
+      const input = document.getElementById('floating-chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const container = document.getElementById('floating-chat-msgs');
+      const msgOut = document.createElement('div');
+      msgOut.className = 'bubble bubble-out';
+      msgOut.innerText = text;
+      container.appendChild(msgOut);
+      input.value = '';
+      container.scrollTop = container.scrollHeight;
+
+      setTimeout(() => {
+        const reply = document.createElement('div');
+        reply.className = 'bubble bubble-in';
+        reply.innerText = 'Cảm ơn bạn đã nhắn tin. TalkBuddy sẽ gợi ý các đối tác phù hợp tại quận của bạn ngay nhé!';
+        container.appendChild(reply);
+        container.scrollTop = container.scrollHeight;
+      }, 1000);
     }
 
-    /* =========================================================================
-       8. TUTORS & TICKETS
-       ========================================================================= */
+    /* TUTORS & ADMIN */
     function renderTutors() {
       const container = document.getElementById('tutor-cards-container');
       container.innerHTML = '';
-      MOCK_TUTORS.forEach(t => {
+      TUTORS_DATA.forEach(t => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
           <h3>${t.name}</h3>
           <div style="font-size:13px; font-weight:700; color:var(--primary-dark); margin:4px 0;">${t.lang}</div>
           <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">${t.exp}</p>
-          <div style="font-size:12px; margin-bottom:12px; color:#D69E2E;">${t.rating}</div>
+          <div style="font-size:12px; margin-bottom:12px; color:#527D61; font-weight:600;">Đánh giá: ${t.rating}</div>
           <div style="font-size:16px; font-weight:800; color:var(--primary-dark); margin-bottom:12px;">${t.price}</div>
-          <button class="btn btn-secondary btn-sm" style="width:100%;" onclick="showToast('Đã gửi yêu cầu đặt lịch hẹn 1-1 với Gia sư ${t.name}')">Đặt lịch học 1-1</button>
+          <button class="btn btn-secondary btn-sm" style="width:100%;" onclick="showToast('Đã gửi yêu cầu đặt lịch học 1-1')">Đặt buổi học</button>
         `;
         container.appendChild(card);
       });
     }
 
-    function submitSupportTicket() {
-      const sub = document.getElementById('ticket-subject').value.trim();
-      const msg = document.getElementById('ticket-message').value.trim();
-      if (!sub || !msg) {
-        alert('Vui lòng điền đầy đủ tiêu đề và nội dung cần hỗ trợ.');
-        return;
-      }
-      showToast('Phiếu hỗ trợ đã gửi tới CSKH TP.HCM! Mã: #HCM-' + Math.floor(100 + Math.random() * 900));
-      document.getElementById('ticket-subject').value = '';
-      document.getElementById('ticket-message').value = '';
-    }
-
-    /* =========================================================================
-       9. REPORT MODAL & ADMIN
-       ========================================================================= */
-    function openReportModal() {
-      document.getElementById('report-modal').classList.add('open');
-    }
-    function closeReportModal() {
-      document.getElementById('report-modal').classList.remove('open');
-    }
-    function submitUserReport() {
-      closeReportModal();
-      showToast('Đã ghi nhận báo cáo an toàn tới Ban Quản Trị TP.HCM và tạm khóa kết nối với người này.');
-    }
-
-    function renderAdminTable() {
+    function renderAdmin() {
       const tbody = document.getElementById('admin-user-table-body');
       tbody.innerHTML = '';
       MOCK_PARTNERS.forEach(p => {
@@ -1837,35 +1631,33 @@
           <td style="padding:10px 8px; font-weight:600;">${p.name}</td>
           <td style="padding:8px;">${p.language} (${p.level})</td>
           <td style="padding:8px;"><span class="badge badge-hcm">${p.area}</span></td>
-          <td style="padding:8px;"><span class="badge">Miễn phí</span></td>
-          <td style="padding:8px;"><span style="color:#527D61; font-weight:600;">Hoạt động</span></td>
+          <td style="padding:8px;"><span style="color:#527D61; font-weight:600;">Bình thường</span></td>
           <td style="padding:8px;">
-            <button class="btn btn-sm btn-outline" style="padding:3px 8px; font-size:11px;" onclick="showToast('Đã gửi thông báo nhắc nhở tới ${p.name}')">Nhắc nhở</button>
-            <button class="btn btn-sm btn-outline" style="padding:3px 8px; font-size:11px; color:#C53030; border-color:#C53030;" onclick="showToast('Đã tạm khóa tài khoản ${p.name}')">Khóa</button>
+            <button class="btn btn-sm btn-outline" style="padding:3px 8px; font-size:11px;" onclick="showToast('Đã gửi nhắc nhở tới ${p.name}')">Nhắc nhở</button>
           </td>
         `;
         tbody.appendChild(tr);
       });
     }
 
-    function saveAlgorithmWeights() {
-      showToast('Đã cập nhật trọng số thuật toán Matching cho khu vực TP.HCM!');
+    function submitTicket() {
+      const sub = document.getElementById('ticket-subject').value.trim();
+      const msg = document.getElementById('ticket-message').value.trim();
+      if (!sub || !msg) {
+        alert('Vui lòng điền đủ thông tin');
+        return;
+      }
+      showToast('Đã gửi phiếu hỗ trợ thành công!');
+      document.getElementById('ticket-subject').value = '';
+      document.getElementById('ticket-message').value = '';
     }
 
-    function switchUserRole() {
-      showToast('Đã chuyển đổi tài khoản mô phỏng kiểm thử tại TP.HCM!');
+    function openReportModal() { document.getElementById('report-modal').classList.add('open'); }
+    function closeReportModal() { document.getElementById('report-modal').classList.remove('open'); }
+    function submitReport() {
+      closeReportModal();
+      showToast('Đã tiếp nhận báo cáo và xử lý an toàn.');
     }
-
-    /* KHỞI CHẠY HỆ THỐNG */
-    window.addEventListener('DOMContentLoaded', () => {
-      recalculateMatching();
-      renderTutors();
-      renderConnectedList();
-      renderChatSidebar();
-      renderChatMessages();
-      renderAdminTable();
-      document.getElementById('header-user-status').innerText = 'Xin chào, ' + MOCK_CURRENT_USER.name;
-    });
   </script>
 </body>
 </html>
