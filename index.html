@@ -36,7 +36,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Common Typography & Buttons */
     h1, h2, h3, h4 { color: var(--primary-dark); font-weight: 700; line-height: 1.3; }
     p { color: var(--text-main); }
     a { text-decoration: none; color: inherit; }
@@ -100,7 +99,6 @@
       padding: 0 20px;
     }
 
-    /* SVG Icon Helpers */
     .icon {
       width: 18px;
       height: 18px;
@@ -113,7 +111,7 @@
       stroke-linejoin: round;
     }
 
-    /* Navigation Header */
+    /* Navigation Header (Hiển thị ngay khi vào trang) */
     header.main-header {
       background: var(--bg-cream);
       border-bottom: 1px solid var(--border-color);
@@ -138,12 +136,12 @@
       cursor: pointer;
     }
     .brand-logo svg {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
     }
     .nav-links-desktop {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       align-items: center;
       font-weight: 600;
       font-size: 15px;
@@ -161,7 +159,7 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
     .nav-avatar {
       width: 38px;
@@ -176,11 +174,7 @@
       justify-content: center;
       font-weight: bold;
       color: var(--primary-dark);
-    }
-    .nav-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      font-size: 14px;
     }
     .menu-toggle-btn {
       width: 40px;
@@ -247,74 +241,7 @@
       display: block;
     }
 
-    /* View: Auth (Initial Landing Gate) */
-    #view-auth {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--bg-cream) 0%, var(--primary-light) 100%);
-      padding: 40px 20px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #view-auth.active {
-      display: flex;
-    }
-    .auth-card {
-      max-width: 960px;
-      width: 100%;
-      background: var(--bg-cream);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 16px 40px rgba(82, 125, 97, 0.12);
-      border: 1px solid var(--border-color);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-    }
-    .auth-illustration-side {
-      background-color: var(--primary-light);
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-right: 1px solid var(--border-color);
-    }
-    .auth-vector-container {
-      width: 100%;
-      max-width: 320px;
-      margin: 20px auto;
-      text-align: center;
-    }
-    .auth-form-side {
-      padding: 48px;
-    }
-    .auth-tabs {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 28px;
-      border-bottom: 2px solid var(--border-color);
-    }
-    .auth-tab-btn {
-      padding: 10px 16px;
-      border: none;
-      background: none;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      position: relative;
-    }
-    .auth-tab-btn.active {
-      color: var(--primary-dark);
-    }
-    .auth-tab-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: var(--primary-dark);
-    }
+    /* Form Controls */
     .form-group {
       margin-bottom: 16px;
     }
@@ -468,11 +395,6 @@
       flex-shrink: 0;
       background-color: var(--primary-light);
     }
-    .partner-avatar-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
     .partner-meta h3 {
       font-size: 16px;
       margin-bottom: 2px;
@@ -562,7 +484,6 @@
       background: var(--primary-mint);
       overflow: hidden;
     }
-    .chat-item-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .chat-item-info { flex: 1; min-width: 0; }
     .chat-item-info h4 { font-size: 14px; margin-bottom: 2px; }
     .chat-item-info p {
@@ -631,7 +552,7 @@
       gap: 12px;
     }
 
-    /* Floating Support Chatbox (Always Accessible) */
+    /* Floating Support Chatbox */
     .floating-support-btn {
       position: fixed;
       bottom: 24px;
@@ -762,9 +683,40 @@
     .modal-close {
       background: none;
       border: none;
-      font-size: 20px;
+      font-size: 24px;
       cursor: pointer;
       color: var(--text-muted);
+      line-height: 1;
+    }
+
+    /* Auth Modal Tabs */
+    .auth-tabs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .auth-tab-btn {
+      padding: 10px 16px;
+      border: none;
+      background: none;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+    }
+    .auth-tab-btn.active {
+      color: var(--primary-dark);
+    }
+    .auth-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-dark);
     }
 
     /* Admin Portal Interface */
@@ -841,13 +793,10 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .auth-card { grid-template-columns: 1fr; }
-      .auth-illustration-side { display: none; }
       .hero-banner { grid-template-columns: 1fr; padding: 30px; }
       .matching-layout { grid-template-columns: 1fr; }
       .messenger-wrapper { grid-template-columns: 1fr; }
       .chat-sidebar { display: none; }
-      .chat-sidebar.active-mobile { display: flex; }
       .nav-links-desktop { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -859,23 +808,26 @@
 </head>
 <body>
 
-  <!-- ==================== HEADER NAVIGATION ==================== -->
-  <header class="main-header" id="app-header" style="display: none;">
+  <!-- ==================== HEADER NAVIGATION (HIỂN THỊ CỐ ĐỊNH) ==================== -->
+  <header class="main-header" id="app-header">
     <div class="container nav-container">
+      <!-- LOGO MẶT CƯỜI THÂN THIỆN ĐÃ ĐƯỢC THIẾT KẾ LẠI -->
       <div class="brand-logo" onclick="app.navigate('home')">
         <svg viewBox="0 0 40 40">
           <circle cx="20" cy="20" r="18" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
-          <path d="M12 24 C14 16, 26 16, 28 24" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="15" cy="15" r="2.5" fill="#527D61"/>
-          <circle cx="25" cy="15" r="2.5" fill="#527D61"/>
+          <circle cx="15" cy="16" r="2.5" fill="#527D61"/>
+          <circle cx="25" cy="16" r="2.5" fill="#527D61"/>
+          <!-- Đường cong cười tươi thân thiện -->
+          <path d="M14 22 C16 27, 24 27, 26 22" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
         <span>TalkBuddy</span>
       </div>
 
       <nav class="nav-links-desktop">
-        <a href="javascript:void(0)" onclick="app.navigate('home')" id="nav-item-home">Trang chủ</a>
+        <a href="javascript:void(0)" onclick="app.navigate('home')" id="nav-item-home" class="active">Trang chủ</a>
         <a href="javascript:void(0)" onclick="app.navigate('how-it-works')" id="nav-item-how">Cách hoạt động</a>
         <a href="javascript:void(0)" onclick="app.navigate('pricing')" id="nav-item-pricing">Các gói dịch vụ</a>
+        <a href="javascript:void(0)" onclick="app.navigate('tutors')" id="nav-item-tutors">Gia sư</a>
       </nav>
 
       <div class="nav-actions">
@@ -884,8 +836,9 @@
           Tìm bạn luyện nói
         </button>
 
-        <div class="nav-avatar" onclick="app.navigate('profile')" id="nav-avatar-display" title="Hồ sơ cá nhân">
-          TB
+        <!-- Nút Đăng nhập / Hồ sơ (tự động đổi theo trạng thái) -->
+        <div id="nav-auth-slot">
+          <button class="btn btn-outline" onclick="app.openAuthModal('login')">Đăng nhập</button>
         </div>
 
         <button class="menu-toggle-btn" onclick="app.toggleMenu()" aria-label="Menu mở rộng">
@@ -935,144 +888,17 @@
         <svg class="icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
         Quản trị hệ thống
       </a>
-      <a href="javascript:void(0)" onclick="app.logout()" style="color: #E26D6D;">
-        <svg class="icon"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-        Đăng xuất
-      </a>
+      <div id="menu-auth-action">
+        <a href="javascript:void(0)" onclick="app.openAuthModal('login')" style="color: var(--primary-dark);">
+          <svg class="icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          Đăng ký / Đăng nhập
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- ==================== VIEW: AUTH GATEWAY (FIRST SCREEN) ==================== -->
-  <section id="view-auth" class="view-section active">
-    <div class="auth-card">
-      <div class="auth-illustration-side">
-        <div>
-          <div class="brand-logo" style="margin-bottom: 24px;">
-            <svg viewBox="0 0 40 40">
-              <circle cx="20" cy="20" r="18" fill="#A8D5B5" stroke="#527D61" stroke-width="2"/>
-              <path d="M12 24 C14 16, 26 16, 28 24" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="15" cy="15" r="2.5" fill="#527D61"/>
-              <circle cx="25" cy="15" r="2.5" fill="#527D61"/>
-            </svg>
-            <span>TalkBuddy TP.HCM</span>
-          </div>
-          <h2>Cộng đồng luyện nói ngoại ngữ thực tế</h2>
-          <p style="margin-top: 10px; font-size: 14px; color: var(--text-muted);">
-            Kết nối 1-1 trực tiếp tại các quán cà phê, không gian học tập tại TP.HCM. Tìm Partner cùng trình độ, cùng mục tiêu.
-          </p>
-        </div>
-
-        <div class="auth-vector-container">
-          <!-- Illustration vector: 2 people talking over table -->
-          <svg viewBox="0 0 320 220" style="width: 100%; max-width: 280px;">
-            <rect x="20" y="170" width="280" height="8" rx="4" fill="#A8D5B5"/>
-            <!-- Person 1 -->
-            <circle cx="80" cy="90" r="26" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
-            <path d="M50 160 C50 120, 110 120, 110 160 Z" fill="#EAF5EC" stroke="#527D61" stroke-width="2"/>
-            <!-- Person 2 -->
-            <circle cx="240" cy="90" r="26" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
-            <path d="M210 160 C210 120, 270 120, 270 160 Z" fill="#527D61"/>
-            <!-- Coffee cups & Speech bubble -->
-            <rect x="110" y="150" width="20" height="20" rx="3" fill="#FFF" stroke="#527D61" stroke-width="2"/>
-            <rect x="190" y="150" width="20" height="20" rx="3" fill="#FFF" stroke="#527D61" stroke-width="2"/>
-            <path d="M120 70 C120 50, 200 50, 200 70 C200 85, 170 90, 150 95 L140 105 L142 93 C125 90, 120 80, 120 70 Z" fill="#FFF" stroke="#527D61" stroke-width="2"/>
-            <circle cx="145" cy="72" r="3" fill="#527D61"/>
-            <circle cx="160" cy="72" r="3" fill="#527D61"/>
-            <circle cx="175" cy="72" r="3" fill="#527D61"/>
-          </svg>
-        </div>
-
-        <div style="font-size: 12px; color: var(--text-muted);">
-          Bảo mật thông tin &bull; Chỉ dành cho học viên trên 18 tuổi tại TP.HCM.
-        </div>
-      </div>
-
-      <div class="auth-form-side">
-        <div class="auth-tabs">
-          <button class="auth-tab-btn active" id="btn-tab-login" onclick="app.switchAuthTab('login')">Đăng nhập</button>
-          <button class="auth-tab-btn" id="btn-tab-register" onclick="app.switchAuthTab('register')">Đăng ký mới</button>
-        </div>
-
-        <!-- Form Đăng Nhập -->
-        <form id="form-login" onsubmit="app.handleLogin(event)">
-          <div class="form-group">
-            <label>Số điện thoại</label>
-            <input type="tel" class="form-control" id="login-phone" placeholder="Ví dụ: 0901234567" required pattern="[0-9]{10}">
-          </div>
-          <div class="form-group">
-            <label>Mật khẩu</label>
-            <input type="password" class="form-control" id="login-password" placeholder="Nhập mật khẩu" required minlength="6">
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 13px;">
-            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-              <input type="checkbox" checked> Ghi nhớ phiên
-            </label>
-            <a href="javascript:void(0)" onclick="alert('Vui lòng liên hệ nhân viên hỗ trợ để đặt lại mật khẩu bằng OTP.')" style="color: var(--primary-dark); font-weight: 600;">Quên mật khẩu?</a>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Đăng nhập ngay</button>
-        </form>
-
-        <!-- Form Đăng Ký -->
-        <form id="form-register" style="display: none;" onsubmit="app.handleRegister(event)">
-          <div class="form-group">
-            <label>Họ và tên</label>
-            <input type="text" class="form-control" id="reg-fullname" placeholder="Nguyễn Văn A" required>
-          </div>
-          <div class="form-group">
-            <label>Số điện thoại (Nhận mã OTP)</label>
-            <input type="tel" class="form-control" id="reg-phone" placeholder="0901234567" required pattern="[0-9]{10}">
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div class="form-group">
-              <label>Ngày sinh</label>
-              <input type="date" class="form-control" id="reg-dob" required>
-            </div>
-            <div class="form-group">
-              <label>Giới tính</label>
-              <select class="form-control" id="reg-gender">
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-                <option value="Khác">Khác</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Khu vực sinh sống (TP.HCM)</label>
-            <select class="form-control" id="reg-district" required>
-              <option value="Quận 1">Quận 1</option>
-              <option value="Quận 3">Quận 3</option>
-              <option value="Quận 5">Quận 5</option>
-              <option value="Quận 7">Quận 7</option>
-              <option value="Quận 10">Quận 10</option>
-              <option value="Bình Thạnh">Bình Thạnh</option>
-              <option value="Phú Nhuận">Phú Nhuận</option>
-              <option value="Gò Vấp">Gò Vấp</option>
-              <option value="Tân Bình">Tân Bình</option>
-              <option value="Thành phố Thủ Đức">Thành phố Thủ Đức</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Mật khẩu</label>
-            <input type="password" class="form-control" id="reg-password" placeholder="Tối thiểu 6 ký tự" required minlength="6">
-          </div>
-          <div class="form-group" style="font-size: 13px;">
-            <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer;">
-              <input type="checkbox" id="reg-agree" required style="margin-top: 3px;">
-              <span>Tôi xác nhận đủ 18 tuổi, hiện cư trú tại TP.HCM và đồng ý với Điều khoản & Chính sách bảo mật.</span>
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Nhận mã OTP & Tiếp tục</button>
-        </form>
-
-        <div style="margin-top: 24px; text-align: center; font-size: 12px; color: var(--text-muted);">
-          Bằng việc tiếp tục, bạn đồng ý tuân thủ quy tắc văn hóa giao tiếp an toàn và văn minh của TalkBuddy.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== VIEW: HOME / LANDING ==================== -->
-  <section id="view-home" class="view-section">
+  <!-- ==================== VIEW 1: TRANG CHỦ (HOME - MẶC ĐỊNH MỞ NGAY) ==================== -->
+  <section id="view-home" class="view-section active">
     <div class="container">
       <div class="hero-banner">
         <div class="hero-content">
@@ -1091,6 +917,7 @@
           </div>
         </div>
         <div style="text-align: center;">
+          <!-- Vector 2 người cùng luyện nói thân thiện tại quán cà phê -->
           <svg viewBox="0 0 340 260" style="max-width: 100%; height: auto;">
             <circle cx="170" cy="130" r="110" fill="#EAF5EC"/>
             <path d="M80 180 C80 130, 140 130, 140 180" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
@@ -1098,7 +925,6 @@
             <path d="M200 180 C200 130, 260 130, 260 180" fill="#527D61"/>
             <circle cx="230" cy="110" r="22" fill="#FFFEFA" stroke="#527D61" stroke-width="2"/>
             <rect x="130" y="160" width="80" height="12" rx="4" fill="#A8D5B5" stroke="#527D61" stroke-width="1.5"/>
-            <!-- Coffee cups -->
             <rect x="145" y="146" width="14" height="14" rx="2" fill="#FFF" stroke="#527D61" stroke-width="1.5"/>
             <rect x="180" y="146" width="14" height="14" rx="2" fill="#FFF" stroke="#527D61" stroke-width="1.5"/>
           </svg>
@@ -1143,7 +969,7 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW: HOW IT WORKS ==================== -->
+  <!-- ==================== VIEW 2: HOW IT WORKS ==================== -->
   <section id="view-how-it-works" class="view-section">
     <div class="container">
       <div class="section-title-wrap">
@@ -1151,7 +977,7 @@
         <p>Quy trình 4 bước đơn giản để bắt đầu buổi trò chuyện giao tiếp tự tin.</p>
       </div>
 
-      <div class="features-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
         <div class="feature-card">
           <span class="badge" style="margin-bottom: 12px;">Bước 1</span>
           <h3>Hoàn thiện hồ sơ</h3>
@@ -1176,7 +1002,7 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW: MATCHING & PARTNERS ==================== -->
+  <!-- ==================== VIEW 3: MATCHING & PARTNERS ==================== -->
   <section id="view-matching" class="view-section">
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
@@ -1190,7 +1016,6 @@
       </div>
 
       <div class="matching-layout">
-        <!-- Sidebar Bộ Lọc -->
         <div class="filter-panel">
           <h3 style="font-size: 16px; margin-bottom: 16px;">Bộ lọc tiêu chí</h3>
           <div class="filter-group">
@@ -1243,31 +1068,26 @@
           </div>
         </div>
 
-        <!-- Danh sách thẻ Partner -->
         <div>
           <div class="partner-grid" id="partner-cards-container">
-            <!-- Dynamic partner cards inserted here -->
+            <!-- Dynamic partner cards -->
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== VIEW: MESSAGES / INBOX ==================== -->
+  <!-- ==================== VIEW 4: MESSENGER ==================== -->
   <section id="view-messages" class="view-section">
     <div class="container">
       <div class="messenger-wrapper">
-        <!-- Sidebar danh sách hội thoại -->
         <div class="chat-sidebar">
           <div class="chat-sidebar-header">
             Đoạn chat kết nối
           </div>
-          <div class="chat-list" id="chat-conversation-list">
-            <!-- Conversation items inserted here -->
-          </div>
+          <div class="chat-list" id="chat-conversation-list"></div>
         </div>
 
-        <!-- Khung chat chính -->
         <div class="chat-viewport">
           <div class="chat-header" id="chat-header-info">
             <div style="display: flex; align-items: center; gap: 12px;">
@@ -1282,9 +1102,7 @@
             </div>
           </div>
 
-          <div class="chat-messages" id="chat-message-container">
-            <!-- Messages rendered dynamically -->
-          </div>
+          <div class="chat-messages" id="chat-message-container"></div>
 
           <form class="chat-input-bar" onsubmit="app.handleSendMessage(event)">
             <input type="text" class="form-control" id="chat-input-field" placeholder="Nhập tin nhắn trao đổi lịch gặp..." required>
@@ -1295,7 +1113,7 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW: PRICING & COINS ==================== -->
+  <!-- ==================== VIEW 5: PRICING & COINS ==================== -->
   <section id="view-pricing" class="view-section">
     <div class="container">
       <div class="section-title-wrap">
@@ -1305,12 +1123,11 @@
 
       <div style="display: flex; justify-content: center; margin-bottom: 24px;">
         <div class="badge" style="font-size: 14px; padding: 8px 16px;">
-          Số dư ví hiện tại của bạn: <strong id="wallet-coins-balance">0</strong> Xu
+          Số dư ví hiện tại của bạn: <strong id="wallet-coins-balance">20</strong> Xu
         </div>
       </div>
 
       <div class="pricing-grid">
-        <!-- Gói Cơ Bản (Xu) -->
         <div class="pricing-card">
           <h3>Gói Xu Cơ Bản</h3>
           <p style="font-size: 13px; color: var(--text-muted);">Phù hợp cho người học thử nghiệm kết nối nhanh.</p>
@@ -1324,7 +1141,6 @@
           <button class="btn btn-secondary" onclick="app.buyCoins('Gói Cơ bản', 20000, 20)">Mua ngay 20 Xu</button>
         </div>
 
-        <!-- Gói Tiết Kiệm (Xu) -->
         <div class="pricing-card">
           <div class="pricing-card-badge">Tặng +10 Xu</div>
           <h3>Gói Xu Tiết Kiệm</h3>
@@ -1339,7 +1155,6 @@
           <button class="btn btn-secondary" onclick="app.buyCoins('Gói Tiết kiệm', 50000, 60)">Mua ngay 60 Xu</button>
         </div>
 
-        <!-- Gói Premium (Đúng giá 69.000đ/tháng) -->
         <div class="pricing-card featured">
           <div class="pricing-card-badge">Khuyên Dùng</div>
           <h3>Hội Viên Premium</h3>
@@ -1358,7 +1173,7 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW: TUTORS ==================== -->
+  <!-- ==================== VIEW 6: TUTORS ==================== -->
   <section id="view-tutors" class="view-section">
     <div class="container">
       <div class="section-title-wrap">
@@ -1366,13 +1181,11 @@
         <p>Luyện tập chuyên sâu cùng giáo viên giàu kinh nghiệm khi cần sửa lỗi phát âm và luyện thi cấp tốc.</p>
       </div>
 
-      <div class="partner-grid" id="tutors-container">
-        <!-- Tutor cards inserted dynamically -->
-      </div>
+      <div class="partner-grid" id="tutors-container"></div>
     </div>
   </section>
 
-  <!-- ==================== VIEW: PROFILE ==================== -->
+  <!-- ==================== VIEW 7: PROFILE ==================== -->
   <section id="view-profile" class="view-section">
     <div class="container" style="max-width: 760px;">
       <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--card-shadow);">
@@ -1458,17 +1271,15 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW: NOTIFICATIONS ==================== -->
+  <!-- ==================== VIEW 8: NOTIFICATIONS ==================== -->
   <section id="view-notifications" class="view-section">
     <div class="container" style="max-width: 680px;">
       <h2 style="margin-bottom: 24px;">Thông báo của bạn</h2>
-      <div id="notifications-list" style="display: flex; flex-direction: column; gap: 12px;">
-        <!-- Notifications rendered here -->
-      </div>
+      <div id="notifications-list" style="display: flex; flex-direction: column; gap: 12px;"></div>
     </div>
   </section>
 
-  <!-- ==================== VIEW: SUPPORT ==================== -->
+  <!-- ==================== VIEW 9: SUPPORT ==================== -->
   <section id="view-support" class="view-section">
     <div class="container" style="max-width: 700px;">
       <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--card-shadow);">
@@ -1496,7 +1307,7 @@
     </div>
   </section>
 
-  <!-- ==================== VIEW: ADMIN DASHBOARD ==================== -->
+  <!-- ==================== VIEW 10: ADMIN DASHBOARD ==================== -->
   <section id="view-admin" class="view-section">
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
@@ -1540,9 +1351,7 @@
                 <th>Thao tác</th>
               </tr>
             </thead>
-            <tbody id="admin-reports-tbody">
-              <!-- Admin reports data -->
-            </tbody>
+            <tbody id="admin-reports-tbody"></tbody>
           </table>
         </div>
 
@@ -1559,9 +1368,7 @@
                 <th>Thao tác</th>
               </tr>
             </thead>
-            <tbody id="admin-tickets-tbody">
-              <!-- Admin tickets data -->
-            </tbody>
+            <tbody id="admin-tickets-tbody"></tbody>
           </table>
         </div>
       </div>
@@ -1597,7 +1404,101 @@
     </form>
   </div>
 
-  <!-- ==================== REPORT / BLOCK MODAL ==================== -->
+  <!-- ==================== MODAL: ĐĂNG KÝ / ĐĂNG NHẬP DẠNG POPUP ==================== -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-box" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="brand-logo" style="font-size: 18px;">
+          <svg viewBox="0 0 40 40">
+            <circle cx="20" cy="20" r="18" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
+            <circle cx="15" cy="16" r="2.5" fill="#527D61"/>
+            <circle cx="25" cy="16" r="2.5" fill="#527D61"/>
+            <path d="M14 22 C16 27, 24 27, 26 22" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <span>TalkBuddy TP.HCM</span>
+        </div>
+        <button class="modal-close" onclick="app.closeModal('auth-modal')">&times;</button>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="modal-tab-login" onclick="app.switchAuthTab('login')">Đăng nhập</button>
+        <button class="auth-tab-btn" id="modal-tab-register" onclick="app.switchAuthTab('register')">Đăng ký mới</button>
+      </div>
+
+      <!-- Form Đăng Nhập -->
+      <form id="modal-form-login" onsubmit="app.handleLogin(event)">
+        <div class="form-group">
+          <label>Số điện thoại</label>
+          <input type="tel" class="form-control" id="modal-login-phone" placeholder="Ví dụ: 0901234567" required pattern="[0-9]{10}">
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu</label>
+          <input type="password" class="form-control" id="modal-login-password" placeholder="Nhập mật khẩu" required minlength="6">
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 13px;">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="checkbox" checked> Ghi nhớ phiên
+          </label>
+          <a href="javascript:void(0)" onclick="alert('Vui lòng liên hệ nhân viên hỗ trợ để đặt lại mật khẩu.')" style="color: var(--primary-dark); font-weight: 600;">Quên mật khẩu?</a>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Đăng nhập ngay</button>
+      </form>
+
+      <!-- Form Đăng Ký -->
+      <form id="modal-form-register" style="display: none;" onsubmit="app.handleRegister(event)">
+        <div class="form-group">
+          <label>Họ và tên</label>
+          <input type="text" class="form-control" id="modal-reg-fullname" placeholder="Nguyễn Văn A" required>
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại (Nhận OTP)</label>
+          <input type="tel" class="form-control" id="modal-reg-phone" placeholder="0901234567" required pattern="[0-9]{10}">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Ngày sinh</label>
+            <input type="date" class="form-control" id="modal-reg-dob" required>
+          </div>
+          <div class="form-group">
+            <label>Giới tính</label>
+            <select class="form-control" id="modal-reg-gender">
+              <option value="Nam">Nam</option>
+              <option value="Nữ">Nữ</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Khu vực TP.HCM</label>
+          <select class="form-control" id="modal-reg-district" required>
+            <option value="Quận 1">Quận 1</option>
+            <option value="Quận 3">Quận 3</option>
+            <option value="Quận 5">Quận 5</option>
+            <option value="Quận 7">Quận 7</option>
+            <option value="Quận 10">Quận 10</option>
+            <option value="Bình Thạnh">Bình Thạnh</option>
+            <option value="Phú Nhuận">Phú Nhuận</option>
+            <option value="Gò Vấp">Gò Vấp</option>
+            <option value="Tân Bình">Tân Bình</option>
+            <option value="Thành phố Thủ Đức">Thành phố Thủ Đức</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu</label>
+          <input type="password" class="form-control" id="modal-reg-password" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+        </div>
+        <div class="form-group" style="font-size: 12px;">
+          <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="modal-reg-agree" required style="margin-top: 2px;">
+            <span>Tôi xác nhận đủ 18 tuổi, hiện cư trú tại TP.HCM và đồng ý Điều khoản sử dụng.</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Nhận mã OTP & Tiếp tục</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: BÁO CÁO VI PHẠM ==================== -->
   <div class="modal-overlay" id="report-modal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1627,7 +1528,7 @@
     </div>
   </div>
 
-  <!-- ==================== ADMIN LOGIN MODAL ==================== -->
+  <!-- ==================== MODAL: ADMIN LOGIN ==================== -->
   <div class="modal-overlay" id="admin-login-modal">
     <div class="modal-box" style="max-width: 400px;">
       <div class="modal-header">
@@ -1646,16 +1547,16 @@
   </div>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="main-footer" id="app-footer" style="display: none;">
+  <footer class="main-footer" id="app-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
           <div class="brand-logo" style="margin-bottom: 12px;">
             <svg viewBox="0 0 40 40">
               <circle cx="20" cy="20" r="18" fill="#CFE8D5" stroke="#527D61" stroke-width="2"/>
-              <path d="M12 24 C14 16, 26 16, 28 24" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="15" cy="15" r="2.5" fill="#527D61"/>
-              <circle cx="25" cy="15" r="2.5" fill="#527D61"/>
+              <circle cx="15" cy="16" r="2.5" fill="#527D61"/>
+              <circle cx="25" cy="16" r="2.5" fill="#527D61"/>
+              <path d="M14 22 C16 27, 24 27, 26 22" fill="none" stroke="#527D61" stroke-width="2.5" stroke-linecap="round"/>
             </svg>
             <span>TalkBuddy</span>
           </div>
@@ -1696,39 +1597,32 @@
     </div>
   </footer>
 
-  <!-- ==================== LOGIC & SCRIPTS ==================== -->
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    /**
-     * TALKBUDDY CORE APPLICATION
-     * Mô phỏng đầy đủ dữ liệu TP.HCM, Matching 100 điểm, Chat Messenger và Admin
-     */
     const app = {
-      // Trạng thái hệ thống
       currentUser: null,
       activeChatPartnerId: null,
-      
-      // 10 Hồ sơ mẫu nội bộ (Chỉ hiển thị sau khi đăng nhập thành công)
+
+      // 10 Hồ sơ bạn học tại TP.HCM
       partners: [
         { id: 1, name: 'Lan Hương', age: 22, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 1', goal: 'Công việc', free: 'Tối thứ 4 & T7', interests: 'Kinh doanh, Cà phê' },
         { id: 2, name: 'Thảo Vy', age: 24, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 3', goal: 'Phỏng vấn', free: 'Sáng Chủ Nhật', interests: 'Tuyển dụng, Marketing' },
         { id: 3, name: 'Bảo Nam', age: 21, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 5', goal: 'Giao tiếp', free: 'Tối thứ 3 & thứ 6', interests: 'Văn hóa, Phim ảnh' },
         { id: 4, name: 'Khánh Linh', age: 23, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 10', goal: 'Giao tiếp', free: 'Chiều thứ 7', interests: 'Ẩm thực Chợ Lớn' },
-        { id: 5, name: 'Gia Hân', age: 20, lang: 'Tiếng Hàn', level: 'Sơ cấp', district: 'Bình Thạnh', goal: 'Du học', free: 'Tối thứ 2 & thứ 5', interests: 'K-POP, Tiếng Hàn du học' },
+        { id: 5, name: 'Gia Hân', age: 20, lang: 'Tiếng Hàn', level: 'Sơ cấp', district: 'Bình Thạnh', goal: 'Du học', free: 'Tối thứ 2 & thứ 5', interests: 'K-POP, Du học' },
         { id: 6, name: 'Minh Anh', age: 25, lang: 'Tiếng Nhật', level: 'Sơ cấp', district: 'Phú Nhuận', goal: 'Giao tiếp', free: 'Sáng thứ 7', interests: 'Manga, Văn hóa Nhật' },
         { id: 7, name: 'Tuấn Kiệt', age: 26, lang: 'Tiếng Anh', level: 'Nâng cao', district: 'Gò Vấp', goal: 'Giao tiếp', free: 'Tối cuối tuần', interests: 'Công nghệ, Khởi nghiệp' },
         { id: 8, name: 'Hải Yến', age: 22, lang: 'Tiếng Nhật', level: 'Trung cấp', district: 'Tân Bình', goal: 'Giao tiếp', free: 'Chiều Chủ Nhật', interests: 'JLPT N3, Du lịch' },
         { id: 9, name: 'Hoàng Long', age: 23, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Thủ Đức', goal: 'IELTS', free: 'Tối thứ 3 & CN', interests: 'IELTS Speaking 7.0' },
-        { id: 10, name: 'Daniel', age: 28, lang: 'Tiếng Anh', level: 'Cao cấp', district: 'Quận 7', goal: 'Giao tiếp', free: 'Sáng Chủ Nhật', interests: 'Trao đổi ngôn ngữ Anh-Việt' }
+        { id: 10, name: 'Daniel', age: 28, lang: 'Tiếng Anh', level: 'Cao cấp', district: 'Quận 7', goal: 'Giao tiếp', free: 'Sáng Chủ Nhật', interests: 'Trao đổi Anh-Việt' }
       ],
 
-      // Dữ liệu Gia sư chuyên môn tại TP.HCM
       tutors: [
         { id: 101, name: 'Thầy Trần Quang', lang: 'Tiếng Anh', exp: '5 năm kinh nghiệm IELTS 8.5', fee: '220.000đ / buổi', district: 'Quận 1 & Online', desc: 'Chuyên phản xạ phát âm chuẩn Anh - Mỹ và phỏng vấn quốc tế.' },
         { id: 102, name: 'Cô Mai Phương', lang: 'Tiếng Trung', exp: 'Thạc sĩ Ngôn ngữ HSK 6', fee: '180.000đ / buổi', district: 'Quận 5, Quận 10', desc: 'Rèn luyện ngữ điệu, khẩu ngữ thương mại dành cho người đi làm.' },
         { id: 103, name: 'Thầy Kenji Sato', lang: 'Tiếng Nhật', exp: 'Bản xứ Nhật Bản & Nói lưu loát tiếng Việt', fee: '250.000đ / buổi', district: 'Bình Thạnh, Phú Nhuận', desc: 'Sửa lỗi giao tiếp tự nhiên chuẩn người Tokyo, chuẩn bị phỏng vấn visa.' }
       ],
 
-      // Đoạn hội thoại mẫu
       conversations: {
         1: [
           { sender: 'them', text: 'Chào bạn! Mình thấy bạn cũng đang luyện Tiếng Anh giao tiếp công việc tại Quận 1 đúng không?', time: '09:15' },
@@ -1743,52 +1637,65 @@
 
       notifications: [
         { id: 1, text: 'Lan Hương đã chấp nhận lời mời kết nối của bạn.', time: '10 phút trước', read: false },
-        { id: 2, text: 'Khuyến mãi: Nạp gói Tiết Kiệm tặng thêm 10 Xu luyện nói.', time: '2 giờ trước', read: true },
-        { id: 3, text: 'Gợi ý Partner mới có điểm tương thích 95% ở cùng Quận với bạn.', time: '1 ngày trước', read: true }
+        { id: 2, text: 'Khuyến mãi: Nạp gói Tiết Kiệm tặng thêm 10 Xu luyện nói.', time: '2 giờ trước', read: true }
       ],
 
       reports: [
-        { id: 1, reporter: 'Nguyễn Văn A', target: 'Người dùng ẩn danh', reason: 'Spam bán hàng ngoài giờ', time: '10:00 24/02', status: 'Chờ duyệt' }
+        { id: 1, reporter: 'Nguyễn Văn A', target: 'Người dùng ẩn danh', reason: 'Spam ngoài giờ', time: '10:00 24/02', status: 'Chờ duyệt' }
       ],
 
       tickets: [
-        { id: 'TK-1002', sender: 'Lan Hương', cat: 'Nạp Xu & Gói Premium', content: 'Mình đã thanh toán nhưng chưa thấy Xu hiển thị', status: 'Đang xử lý' }
+        { id: 'TK-1002', sender: 'Lan Hương', cat: 'Nạp Xu & Gói Premium', content: 'Mình đã nạp gói nhưng cần hỗ trợ đối soát', status: 'Đang xử lý' }
       ],
 
+      // Khởi chạy ứng dụng: Luôn vào Trang Chủ
       init: function() {
-        // Kiểm tra phiên đăng nhập đã lưu trong LocalStorage
         const savedUser = localStorage.getItem('talkbuddy_user');
         if (savedUser) {
           try {
             this.currentUser = JSON.parse(savedUser);
-            this.setupLoggedInUI();
-            this.navigate('home');
           } catch(e) {
-            this.logout();
+            this.currentUser = null;
           }
+        }
+        this.updateHeaderAuthUI();
+        // Mở thẳng trang chủ
+        this.navigate('home');
+      },
+
+      updateHeaderAuthUI: function() {
+        const slot = document.getElementById('nav-auth-slot');
+        const menuSlot = document.getElementById('menu-auth-action');
+        if (this.currentUser) {
+          const initial = this.currentUser.fullname ? this.currentUser.fullname.substring(0, 2).toUpperCase() : 'TB';
+          slot.innerHTML = `<div class="nav-avatar" onclick="app.navigate('profile')" title="Hồ sơ cá nhân">${initial}</div>`;
+          menuSlot.innerHTML = `
+            <a href="javascript:void(0)" onclick="app.logout()" style="color: #E26D6D;">
+              <svg class="icon"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+              Đăng xuất (${this.currentUser.fullname})
+            </a>
+          `;
         } else {
-          // Chưa đăng nhập -> Buộc vào màn hình Đăng ký / Đăng nhập
-          this.navigate('auth');
+          slot.innerHTML = `<button class="btn btn-outline" onclick="app.openAuthModal('login')">Đăng nhập</button>`;
+          menuSlot.innerHTML = `
+            <a href="javascript:void(0)" onclick="app.openAuthModal('login')" style="color: var(--primary-dark);">
+              <svg class="icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+              Đăng ký / Đăng nhập
+            </a>
+          `;
         }
       },
 
-      /* Điều hướng views */
       navigate: function(viewId) {
-        if (!this.currentUser && viewId !== 'auth') {
-          this.navigate('auth');
-          return;
-        }
-
-        // Đóng dropdown menu
         const dropdown = document.getElementById('dropdown-menu');
         if (dropdown) dropdown.classList.remove('show');
 
-        // Ẩn tất cả view
+        // Bỏ active toàn bộ view
         document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
 
         // Cập nhật tab desktop
         document.querySelectorAll('.nav-links-desktop a').forEach(el => el.classList.remove('active'));
-        const navMap = { 'home': 'nav-item-home', 'how-it-works': 'nav-item-how', 'pricing': 'nav-item-pricing' };
+        const navMap = { 'home': 'nav-item-home', 'how-it-works': 'nav-item-how', 'pricing': 'nav-item-pricing', 'tutors': 'nav-item-tutors' };
         if (navMap[viewId]) {
           const tab = document.getElementById(navMap[viewId]);
           if (tab) tab.classList.add('active');
@@ -1800,7 +1707,6 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Kích hoạt render tương ứng view
         if (viewId === 'matching') this.renderPartners();
         if (viewId === 'messages') this.renderMessenger();
         if (viewId === 'pricing') this.updateWalletUI();
@@ -1809,12 +1715,17 @@
         if (viewId === 'profile') this.renderProfileForm();
       },
 
-      /* Chuyển tab Auth */
+      /* Modal Đăng nhập / Đăng ký */
+      openAuthModal: function(tab) {
+        document.getElementById('auth-modal').classList.add('active');
+        this.switchAuthTab(tab || 'login');
+      },
+
       switchAuthTab: function(tab) {
-        const btnLogin = document.getElementById('btn-tab-login');
-        const btnReg = document.getElementById('btn-tab-register');
-        const formLogin = document.getElementById('form-login');
-        const formReg = document.getElementById('form-register');
+        const btnLogin = document.getElementById('modal-tab-login');
+        const btnReg = document.getElementById('modal-tab-register');
+        const formLogin = document.getElementById('modal-form-login');
+        const formReg = document.getElementById('modal-form-register');
 
         if (tab === 'login') {
           btnLogin.classList.add('active');
@@ -1829,49 +1740,10 @@
         }
       },
 
-      /* Xử lý Đăng ký (Có bước xác minh OTP) */
-      handleRegister: function(e) {
-        e.preventDefault();
-        const fullname = document.getElementById('reg-fullname').value;
-        const phone = document.getElementById('reg-phone').value;
-        const district = document.getElementById('reg-district').value;
-        const dob = document.getElementById('reg-dob').value;
-        const gender = document.getElementById('reg-gender').value;
-
-        // Mô phỏng nhập mã OTP xác thực số điện thoại
-        const otp = prompt(`Mã OTP xác thực gồm 6 số đã gửi tới ${phone} (Nhập mã 123456 để hoàn tất):`, '123456');
-        if (otp === '123456') {
-          const newUser = {
-            fullname: fullname,
-            phone: phone,
-            district: district,
-            dob: dob,
-            gender: gender,
-            language: 'Tiếng Anh',
-            level: 'Trung cấp',
-            goal: 'Giao tiếp',
-            interests: 'Cà phê, Giao tiếp công việc',
-            freetime: 'Tối cuối tuần',
-            coins: 20, // Tặng 20 Xu chào mừng
-            isPremium: false
-          };
-          this.currentUser = newUser;
-          localStorage.setItem('talkbuddy_user', JSON.stringify(newUser));
-          alert('Xác thực số điện thoại thành công! Chào mừng bạn gia nhập TalkBuddy TP.HCM.');
-          this.setupLoggedInUI();
-          this.navigate('home');
-        } else {
-          alert('Mã OTP không chính xác. Vui lòng thử lại!');
-        }
-      },
-
-      /* Xử lý Đăng nhập */
       handleLogin: function(e) {
         e.preventDefault();
-        const phone = document.getElementById('login-phone').value;
-
-        // Thiết lập người dùng đăng nhập
-        const user = {
+        const phone = document.getElementById('modal-login-phone').value;
+        this.currentUser = {
           fullname: 'Học viên TalkBuddy',
           phone: phone,
           district: 'Quận 1',
@@ -1883,56 +1755,73 @@
           coins: 20,
           isPremium: false
         };
-        this.currentUser = user;
-        localStorage.setItem('talkbuddy_user', JSON.stringify(user));
-        this.setupLoggedInUI();
-        this.navigate('home');
+        localStorage.setItem('talkbuddy_user', JSON.stringify(this.currentUser));
+        this.closeModal('auth-modal');
+        this.updateHeaderAuthUI();
+        alert('Đăng nhập thành công! Chào mừng bạn quay trở lại.');
       },
 
-      /* Thiết lập UI sau khi đăng nhập */
-      setupLoggedInUI: function() {
-        document.getElementById('app-header').style.display = 'block';
-        document.getElementById('app-footer').style.display = 'block';
-        const initial = this.currentUser.fullname ? this.currentUser.fullname.substring(0, 2).toUpperCase() : 'TB';
-        document.getElementById('nav-avatar-display').innerText = initial;
+      handleRegister: function(e) {
+        e.preventDefault();
+        const fullname = document.getElementById('modal-reg-fullname').value;
+        const phone = document.getElementById('modal-reg-phone').value;
+        const district = document.getElementById('modal-reg-district').value;
+        const dob = document.getElementById('modal-reg-dob').value;
+        const gender = document.getElementById('modal-reg-gender').value;
+
+        const otp = prompt(`Mã OTP xác thực 6 chữ số đã gửi tới số ${phone} (Nhập mã 123456 để hoàn tất):`, '123456');
+        if (otp === '123456') {
+          this.currentUser = {
+            fullname: fullname,
+            phone: phone,
+            district: district,
+            dob: dob,
+            gender: gender,
+            language: 'Tiếng Anh',
+            level: 'Trung cấp',
+            goal: 'Giao tiếp',
+            interests: 'Cà phê, Luyện nói phản xạ',
+            freetime: 'Tối cuối tuần',
+            coins: 20,
+            isPremium: false
+          };
+          localStorage.setItem('talkbuddy_user', JSON.stringify(this.currentUser));
+          this.closeModal('auth-modal');
+          this.updateHeaderAuthUI();
+          alert('Xác thực OTP thành công! Chúc mừng bạn gia nhập TalkBuddy TP.HCM.');
+        } else {
+          alert('Mã OTP không chính xác!');
+        }
       },
 
-      /* Đăng xuất */
       logout: function() {
         if (confirm('Bạn có chắc chắn muốn đăng xuất tài khoản?')) {
           localStorage.removeItem('talkbuddy_user');
           this.currentUser = null;
-          document.getElementById('app-header').style.display = 'none';
-          document.getElementById('app-footer').style.display = 'none';
-          this.navigate('auth');
+          this.updateHeaderAuthUI();
+          this.navigate('home');
         }
       },
 
-      /* Thuật toán tính điểm Matching 100 điểm */
       calculateMatchScore: function(user, partner) {
         let score = 0;
-        // 1. Ngôn ngữ & Trình độ (25 điểm)
-        if (user.language === partner.lang) {
+        const uLang = user ? user.language : 'Tiếng Anh';
+        const uLevel = user ? user.level : 'Trung cấp';
+        const uGoal = user ? user.goal : 'Giao tiếp';
+        const uDist = user ? user.district : 'Quận 1';
+
+        if (uLang === partner.lang) {
           score += 15;
-          if (user.level === partner.level) score += 10;
-          else score += 5;
+          if (uLevel === partner.level) score += 10; else score += 5;
         }
-        // 2. Mục tiêu học tập (20 điểm)
-        if (user.goal === partner.goal) score += 20;
-        else score += 10;
-        // 3. Sở thích & Chủ đề (20 điểm)
-        score += 15; // Giả lập mức tương thích sở thích chung
-        // 4. Khu vực TP.HCM & Khoảng cách (15 điểm)
-        if (user.district === partner.district) score += 15;
-        else score += 8;
-        // 5. Thời gian rảnh (15 điểm)
+        if (uGoal === partner.goal) score += 20; else score += 10;
+        score += 15;
+        if (uDist === partner.district) score += 15; else score += 8;
         score += 12;
-        // 6. Phong cách luyện tập (5 điểm)
         score += 5;
         return Math.min(100, score);
       },
 
-      /* Render danh sách bạn học (Matching) */
       renderPartners: function() {
         const container = document.getElementById('partner-cards-container');
         if (!container) return;
@@ -1953,7 +1842,7 @@
         if (filtered.length === 0) {
           container.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #FFF; border-radius: 12px;">
-              <p style="color: var(--text-muted);">Không tìm thấy bạn học phù hợp với bộ lọc hiện tại tại TP.HCM.</p>
+              <p style="color: var(--text-muted);">Không tìm thấy bạn học phù hợp với bộ lọc tại TP.HCM.</p>
               <button class="btn btn-secondary" style="margin-top: 12px;" onclick="app.resetFilters()">Đặt lại bộ lọc</button>
             </div>
           `;
@@ -1968,8 +1857,8 @@
                 <div class="partner-avatar-wrap">
                   <svg viewBox="0 0 60 60" style="width: 100%; height: 100%;">
                     <circle cx="30" cy="30" r="28" fill="#CFE8D5"/>
-                    <circle cx="30" cy="22" r="12" fill="#527D61"/>
-                    <path d="M12 50 C12 36, 48 36, 48 50" fill="#527D61"/>
+                    <circle cx="30" cy="22" r="10" fill="#527D61"/>
+                    <path d="M14 48 C14 36, 46 36, 46 48" fill="#527D61"/>
                   </svg>
                 </div>
                 <div class="partner-meta">
@@ -2007,8 +1896,11 @@
         this.renderPartners();
       },
 
-      /* Chat Messenger */
       startChat: function(partnerId) {
+        if (!this.currentUser) {
+          this.openAuthModal('login');
+          return;
+        }
         this.activeChatPartnerId = partnerId;
         if (!this.conversations[partnerId]) {
           this.conversations[partnerId] = [
@@ -2021,8 +1913,6 @@
       renderMessenger: function() {
         const listEl = document.getElementById('chat-conversation-list');
         if (!listEl) return;
-
-        // Nếu chưa chọn partner nào, mặc định chọn id 1
         if (!this.activeChatPartnerId) this.activeChatPartnerId = 1;
 
         listEl.innerHTML = Object.keys(this.conversations).map(pid => {
@@ -2091,7 +1981,6 @@
         input.value = '';
         this.renderChatViewport();
 
-        // Tự động phản hồi sau 1 giây mô phỏng
         setTimeout(() => {
           if (this.conversations[this.activeChatPartnerId]) {
             this.conversations[this.activeChatPartnerId].push({
@@ -2104,10 +1993,8 @@
         }, 1200);
       },
 
-      /* Floating Support Chatbox (Độc lập hỗ trợ) */
       toggleSupportChat: function() {
-        const box = document.getElementById('floating-chat-window');
-        box.classList.toggle('open');
+        document.getElementById('floating-chat-window').classList.toggle('open');
       },
 
       handleSendSupportMessage: function(e) {
@@ -2126,7 +2013,6 @@
         input.value = '';
         box.scrollTop = box.scrollHeight;
 
-        // Mô phỏng phản hồi từ Support
         setTimeout(() => {
           box.innerHTML += `
             <div class="message-bubble incoming">
@@ -2138,13 +2024,16 @@
         }, 1000);
       },
 
-      /* Xu & Gói Dịch Vụ */
       updateWalletUI: function() {
-        if (!this.currentUser) return;
-        document.getElementById('wallet-coins-balance').innerText = this.currentUser.coins || 0;
+        const coins = this.currentUser ? (this.currentUser.coins || 0) : 0;
+        document.getElementById('wallet-coins-balance').innerText = coins;
       },
 
       buyCoins: function(packageName, price, coinsToAdd) {
+        if (!this.currentUser) {
+          this.openAuthModal('login');
+          return;
+        }
         if (confirm(`Xác nhận nạp ${packageName} (${price.toLocaleString()}đ) để nhận ${coinsToAdd} Xu?`)) {
           this.currentUser.coins = (this.currentUser.coins || 0) + coinsToAdd;
           localStorage.setItem('talkbuddy_user', JSON.stringify(this.currentUser));
@@ -2154,6 +2043,10 @@
       },
 
       subscribePremium: function() {
+        if (!this.currentUser) {
+          this.openAuthModal('login');
+          return;
+        }
         if (confirm(`Xác nhận đăng ký Gói Hội Viên Premium 69.000 VNĐ/tháng (Tặng ngay 70 Xu)?`)) {
           this.currentUser.isPremium = true;
           this.currentUser.coins = (this.currentUser.coins || 0) + 70;
@@ -2163,7 +2056,6 @@
         }
       },
 
-      /* Dịch Vụ Gia Sư */
       renderTutors: function() {
         const container = document.getElementById('tutors-container');
         if (!container) return;
@@ -2190,7 +2082,6 @@
               <div class="row-info"><span class="label">Chuyên môn:</span> ${t.exp}</div>
               <div class="row-info"><span class="label">Học phí:</span> <strong>${t.fee}</strong></div>
               <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">${t.desc}</p>
-              ${this.currentUser && this.currentUser.isPremium ? '<div style="color: var(--primary-dark); font-weight: 600; font-size: 12px; margin-top: 6px;">Ưu đãi Premium: Đã giảm 50% phí kết nối.</div>' : ''}
             </div>
             <div class="partner-actions">
               <button class="btn btn-primary" style="width: 100%;" onclick="app.bookTutor('${t.name}')">Đặt lịch luyện tập</button>
@@ -2200,15 +2091,21 @@
       },
 
       bookTutor: function(tutorName) {
+        if (!this.currentUser) {
+          this.openAuthModal('login');
+          return;
+        }
         const time = prompt(`Nhập thời gian bạn muốn học cùng ${tutorName} (Ví dụ: Chiều thứ 7 lúc 14:00 tại Quận 1):`);
         if (time) {
           alert(`Yêu cầu đặt lịch với ${tutorName} đã được gửi. Gia sư sẽ xác nhận qua hộp thư của bạn!`);
         }
       },
 
-      /* Hồ sơ cá nhân */
       renderProfileForm: function() {
-        if (!this.currentUser) return;
+        if (!this.currentUser) {
+          this.openAuthModal('login');
+          return;
+        }
         document.getElementById('prof-fullname').value = this.currentUser.fullname || '';
         document.getElementById('prof-district').value = this.currentUser.district || 'Quận 1';
         document.getElementById('prof-language').value = this.currentUser.language || 'Tiếng Anh';
@@ -2235,10 +2132,9 @@
 
         localStorage.setItem('talkbuddy_user', JSON.stringify(this.currentUser));
         alert('Cập nhật thông tin hồ sơ thành công!');
-        this.setupLoggedInUI();
+        this.updateHeaderAuthUI();
       },
 
-      /* Thông báo */
       renderNotifications: function() {
         const list = document.getElementById('notifications-list');
         if (!list) return;
@@ -2249,12 +2145,11 @@
               <p style="font-size: 14px; ${n.read ? '' : 'font-weight: 700;'}">${n.text}</p>
               <span style="font-size: 11px; color: var(--text-muted);">${n.time}</span>
             </div>
-            <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="alert('Đã đánh dấu')">Đã đọc</button>
+            <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="alert('Đã đánh dấu đã đọc')">Đã đọc</button>
           </div>
         `).join('');
       },
 
-      /* Báo cáo & Khiếu nại */
       openReportModal: function(targetId) {
         document.getElementById('report-target-id').value = targetId || '';
         document.getElementById('report-modal').classList.add('active');
@@ -2268,14 +2163,14 @@
 
         this.reports.push({
           id: this.reports.length + 1,
-          reporter: this.currentUser.fullname,
+          reporter: this.currentUser ? this.currentUser.fullname : 'Khách vãng lai',
           target: 'Partner ID: ' + targetId,
           reason: reason + ' (' + detail + ')',
           time: 'Vừa xong',
           status: 'Đang xem xét'
         });
 
-        alert('Báo cáo vi phạm đã được gửi tới Ban quản trị. Cảm ơn bạn đã giữ gìn cộng đồng văn minh!');
+        alert('Báo cáo vi phạm đã được gửi tới Ban quản trị. Cảm ơn bạn!');
         this.closeModal('report-modal');
       },
 
@@ -2286,18 +2181,17 @@
 
         this.tickets.push({
           id: 'TK-' + Math.floor(1000 + Math.random() * 9000),
-          sender: this.currentUser.fullname,
+          sender: this.currentUser ? this.currentUser.fullname : 'Khách vãng lai',
           cat: cat,
           content: content,
           status: 'Mới tiếp nhận'
         });
 
-        alert('Yêu cầu hỗ trợ đã được tạo thành công! Mã ticket sẽ được phản hồi trong vòng 24h.');
+        alert('Yêu cầu hỗ trợ đã được tạo thành công! Ban quản trị sẽ phản hồi trong vòng 24h.');
         document.getElementById('ticket-content').value = '';
         this.navigate('home');
       },
 
-      /* Quản trị Admin */
       openAdminModal: function() {
         this.toggleMenu();
         document.getElementById('admin-login-modal').classList.add('active');
@@ -2306,14 +2200,13 @@
       handleAdminLogin: function(e) {
         e.preventDefault();
         const secret = document.getElementById('admin-secret-input').value;
-        // Khóa truy cập Quản trị giả lập nội bộ
         if (secret === 'talkbuddy2025' || secret === 'admin123') {
           this.closeModal('admin-login-modal');
           document.getElementById('admin-secret-input').value = '';
           this.renderAdminView();
           this.navigate('admin');
         } else {
-          alert('Khóa bảo mật không chính xác!');
+          alert('Khóa bảo mật quản trị viên không chính xác!');
         }
       },
 
@@ -2326,9 +2219,7 @@
             <td>${r.reason}</td>
             <td>${r.time}</td>
             <td><span class="badge">${r.status}</span></td>
-            <td>
-              <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="alert('Đã xử lý cảnh cáo tài khoản này.')">Xử lý</button>
-            </td>
+            <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="alert('Đã xử lý')">Xử lý</button></td>
           </tr>
         `).join('');
 
@@ -2340,9 +2231,7 @@
             <td>${t.cat}</td>
             <td>${t.content}</td>
             <td><span class="badge">${t.status}</span></td>
-            <td>
-              <button class="btn btn-primary" style="padding: 4px 8px; font-size: 11px;" onclick="alert('Đã hoàn tất hỗ trợ.')">Hoàn tất</button>
-            </td>
+            <td><button class="btn btn-primary" style="padding: 4px 8px; font-size: 11px;" onclick="alert('Hoàn tất')">Hoàn tất</button></td>
           </tr>
         `).join('');
       },
@@ -2361,7 +2250,6 @@
       }
     };
 
-    // Khởi chạy ứng dụng khi DOM tải xong
     document.addEventListener('DOMContentLoaded', () => {
       app.init();
     });
