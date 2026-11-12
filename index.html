@@ -405,7 +405,7 @@
       align-items: center;
       gap: 30px;
       border: 1px solid var(--border-color);
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
     .hero-content h1 { font-size: 34px; margin-bottom: 14px; }
     .hero-content p { font-size: 15px; margin-bottom: 22px; color: var(--text-muted); }
@@ -417,28 +417,28 @@
       box-shadow: 0 10px 24px rgba(63, 105, 78, 0.15);
     }
 
-    /* Sponsor Ad Banner */
-    .sponsor-ad-banner {
-      background: #FFF;
+    /* VỊ TRÍ QUẢNG CÁO TRÊN NỀN TẢNG (NGUỒN DOANH THU THỨ BA) */
+    .home-ad-banner {
+      background: #FFFFFF;
       border: 1.5px dashed var(--primary-mint);
       border-radius: var(--radius-md);
-      padding: 14px 20px;
+      padding: 16px 22px;
       margin-bottom: 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      box-shadow: 0 4px 14px rgba(63, 105, 78, 0.05);
+      box-shadow: 0 4px 16px rgba(63, 105, 78, 0.05);
     }
-    .sponsor-ad-left { display: flex; align-items: center; gap: 14px; }
-    .sponsor-tag {
+    .ad-badge {
       background: #FFF4E5;
       color: #B76E00;
       font-size: 11px;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 4px;
-      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 4px;
     }
 
     .section-title-wrap { text-align: center; margin: 40px 0 26px; }
@@ -605,33 +605,30 @@
       border-bottom-color: var(--primary-dark);
     }
 
-    /* Validation Traction Cards */
-    .validation-summary-card {
-      background: linear-gradient(135deg, #F6FAF7 0%, #EAF5EC 100%);
+    /* VALIDATION TRACTION SUMMARY CARD */
+    .validation-traction-card {
+      background: linear-gradient(135deg, #F8FCF9 0%, #EBF6ED 100%);
       border: 1.5px solid var(--primary-mint);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 22px;
       margin-bottom: 24px;
     }
-    .validation-summary-card h4 { font-size: 16px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-    .validation-summary-card p { font-size: 13px; color: var(--text-muted); }
-
     .traction-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
     }
-    .traction-item {
-      background: #FFF;
+    .traction-box {
+      background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 14px;
+      padding: 14px 16px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
-    .traction-item .perc { font-size: 22px; font-weight: 800; color: var(--primary-dark); }
-    .traction-item .count { font-size: 12.5px; font-weight: 700; color: #2e7d32; }
-    .traction-item .desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.35; }
+    .traction-box .t-title { font-size: 12.5px; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+    .traction-box .t-stat { font-size: 20px; font-weight: 800; color: #2e7d32; }
+    .traction-box .t-desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
 
     .table-responsive-wrapper {
       width: 100%;
@@ -773,8 +770,7 @@
       .full-profile-card { padding: 20px; }
       .footer-grid-nav { grid-template-columns: 1fr; gap: 20px; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .sponsor-ad-banner { flex-direction: column; text-align: center; }
-      .sponsor-ad-left { flex-direction: column; }
+      .home-ad-banner { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -907,16 +903,14 @@
         </div>
       </div>
 
-      <!-- VỊ TRÍ QUẢNG CÁO ĐỐI TÁC (NGUỒN DOANH THU THỨ BA) -->
-      <div class="sponsor-ad-banner" id="home-sponsor-banner">
-        <div class="sponsor-ad-left">
-          <span class="sponsor-tag">TÀI TRỢ</span>
-          <div style="text-align: left;">
-            <strong style="font-size: 13.5px; color: var(--primary-dark);">Trung tâm Anh ngữ Quốc tế British Council / VUS TP.HCM</strong>
-            <p style="font-size: 12px; color: var(--text-muted); margin: 0;">Ưu đãi độc quyền giảm 25% học phí khóa IELTS cấp tốc dành riêng cho thành viên TalkBuddy.</p>
-          </div>
+      <!-- VỊ TRÍ QUẢNG CÁO NỔI BẬT TRÊN TRANG CHỦ (DOANH THU QUẢNG CÁO) -->
+      <div class="home-ad-banner" id="home-ad-container">
+        <div>
+          <span class="ad-badge">ĐỐI TÁC GIÁO DỤC TÀI TRỢ</span>
+          <h4 style="font-size: 15px; margin-bottom: 2px;">Trung tâm Ngoại ngữ Quốc tế TP.HCM</h4>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin: 0;">Khóa học phát âm & phản xạ giao tiếp nâng cao – Ưu đãi 20% học phí dành riêng cho học viên TalkBuddy.</p>
         </div>
-        <button class="btn btn-outline" style="padding: 6px 14px; font-size: 12px; white-space: nowrap;" onclick="alert('Đã chuyển hướng đến website đối tác đào tạo!')">Khám phá ngay</button>
+        <button class="btn btn-outline" style="padding: 7px 16px; font-size: 12.5px; white-space: nowrap;" onclick="alert('Đã chuyển hướng đến website đối tác đào tạo!')">Xem chi tiết</button>
       </div>
 
       <!-- 2. Cách hoạt động -->
@@ -949,82 +943,70 @@
         </div>
       </div>
 
-      <!-- 3. MÔ HÌNH DOANH THU: HỆ THỐNG XU & HỘI VIÊN PREMIUM -->
+      <!-- 3. MÔ HÌNH DOANH THU: HỆ THỐNG XU & GÓI PREMIUM -->
       <div class="section-title-wrap">
-        <h2>Hệ thống Xu & Gói Hội Viên Premium</h2>
-        <p>Tỷ lệ quy đổi chuẩn: <strong>1.000 VNĐ = 1 Xu</strong>. Mua Xu linh hoạt hoặc nâng cấp Premium nhận trọn đặc quyền.</p>
+        <h2>Mô hình Doanh thu TalkBuddy</h2>
+        <p>Xây dựng trên ba nguồn chính: Gói Premium, Hệ thống Xu và Quảng cáo trên nền tảng.</p>
       </div>
 
       <div class="pricing-grid">
         <!-- Gói Basic -->
         <div class="pricing-card">
           <h3>Gói Basic</h3>
-          <div class="pricing-price">20.000đ</div>
-          <div class="pricing-subnote">1.000 VNĐ = 1 Xu &bull; Trải nghiệm linh hoạt</div>
+          <div class="pricing-price">20.000 VNĐ</div>
+          <div class="pricing-subnote">Hệ thống Xu &bull; Tỷ lệ quy đổi 1.000 VNĐ = 1 Xu</div>
           <ul class="pricing-features">
-            <li><span>✓</span> Nhận ngay <strong>20 Xu</strong> vào ví cá nhân</li>
-            <li><span>✓</span> Sử dụng linh hoạt các tính năng ghép đôi & dịch vụ</li>
-            <li><span>✓</span> Đổi mở khóa các bộ chủ đề giao tiếp đặc biệt</li>
-            <li><span>✓</span> Xu có giá trị sử dụng không thời hạn</li>
+            <li><span>✓</span> Nhận ngay <strong>20 Xu</strong> vào tài khoản</li>
+            <li><span>✓</span> Sử dụng linh hoạt các tính năng và dịch vụ trên nền tảng</li>
+            <li><span>✓</span> Phù hợp trải nghiệm tìm bạn học ngoại ngữ</li>
+            <li><span>✓</span> Xu tích lũy không giới hạn thời gian</li>
           </ul>
-          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Basic', 20000, 20)">Mua gói Basic (20.000đ)</button>
+          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Basic', 20000, 20)">Mua gói Basic (20.000 VNĐ)</button>
         </div>
 
         <!-- Gói Saver -->
         <div class="pricing-card">
-          <div class="pricing-card-badge">TẶNG THÊM 10 XU</div>
+          <div class="pricing-card-badge">TIẾT KIỆM HƠN</div>
           <h3>Gói Saver</h3>
-          <div class="pricing-price">50.000đ</div>
-          <div class="pricing-subnote">Nhận tổng 60 Xu &bull; Tiết kiệm tối ưu</div>
+          <div class="pricing-price">50.000 VNĐ</div>
+          <div class="pricing-subnote">Hệ thống Xu &bull; Tỷ lệ quy đổi 1.000 VNĐ = 1 Xu</div>
           <ul class="pricing-features">
-            <li><span>✓</span> Nhận ngay <strong>60 Xu</strong> (Đã cộng 10 Xu khuyến mãi)</li>
-            <li><span>✓</span> Tự do sử dụng dịch vụ và kết nối theo nhu cầu</li>
-            <li><span>✓</span> Ưu tiên mở rộng phiên kết nối trong 24 giờ</li>
-            <li><span>✓</span> Lựa chọn hoàn hảo cho học viên luyện tập đều đặn</li>
+            <li><span>✓</span> Nhận ngay <strong>50 Xu</strong> vào tài khoản</li>
+            <li><span>✓</span> Sử dụng linh hoạt các tính năng và dịch vụ trên nền tảng</li>
+            <li><span>✓</span> Tiết kiệm chi phí cho nhu cầu kết nối thường xuyên</li>
+            <li><span>✓</span> Lựa chọn tối ưu cho học viên luyện tập chủ động</li>
           </ul>
-          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Saver', 50000, 60)">Mua gói Saver (50.000đ)</button>
+          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Saver', 50000, 50)">Mua gói Saver (50.000 VNĐ)</button>
         </div>
 
         <!-- Gói Premium -->
         <div class="pricing-card featured">
-          <div class="pricing-card-badge">TRẢI NGHIỆM ĐỈNH CAO</div>
-          <h3>Gói Hội Viên Premium</h3>
-          <div class="pricing-price">69.000đ <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">/ tháng</span></div>
-          <div class="pricing-subnote" style="color: #2e7d32;">Chỉ 69.000 VNĐ &bull; Nhận ngay 70 Xu (Trị giá 70.000đ)</div>
+          <div class="pricing-card-badge">HỘI VIÊN CAO CẤP</div>
+          <h3>Gói Premium</h3>
+          <div class="pricing-price">69.000 VNĐ <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">/ tháng</span></div>
+          <div class="pricing-subnote" style="color: #2e7d32;">Đầy đủ 3 quyền lợi trọng tâm hàng tháng</div>
           <ul class="pricing-features">
             <li>
               <span>✓</span>
-              <div>
-                <strong>Nhận 70 Xu mỗi tháng:</strong> Giá trị xu vượt trên chi phí đăng ký gói.
-              </div>
+              <div><strong>Nhận 70 Xu mỗi tháng</strong> vào tài khoản để sử dụng dịch vụ.</div>
             </li>
             <li>
               <span>✓</span>
-              <div>
-                <strong>Sử dụng nền tảng không có quảng cáo:</strong> Tập trung tối đa, không gián đoạn bởi banner thương mại.
-              </div>
+              <div><strong>Sử dụng nền tảng không có quảng cáo</strong>, trải nghiệm liền mạch và tập trung nhất.</div>
             </li>
             <li>
               <span>✓</span>
-              <div>
-                <strong>Ưu tiên ghép cặp nhanh (Fast Matching):</strong> Đẩy hồ sơ lên hàng đầu để tìm được bạn luyện nói ngay lập tức.
-              </div>
-            </li>
-            <li>
-              <span>✓</span>
-              <div>
-                <strong>Trợ giá hoa hồng:</strong> Giảm 50% phí hoa hồng kết nối dịch vụ gia sư kèm 1-1 chuyên sâu.
-              </div>
+              <div><strong>Được ưu tiên ghép cặp nhanh với Fast Matching</strong>, rút ngắn tối đa thời gian chờ đối tác luyện nói.</div>
             </li>
           </ul>
-          <button class="btn btn-primary" onclick="app.subscribePremium()">Đăng ký Premium (69.000đ/tháng)</button>
+          <button class="btn btn-primary" onclick="app.subscribePremium()">Đăng ký Premium (69.000 VNĐ/tháng)</button>
         </div>
       </div>
 
       <!-- 4. Form Đăng ký hồ sơ cá nhân -->
       <div class="section-title-wrap">
         <h2>Đăng ký hồ sơ cá nhân</h2>
-        <p>Hoàn thiện hồ sơ chuẩn để hệ thống kết nối bạn học phù hợp nhất tại TP.HCM.</p>
+        <p>Hoàn thiện hồ sơ chuẩn 14 trường để hệ thống kết nối bạn học phù hợp nhất tại TP.HCM.</p>
       </div>
 
       <div class="full-profile-card">
@@ -1178,7 +1160,7 @@
     <div class="container">
       <div class="section-title-wrap">
         <h2>Dịch vụ gia sư kèm 1-1 tại TP.HCM</h2>
-        <p>Luyện tập chuyên sâu cùng gia sư giàu kinh nghiệm (Hội viên Premium được trợ giá 50% hoa hồng kết nối).</p>
+        <p>Luyện tập chuyên sâu cùng gia sư giàu kinh nghiệm thực tế.</p>
       </div>
       <div class="partner-grid" id="tutors-container"></div>
     </div>
@@ -1235,29 +1217,29 @@
   <section id="view-pricing" class="view-section">
     <div class="container">
       <div class="section-title-wrap">
-        <h2>Hệ thống Xu và Gói Hội Viên Premium</h2>
-        <p>Tỷ lệ quy đổi: <strong>1.000 VNĐ = 1 Xu</strong>. Số dư hiện tại của bạn: <strong id="wallet-balance-num" style="color:var(--primary-dark);">20</strong> Xu</p>
+        <h2>Hệ thống Xu và Gói Premium</h2>
+        <p>Tỷ lệ quy đổi: <strong>1.000 VNĐ = 1 Xu</strong>. Số dư ví: <strong id="wallet-balance-num" style="color:var(--primary-dark);">20</strong> Xu</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3>Gói Basic</h3>
-          <div class="pricing-price">20.000đ</div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Nhận ngay 20 Xu sử dụng linh hoạt các dịch vụ ghép đôi và mở khóa tính năng.</p>
-          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Basic', 20000, 20)">Mua 20 Xu (20.000đ)</button>
+          <div class="pricing-price">20.000 VNĐ</div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Nhận ngay 20 Xu để sử dụng linh hoạt các tính năng và dịch vụ trên nền tảng.</p>
+          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Basic', 20000, 20)">Mua Gói Basic (20.000 VNĐ)</button>
         </div>
         <div class="pricing-card">
-          <div class="pricing-card-badge">TẶNG THÊM 10 XU</div>
+          <div class="pricing-card-badge">TIẾT KIỆM HƠN</div>
           <h3>Gói Saver</h3>
-          <div class="pricing-price">50.000đ</div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Nhận 60 Xu (Thưởng thêm 10 Xu) dùng cho các tương tác ưu tiên cao.</p>
-          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Saver', 50000, 60)">Mua 60 Xu (50.000đ)</button>
+          <div class="pricing-price">50.000 VNĐ</div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Nhận ngay 50 Xu sử dụng linh hoạt mọi tiện ích luyện nói và ghép đôi.</p>
+          <button class="btn btn-secondary" onclick="app.buyCoins('Gói Saver', 50000, 50)">Mua Gói Saver (50.000 VNĐ)</button>
         </div>
         <div class="pricing-card featured">
-          <div class="pricing-card-badge">NHẬN 70 XU MỖI THÁNG</div>
-          <h3>Gói Hội Viên Premium</h3>
-          <div class="pricing-price">69.000đ <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">/ tháng</span></div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Nhận 70 Xu/tháng, trải nghiệm hoàn toàn không quảng cáo, ưu tiên ghép cặp nhanh (Fast Matching).</p>
-          <button class="btn btn-primary" onclick="app.subscribePremium()">Đăng ký Premium (69.000đ/tháng)</button>
+          <div class="pricing-card-badge">HỘI VIÊN PREMIUM</div>
+          <h3>Gói Premium</h3>
+          <div class="pricing-price">69.000 VNĐ <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">/ tháng</span></div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Nhận 70 Xu mỗi tháng, trải nghiệm không có quảng cáo, ưu tiên ghép cặp nhanh Fast Matching.</p>
+          <button class="btn btn-primary" onclick="app.subscribePremium()">Đăng ký Premium (69.000 VNĐ/tháng)</button>
         </div>
       </div>
     </div>
@@ -1267,22 +1249,22 @@
   <section id="view-support" class="view-section">
     <div class="container" style="max-width: 680px;">
       <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--card-shadow);">
-        <h2>Trung tâm hỗ trợ học viên</h2>
-        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 22px;">Gửi yêu cầu thắc mắc để Ban quản trị TalkBuddy TP.HCM hỗ trợ bạn.</p>
+        <h2>Trung tâm hỗ trợ & Hợp tác</h2>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 22px;">Gửi yêu cầu thắc mắc hoặc liên hệ đặt quảng cáo dành cho đối tác giáo dục.</p>
         <form onsubmit="app.handleCreateSupportTicket(event)">
           <div class="form-group">
             <label>Phân loại vấn đề</label>
             <select class="form-control" id="supp-cat">
               <option value="Ghép đôi & Bạn học">Ghép đôi & Bạn học</option>
-              <option value="Hệ thống Xu (Gói Basic/Saver) & Premium">Hệ thống Xu (Gói Basic/Saver) & Premium</option>
-              <option value="Quảng cáo & Hợp tác đối tác">Quảng cáo & Hợp tác đối tác</option>
+              <option value="Hệ thống Xu (Gói Basic / Saver) & Gói Premium">Hệ thống Xu (Gói Basic / Saver) & Gói Premium</option>
+              <option value="Hợp tác Quảng cáo (Banner & Chiến dịch)">Hợp tác Quảng cáo (Banner & Chiến dịch)</option>
               <option value="Gia sư kèm 1-1">Gia sư kèm 1-1</option>
               <option value="Báo cáo vi phạm">Báo cáo vi phạm</option>
             </select>
           </div>
           <div class="form-group">
             <label>Nội dung chi tiết</label>
-            <textarea class="form-control" id="supp-content" rows="4" placeholder="Mô tả cụ thể vấn đề bạn gặp phải..." required></textarea>
+            <textarea class="form-control" id="supp-content" rows="4" placeholder="Mô tả cụ thể vấn đề hoặc kế hoạch hợp tác quảng cáo của bạn..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
         </form>
@@ -1296,7 +1278,7 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
         <div>
           <h2>Trung tâm Quản trị Toàn diện TalkBuddy TP.HCM</h2>
-          <p style="font-size: 13px; color: var(--text-muted);">Tài khoản: <strong id="admin-session-badge">Super Admin (Quản trị viên)</strong></p>
+          <p style="font-size: 13px; color: var(--text-muted);">Tài khoản quản lý: <strong id="admin-session-badge">Super Admin (Quản trị viên)</strong></p>
         </div>
         <div style="display:flex; gap:10px;">
           <button class="btn btn-outline" onclick="app.adminChangePasswordPrompt()">Đổi mật khẩu</button>
@@ -1305,46 +1287,46 @@
       </div>
 
       <div class="admin-wrapper">
-        
-        <!-- BẢNG DỮ LIỆU THỰC TẾ GIAI ĐOẠN THỬ NGHIỆM (VALIDATION TRACTION) -->
-        <div class="validation-summary-card">
-          <h4>
-            <svg class="icon" style="color:var(--primary-dark);"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-            Dữ liệu thực tế từ giai đoạn thử nghiệm (Validation Traction) – Tổng mẫu: 254 người dùng
+
+        <!-- DỮ LIỆU THỰC TẾ TỪ GIAI ĐOẠN THỬ NGHIỆM (VALIDATION TRACTION) -->
+        <div class="validation-traction-card">
+          <h4 style="display: flex; align-items: center; gap: 8px; font-size: 15.5px;">
+            <svg class="icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            Dữ liệu thực tế từ giai đoạn thử nghiệm (Validation Traction) – Tổng số người dùng: 254
           </h4>
-          <p>
-            Kết quả cho thấy TalkBuddy bước đầu thu hút được người dùng và hình thành nhóm có mức độ tương tác thường xuyên. Đây là cơ sở vững chắc để tiếp tục hoàn thiện nền tảng và triển khai mô hình thu phí ba nguồn (Gói Premium, Hệ thống Xu, Quảng cáo).
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
+            Số liệu thống kê chi tiết hành vi và mức độ tương tác của 254 người dùng trong đợt thử nghiệm thực tế:
           </p>
 
           <div class="traction-grid">
-            <div class="traction-item">
-              <div class="perc">18,9%</div>
-              <div class="count">48 người dùng</div>
-              <div class="desc">Mới đăng ký hoặc đang trong quá trình hoàn thiện hồ sơ.</div>
+            <div class="traction-box">
+              <div class="t-title">Người dùng mới đăng ký</div>
+              <div class="t-stat">48 người (18,9%)</div>
+              <div class="t-desc">Mới đăng ký hoặc đang trong quá trình hoàn thiện hồ sơ cá nhân.</div>
             </div>
 
-            <div class="traction-item">
-              <div class="perc">9,4%</div>
-              <div class="count">24 người dùng</div>
-              <div class="desc">Đã tham gia trải nghiệm ghép đôi luyện nói một lần.</div>
+            <div class="traction-box">
+              <div class="t-title">Người dùng trải nghiệm lần đầu</div>
+              <div class="t-stat">24 người (9,4%)</div>
+              <div class="t-desc">Đã tham gia trải nghiệm ghép đôi luyện nói một lần.</div>
             </div>
 
-            <div class="traction-item">
-              <div class="perc">16,5%</div>
-              <div class="count">42 người dùng</div>
-              <div class="desc">Đang tích cực tìm kiếm partner phù hợp trên hệ thống.</div>
+            <div class="traction-box">
+              <div class="t-title">Người dùng tìm kiếm Partner</div>
+              <div class="t-stat">42 người (16,5%)</div>
+              <div class="t-desc">Đang chủ động tìm kiếm partner phù hợp trên hệ thống.</div>
             </div>
 
-            <div class="traction-item">
-              <div class="perc">12,6%</div>
-              <div class="count">32 người dùng</div>
-              <div class="desc">Đã ghép cặp thành công và duy trì lịch kết nối hằng tuần.</div>
+            <div class="traction-box">
+              <div class="t-title">Người dùng kết nối thành công</div>
+              <div class="t-stat">32 người (12,6%)</div>
+              <div class="t-desc">Đã ghép cặp thành công và duy trì kết nối luyện tập hằng tuần.</div>
             </div>
 
-            <div class="traction-item" style="border: 1.5px solid var(--primary-mint); background: #FAFDFB;">
-              <div class="perc" style="color: #2e7d32;">42,5%</div>
-              <div class="count">108 người dùng</div>
-              <div class="desc"><strong>Chủ động quay lại</strong> nền tảng để tìm kiếm partner mới.</div>
+            <div class="traction-box" style="border: 1.5px solid var(--primary-mint); background: #FAFDFB;">
+              <div class="t-title">Người dùng quay lại tìm Partner</div>
+              <div class="t-stat" style="color: #2e7d32;">108 người (42,5%)</div>
+              <div class="t-desc">Chủ động quay lại nền tảng để tiếp tục tìm kiếm partner mới.</div>
             </div>
           </div>
         </div>
@@ -1353,21 +1335,21 @@
           <button class="admin-tab-btn active" onclick="app.switchAdminTab('users')">Quản lý người dùng</button>
           <button class="admin-tab-btn" onclick="app.switchAdminTab('matching')">Quản lý Matching</button>
           <button class="admin-tab-btn" onclick="app.switchAdminTab('chatbox')">Chatbox Khách hàng</button>
-          <button class="admin-tab-btn" onclick="app.switchAdminTab('services')">Mô hình Doanh thu & Dịch vụ</button>
+          <button class="admin-tab-btn" onclick="app.switchAdminTab('services')">Quản lý 3 Nguồn Doanh Thu</button>
           <button class="admin-tab-btn" onclick="app.switchAdminTab('support')">Hỗ trợ & Ticket</button>
         </div>
 
         <!-- 1. QUẢN LÝ NGƯỜI DÙNG -->
         <div id="admin-sec-users" class="admin-sub-sec">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap: wrap; gap: 10px;">
-            <h4>Danh sách mẫu thử nghiệm người dùng tại TP.HCM (254 Người)</h4>
-            <input type="text" class="form-control" placeholder="Tìm theo tên hoặc quận..." style="width:240px;" oninput="app.searchAdminUsers(this.value)">
+            <h4>Danh sách mẫu thử nghiệm (Tổng: 254 người dùng)</h4>
+            <input type="text" class="form-control" placeholder="Tìm theo tên hoặc nhóm..." style="width:250px;" oninput="app.searchAdminUsers(this.value)">
           </div>
           <div class="table-responsive-wrapper">
             <table class="admin-table">
               <thead>
                 <tr>
-                  <th>Họ tên</th><th>Khu vực</th><th>Ngôn ngữ</th><th>Trình độ</th><th>Phân nhóm Traction</th><th>Thao tác</th>
+                  <th>Họ tên</th><th>Khu vực</th><th>Ngôn ngữ</th><th>Trình độ</th><th>Phân loại Validation Traction</th><th>Thao tác</th>
                 </tr>
               </thead>
               <tbody id="admin-users-tbody"></tbody>
@@ -1400,38 +1382,39 @@
           </div>
         </div>
 
-        <!-- 4. QUẢN LÝ DỊCH VỤ VÀ 3 NGUỒN DOANH THU -->
+        <!-- 4. QUẢN LÝ 3 NGUỒN DOANH THU CHÍNH -->
         <div id="admin-sec-services" class="admin-sub-sec" style="display:none;">
-          <h4>Cấu hình 3 Nguồn Doanh Thu Chính của TalkBuddy</h4>
+          <h4>Quản lý Ba Nguồn Doanh Thu Chính của TalkBuddy</h4>
           
-          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:14px;">
-            <!-- Nguồn 1: Xu & Gói Premium -->
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap:18px; margin-top:14px;">
+            <!-- Nguồn 1 & 2: Hệ thống Xu & Gói Premium -->
             <div style="background:var(--bg-cream); border:1px solid var(--border-color); padding:18px; border-radius:var(--radius-sm);">
               <span class="badge" style="margin-bottom: 8px;">Nguồn 1 & 2</span>
               <h5>Hệ thống Xu & Gói Premium</h5>
               <div style="font-size:13px; margin: 8px 0; line-height: 1.6;">
                 <strong>Tỷ lệ quy đổi:</strong> 1.000 VNĐ = 1 Xu.<br>
-                • <strong>Gói Basic:</strong> 20.000 VNĐ (Nhận 20 Xu)<br>
-                • <strong>Gói Saver:</strong> 50.000 VNĐ (Nhận 60 Xu - tặng 10 Xu)<br>
-                • <strong>Gói Premium:</strong> 69.000 VNĐ/tháng (Nhận 70 Xu, không quảng cáo, Fast Matching)
+                • <strong>Gói Basic:</strong> 20.000 VNĐ.<br>
+                • <strong>Gói Saver:</strong> 50.000 VNĐ.<br>
+                • <strong>Gói Premium (69.000 VNĐ/tháng):</strong><br>
+                - Nhận 70 Xu mỗi tháng.<br>
+                - Sử dụng nền tảng không có quảng cáo.<br>
+                - Được ưu tiên ghép cặp nhanh với Fast Matching.
               </div>
-              <button class="btn btn-secondary" style="font-size:12px; width: 100%;" onclick="alert('Đã cập nhật cấu hình Hệ thống Xu và Gói Premium!')">Cập nhật Bảng giá</button>
+              <button class="btn btn-secondary" style="font-size:12px; width: 100%;" onclick="alert('Đã cập nhật bảng giá Xu và Premium!')">Cập nhật Bảng giá</button>
             </div>
 
-            <!-- Nguồn 2: Doanh thu Quảng cáo -->
+            <!-- Nguồn 3: Doanh thu từ Quảng cáo -->
             <div style="background:var(--bg-cream); border:1px solid var(--border-color); padding:18px; border-radius:var(--radius-sm);">
               <span class="badge" style="margin-bottom: 8px;">Nguồn 3</span>
-              <h5>Doanh thu từ Quảng cáo (Ads Revenue)</h5>
+              <h5>Doanh thu từ Quảng cáo</h5>
               <div style="font-size:13px; margin: 8px 0; line-height: 1.6;">
-                <strong>Đối tác mục tiêu:</strong> Trung tâm ngoại ngữ & Đơn vị giáo dục.<br>
-                • <strong>Banner tiêu chuẩn:</strong> 300.000 – 500.000 VNĐ/tháng<br>
-                • <strong>Banner nổi bật trang chủ:</strong> 700.000 – 1.000.000 VNĐ/tháng<br>
-                • <strong>Quảng bá theo chiến dịch:</strong> 1.000.000 – 1.500.000 VNĐ/chiến dịch<br>
-                <div style="margin-top: 6px; padding: 6px 10px; background: var(--primary-light); border-radius: 4px; font-weight: 600; color: var(--primary-dark);">
-                  Kịch bản cơ sở (2 banner chuẩn + 1 nổi bật): Dự kiến tạo ra <strong>1,3 – 2 triệu VNĐ/tháng</strong>.
-                </div>
+                <strong>Đối tác khai thác:</strong> Trung tâm ngoại ngữ, đơn vị giáo dục.<br>
+                <strong>Mức giá khởi điểm dự kiến:</strong><br>
+                • <strong>Banner tiêu chuẩn:</strong> 300.000 – 500.000 VNĐ/tháng.<br>
+                • <strong>Banner tại vị trí nổi bật trên trang chủ:</strong> 700.000 – 1.000.000 VNĐ/tháng.<br>
+                • <strong>Nội dung quảng bá theo chiến dịch:</strong> 1.000.000 – 1.500.000 VNĐ/chiến dịch.
               </div>
-              <button class="btn btn-secondary" style="font-size:12px; width: 100%;" onclick="alert('Đã lưu cấu hình bảng giá Quảng cáo!')">Cập nhật Gói Quảng cáo</button>
+              <button class="btn btn-secondary" style="font-size:12px; width: 100%;" onclick="alert('Đã lưu cấu hình bảng giá Quảng cáo!')">Lưu cấu hình Quảng cáo</button>
             </div>
           </div>
         </div>
@@ -1484,10 +1467,10 @@
         <div class="footer-col">
           <h4>Mô hình dịch vụ</h4>
           <ul>
-            <li><a href="javascript:void(0)" onclick="app.navigate('pricing')">Hệ thống Xu (1.000đ = 1 Xu)</a></li>
-            <li><a href="javascript:void(0)" onclick="app.navigate('pricing')">Gói Basic (20k) & Saver (50k)</a></li>
-            <li><a href="javascript:void(0)" onclick="app.navigate('pricing')">Hội viên Premium (69k/tháng)</a></li>
-            <li><a href="javascript:void(0)" onclick="app.navigate('support')">Liên hệ Đặt Quảng cáo</a></li>
+            <li><a href="javascript:void(0)" onclick="app.navigate('pricing')">Hệ thống Xu (Gói Basic & Saver)</a></li>
+            <li><a href="javascript:void(0)" onclick="app.navigate('pricing')">Gói Premium (69.000 VNĐ/tháng)</a></li>
+            <li><a href="javascript:void(0)" onclick="app.navigate('support')">Liên hệ Hợp tác Quảng cáo</a></li>
+            <li><a href="javascript:void(0)">Chính sách bảo mật</a></li>
           </ul>
         </div>
 
@@ -1506,7 +1489,7 @@
           <ul>
             <li>Email: hotro@talkbuddy.vn</li>
             <li>Hotline: (028) 3822 9999</li>
-            <li>Hợp tác truyền thông: ads@talkbuddy.vn</li>
+            <li>Hợp tác Quảng cáo: ads@talkbuddy.vn</li>
             <li>Địa chỉ: TP. Hồ Chí Minh</li>
           </ul>
         </div>
@@ -1583,13 +1566,13 @@
         'Sáng Chủ Nhật', 'Chiều Chủ Nhật', 'Tối Chủ Nhật', 'Các buổi sáng trong tuần'
       ],
 
-      // Dữ liệu mẫu khớp 5 nhóm Traction phân bổ từ 254 người dùng
+      // Phản ánh 5 nhóm dữ liệu Validation Traction từ 254 người dùng thử nghiệm
       partners: [
-        { id: 1, name: 'Lan Hương', age: 22, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 1', goal: 'Công việc', free: 'Tối T4 & T7', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80', tractionGroup: 'Chủ động quay lại tìm partner mới (42,5%)', status: 'Hoạt động' },
-        { id: 2, name: 'Thảo Vy', age: 24, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 3', goal: 'Phỏng vấn', free: 'Sáng Chủ Nhật', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80', tractionGroup: 'Đã ghép cặp & duy trì hằng tuần (12,6%)', status: 'Hoạt động' },
-        { id: 3, name: 'Bảo Nam', age: 21, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 5', goal: 'Giao tiếp', free: 'Tối T3 & T6', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80', tractionGroup: 'Đang tìm kiếm partner (16,5%)', status: 'Hoạt động' },
-        { id: 4, name: 'Khánh Linh', age: 23, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 10', goal: 'Giao tiếp', free: 'Chiều T7', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80', tractionGroup: 'Đã trải nghiệm một lần (9,4%)', status: 'Hoạt động' },
-        { id: 5, name: 'Tuấn Kiệt', age: 26, lang: 'Tiếng Anh', level: 'Nâng cao', district: 'Gò Vấp', goal: 'Giao tiếp', free: 'Tối cuối tuần', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80', tractionGroup: 'Mới đăng ký / Hoàn thiện hồ sơ (18,9%)', status: 'Hoạt động' }
+        { id: 1, name: 'Lan Hương', age: 22, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 1', goal: 'Công việc', free: 'Tối T4 & T7', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80', tractionType: 'Người dùng quay lại tìm Partner: 108 người (42,5%)', status: 'Hoạt động' },
+        { id: 2, name: 'Thảo Vy', age: 24, lang: 'Tiếng Anh', level: 'Trung cấp', district: 'Quận 3', goal: 'Phỏng vấn', free: 'Sáng Chủ Nhật', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80', tractionType: 'Người dùng kết nối thành công: 32 người (12,6%)', status: 'Hoạt động' },
+        { id: 3, name: 'Bảo Nam', age: 21, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 5', goal: 'Giao tiếp', free: 'Tối T3 & T6', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80', tractionType: 'Người dùng tìm kiếm Partner: 42 người (16,5%)', status: 'Hoạt động' },
+        { id: 4, name: 'Khánh Linh', age: 23, lang: 'Tiếng Trung', level: 'Trung cấp', district: 'Quận 10', goal: 'Giao tiếp', free: 'Chiều T7', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80', tractionType: 'Người dùng trải nghiệm lần đầu: 24 người (9,4%)', status: 'Hoạt động' },
+        { id: 5, name: 'Tuấn Kiệt', age: 26, lang: 'Tiếng Anh', level: 'Nâng cao', district: 'Gò Vấp', goal: 'Giao tiếp', free: 'Tối cuối tuần', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80', tractionType: 'Người dùng mới đăng ký: 48 người (18,9%)', status: 'Hoạt động' }
       ],
 
       adminPairsData: [
@@ -1610,8 +1593,8 @@
       ],
 
       adminTickets: [
-        { id: 'TK-881', sender: 'Lan Hương', cat: 'Gói Premium & Xu', content: 'Em muốn xác nhận thanh toán gói Hội viên Premium 69k/tháng', status: 'Đang xử lý' },
-        { id: 'TK-882', sender: 'Đại diện Trung tâm Ngoại ngữ', cat: 'Quảng cáo & Đối tác', content: 'Chúng tôi muốn đăng ký gói Banner nổi bật trên trang chủ 1 tháng', status: 'Mới' }
+        { id: 'TK-881', sender: 'Lan Hương', cat: 'Gói Premium (69.000 VNĐ)', content: 'Em muốn xác nhận thanh toán gói Hội viên Premium 69.000 VNĐ/tháng', status: 'Đang xử lý' },
+        { id: 'TK-882', sender: 'Trung tâm Ngoại ngữ TP.HCM', cat: 'Quảng cáo trên nền tảng', content: 'Đăng ký vị trí Banner nổi bật trên trang chủ 1 tháng', status: 'Mới' }
       ],
 
       messengerMessages: [
@@ -1731,7 +1714,7 @@
         setTimeout(() => {
           this.messengerMessages.push({
             sender: 'them',
-            text: 'Admin TalkBuddy đã nhận được tin nhắn! Chúng mình đang xử lý kết nối cho bạn.'
+            text: 'Admin TalkBuddy đã nhận được tin nhắn! Chúng mình đang hỗ trợ bạn.'
           });
           this.renderClientMessenger();
         }, 800);
@@ -1787,7 +1770,7 @@
         this.currentUser.fullname = document.getElementById('prof-fullname').value;
         this.currentUser.district = document.getElementById('prof-district').value;
 
-        alert(`Chúc mừng ${this.currentUser.fullname} (sinh ngày ${d}/${m}/${y})!\nHồ sơ với ${selectedInterests.length} sở thích và ${selectedFreetime.length} khung giờ rảnh đã được lưu thành công.`);
+        alert(`Chúc mừng ${this.currentUser.fullname} (sinh ngày ${d}/${m}/${y})!\nHồ sơ của bạn đã được lưu thành công.`);
         this.navigate('matching');
       },
 
@@ -1848,7 +1831,6 @@
             <div class="partner-body">
               <div class="row-info"><span class="label">Chuyên môn:</span> ${t.exp}</div>
               <div class="row-info"><span class="label">Học phí:</span> <strong>${t.fee}</strong></div>
-              <div class="row-info" style="font-size:11.5px; color:var(--primary-dark); font-weight:600;">Hội viên Premium: Trợ giá 50% hoa hồng</div>
             </div>
             <div style="padding:12px 16px; border-top:1px solid var(--bg-sub);">
               <button class="btn btn-primary" style="width:100%; font-size:13px;" onclick="alert('Đã gửi yêu cầu hẹn lịch với gia sư!')">Đặt lịch luyện tập</button>
@@ -1858,27 +1840,27 @@
       },
 
       buyCoins: function(pack, price, coins) {
-        alert(`Thanh toán ${price.toLocaleString()}đ cho ${pack} thành công! Đã cộng ${coins} Xu vào ví.`);
+        alert(`Thanh toán ${price.toLocaleString()} VNĐ cho ${pack} thành công! Đã nạp ${coins} Xu vào tài khoản (Tỷ lệ: 1.000 VNĐ = 1 Xu).`);
         this.currentUser.coins += coins;
         document.getElementById('wallet-balance-num').innerText = this.currentUser.coins;
         document.getElementById('menu-coin-display').innerText = this.currentUser.coins + ' Xu';
       },
 
       subscribePremium: function() {
-        alert('Chúc mừng bạn đã kích hoạt Gói Hội Viên Premium (69.000 VNĐ/tháng)!\n• Đã cộng 70 Xu vào tài khoản.\n• Trải nghiệm hoàn toàn không quảng cáo.\n• Kích hoạt Fast Matching ưu tiên kết nối.');
+        alert('Chúc mừng bạn đã kích hoạt Gói Premium (69.000 VNĐ/tháng)!\n• Nhận 70 Xu mỗi tháng.\n• Sử dụng nền tảng không có quảng cáo.\n• Được ưu tiên ghép cặp nhanh với Fast Matching.');
         this.currentUser.coins += 70;
         this.currentUser.isPremium = true;
         document.getElementById('wallet-balance-num').innerText = this.currentUser.coins;
         document.getElementById('menu-coin-display').innerText = this.currentUser.coins + ' Xu';
         
-        // Ẩn banner quảng cáo cho tài khoản Premium
-        const ad = document.getElementById('home-sponsor-banner');
+        // Ẩn vị trí quảng cáo khi kích hoạt Premium
+        const ad = document.getElementById('home-ad-container');
         if (ad) ad.style.display = 'none';
       },
 
       handleCreateSupportTicket: function(e) {
         e.preventDefault();
-        alert('Yêu cầu hỗ trợ đã được gửi thành công! Admin sẽ phản hồi trong ít phút.');
+        alert('Yêu cầu đã được gửi thành công! Ban quản trị TalkBuddy sẽ phản hồi trong ít phút.');
         document.getElementById('supp-content').value = '';
         this.navigate('home');
       },
@@ -2026,7 +2008,7 @@
             <td>${p.district}</td>
             <td>${p.lang}</td>
             <td>${p.level}</td>
-            <td><span class="badge" style="font-size:11px;">${p.tractionGroup}</span></td>
+            <td><span class="badge" style="font-size:11.5px;">${p.tractionType}</span></td>
             <td>
               <button class="btn btn-outline" style="padding:4px 8px; font-size:11px;" onclick="app.toggleLockUser(${p.id})">
                 ${p.status === 'Hoạt động' ? 'Khóa' : 'Mở khóa'}
@@ -2047,14 +2029,18 @@
 
       searchAdminUsers: function(keyword) {
         const tbody = document.getElementById('admin-users-tbody');
-        const filtered = this.partners.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()) || p.district.toLowerCase().includes(keyword.toLowerCase()) || p.tractionGroup.toLowerCase().includes(keyword.toLowerCase()));
+        const filtered = this.partners.filter(p => 
+          p.name.toLowerCase().includes(keyword.toLowerCase()) || 
+          p.district.toLowerCase().includes(keyword.toLowerCase()) || 
+          p.tractionType.toLowerCase().includes(keyword.toLowerCase())
+        );
         tbody.innerHTML = filtered.map(p => `
           <tr>
             <td><strong>${p.name}</strong> (${p.age})</td>
             <td>${p.district}</td>
             <td>${p.lang}</td>
             <td>${p.level}</td>
-            <td><span class="badge" style="font-size:11px;">${p.tractionGroup}</span></td>
+            <td><span class="badge" style="font-size:11.5px;">${p.tractionType}</span></td>
             <td>
               <button class="btn btn-outline" style="padding:4px 8px; font-size:11px;" onclick="app.toggleLockUser(${p.id})">
                 ${p.status === 'Hoạt động' ? 'Khóa' : 'Mở khóa'}
